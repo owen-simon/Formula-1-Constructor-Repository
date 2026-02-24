@@ -1,0 +1,5 @@
+﻿Constructor_ID,"Unique numeric identifier representing a team's ownership lineage across all seasons. This identifier remains constant despite team name or branding changes and reflects organizational continuity (e.g.,Tyrrell → BAR → Honda → Brawn GP → Mercedes would share the same Constructor_ID)."
+Season,Championship year in which the constructor competed in the Formula One World Championship.
+Team_Name,"Official team name used for competition entry in a given season. This may vary across seasons for the same Constructor_ID due to sponsorship, branding, or ownership changes."
+New_Team,"Binary variable indicating whether a constructor lineage is entering the Formula One World Championship for the first time in the dataset period (1 = first season of participation, 0 = previously competed)."
+New_Identity,"Binary variable indicating whether a constructor competed under a new team name compared to the previous season while maintaining the same Constructor_ID (1 = rebranded entry, 0 = no name change). Constructors with `New_Team` = 1 will also have `New_Identity` = 1."
