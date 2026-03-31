@@ -13,10 +13,8 @@ Seasonal constructor entry and results data were collected from official champio
 - [Formula 1 Results](https://www.formula1.com/en/results.html)
 - [F1 Fansite](https://www.f1-fansite.com/)
 
-Constructor branding continuity, ownership transitions, and historical lineage relationships were compiled using documentation from the Fédération Internationale de l'Automobile in conjunction with the Formula 1 Lineage Project:  
-[Formula 1 Lineage Project](https://flamingtempura.github.io/formula1-lineage/)
-
-Additional Information was : https://www.f1-fansite.com/
+Constructor branding continuity, ownership transitions, and historical lineage relationships were compiled using documentation from the Fédération Internationale de l'Automobile in conjunction with the Formula 1 Lineage Project:
+- [Formula 1 Lineage Project](https://flamingtempura.github.io/formula1-lineage/)
 
 ## Data Files
 
