@@ -18,6 +18,7 @@ Constructor branding continuity, ownership transitions, and historical lineage r
 
 ## Data Files
 
-- `Data_Dictionary.csv`: describes data variables  
-- `Train.csv`: historical data from 2002–2025  
-- `Test.csv`: constructor data for the 2026 season
+- `Data_Dictionary.xlsx`: Provides definitions and descriptions for all variables used in the dataset.
+- `Driver_Lineup_Experience.xlsx`: Contains historical race start totals for each driver who has competed since the 2002 season.
+- `Train.csv`: Team-level historical data from the 2002 through 2025 seasons used for model training.
+- `Test.csv`: Team-level constructor data for the 2026 season used for out-of-sample prediction.
