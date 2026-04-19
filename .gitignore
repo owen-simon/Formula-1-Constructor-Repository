@@ -24,8 +24,8 @@ Thumbs.db
 # ----------------------------
 # Feature engineering outputs
 # ----------------------------
-feature_engineered/*
-!feature_engineered/.gitkeep
+Feature_Engineered/*
+!Feature_Engineered/.gitkeep
 
 # -------------------------
 # Quarto source docs
