@@ -42,11 +42,29 @@ old_id_cols = ["Constructor_Lineage_ID", "Season", "Team_Name"]
 train = process_id_column(train, old_id_cols)
 test = process_id_column(test, old_id_cols)
 
+# ==========================================================
+# Simplify Engine_Branding to match 2026 engine providers
+# ==========================================================
 
+def simplify_engine_branding(df, col="Engine_Branding"):
+    df = df.copy()
 
+    keep_brands = {"FERRARI", "MERCEDES", "HONDA", "FORD"}
 
+    df[col] = (
+        df[col]
+        .fillna("Other")
+        .astype(str)
+        .str.upper()
+    )
 
+    df[col] = df[col].where(df[col].isin(keep_brands), "Other")
 
+    return df
+
+# Apply to train and test
+train = simplify_engine_branding(train)
+test = simplify_engine_branding(test)
 
 # ======================================================
 # Write processed datasets to CSV
