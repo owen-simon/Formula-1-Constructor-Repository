@@ -1,0 +1,37 @@
+# -------------------------
+# Python
+# -------------------------
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+env/
+
+# -------------------------
+# OS / IDE
+# -------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# -------------------------
+# Logs
+# -------------------------
+*.log
+
+# ----------------------------
+# Feature engineering outputs
+# ----------------------------
+Train.csv
+Test.csv
+
+# If you ever version them with paths:
+*/Train.csv
+*/Test.csv
+
+# -------------------------
+# Quarto source docs
+# -------------------------
+*.qmd
