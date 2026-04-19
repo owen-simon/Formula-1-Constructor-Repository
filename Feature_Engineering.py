@@ -8,10 +8,10 @@ import os
 # Load raw dataset
 # ======================================================
 
-raw_data_2026 = pd.read_csv("raw_data_2026.csv")
+raw_data_2026 = pd.read_csv("Data_Files/raw_data_2026.csv")
 
 # ======================================================
-# Split into train and test
+# Split data into train and test sets (for 2026)
 # ======================================================
 
 train = raw_data_2026[raw_data_2026['Season'] != 2026].copy()
