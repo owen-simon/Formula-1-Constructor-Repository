@@ -52,8 +52,8 @@ Constructor lineage, branding continuity, and ownership transitions were compile
 ### 1) Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/owen-simon/Formula-1-Constructor-Repository.git
+cd Formula-1-Constructor-Repository
 ```
 
 ### 2) Install Required Dependencies
