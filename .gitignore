@@ -24,12 +24,8 @@ Thumbs.db
 # ----------------------------
 # Feature engineering outputs
 # ----------------------------
-Train.csv
-Test.csv
-
-# If you ever version them with paths:
-*/Train.csv
-*/Test.csv
+feature_engineered/*
+!feature_engineered/.gitkeep
 
 # -------------------------
 # Quarto source docs
