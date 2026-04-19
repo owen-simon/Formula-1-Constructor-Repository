@@ -4,17 +4,25 @@
 import pandas as pd
 
 # ======================================================
-# Load data files
+# Load raw dataset
 # ======================================================
 
-train = pd.read_csv("Train.csv")
-test = pd.read_csv("Test.csv")
+raw_data_2026 = pd.read_csv("raw_data_2026.csv")
+
+# ======================================================
+# Split into train and test
+# ======================================================
+
+train = raw_data_2026[raw_data_2026['Season'] != 2026].copy()
+test  = raw_data_2026[raw_data_2026['Season'] == 2026].copy()
 
 # ======================================================
 # Create composite identifier for constructor-season
 # ======================================================
 
 def process_id_column(df, id_cols):
+    df = df.copy()
+    
     # Create composite ID
     df["ID"] = df[id_cols].astype(str).agg("_".join, axis=1)
     
