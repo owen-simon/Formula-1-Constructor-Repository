@@ -7,15 +7,7 @@ import os
 # ======================================================
 # Load raw dataset
 # ======================================================
-
 raw_data_2026 = pd.read_csv("Data_Files/raw_data_2026.csv")
-
-# ======================================================
-# Split data into train and test sets (for 2026)
-# ======================================================
-
-train = raw_data_2026[raw_data_2026['Season'] != 2026].copy()
-test  = raw_data_2026[raw_data_2026['Season'] == 2026].copy()
 
 # ======================================================
 # Create composite identifier for constructor-season
@@ -24,26 +16,82 @@ test  = raw_data_2026[raw_data_2026['Season'] == 2026].copy()
 def process_id_column(df, id_cols):
     df = df.copy()
     
-    # Create composite ID
     df["ID"] = df[id_cols].astype(str).agg("_".join, axis=1)
-    
-    # Drop original ID columns
     df = df.drop(columns=id_cols)
-    
-    # Move ID to front
     df = df[["ID"] + [col for col in df.columns if col != "ID"]]
     
     return df
 
-# Columns used for ID
-old_id_cols = ["Constructor_Lineage_ID", "Season", "Team_Name"]
-
-# Apply ID processing
-train = process_id_column(train, old_id_cols)
-test = process_id_column(test, old_id_cols)
+# Apply to raw data set
+id_cols = ["Constructor_Lineage_ID", "Season", "Team_Name"]
+raw_data_2026 = process_id_column(raw_data_2026, id_cols)
 
 # ==========================================================
-# Simplify Engine_Branding to match 2026 engine providers
+# Create Prior Season Points Proportion
+# ==========================================================
+
+# ==========================================================
+# Create Prior Season Points Proportion
+# ==========================================================
+
+def create_prior_season_points_prop(df):
+    df = df.copy()
+
+    # Avoid division by zero
+    df["Prior_Season_Points_Prop"] = (
+        df["Prior_Season_Points_Earned"] /
+        df["Prior_Season_Points_Total"]
+    ).replace([float("inf"), -float("inf")], 0)
+
+    # Handle NaN values and clip to [0, 1]
+    df["Prior_Season_Points_Prop"] = df["Prior_Season_Points_Prop"].fillna(0)
+    df["Prior_Season_Points_Prop"] = df["Prior_Season_Points_Prop"].clip(0, 1)
+
+    # Drop original columns
+    df = df.drop(
+        columns=[
+            "Prior_Season_Points_Earned",
+            "Prior_Season_Points_Total"
+        ]
+    )
+
+    return df
+
+# Apply to raw data set
+raw_data_2026 = create_prior_season_points_prop(raw_data_2026)
+
+# ==========================================================
+# Create Prior Season Win Proportion
+# ==========================================================
+
+def create_prior_season_win_prop(df):
+    df = df.copy()
+
+    # Avoid division by zero
+    df["Prior_Season_Win_Prop"] = (
+        df["Prior_Season_Grand_Prix_Wins"] /
+        df["Prior_Season_Grand_Prix_Count"]
+    ).replace([float("inf"), -float("inf")], 0)
+
+    # Handle NaN values and clip to [0, 1]
+    df["Prior_Season_Win_Prop"] = df["Prior_Season_Win_Prop"].fillna(0)
+    df["Prior_Season_Win_Prop"] = df["Prior_Season_Win_Prop"].clip(0, 1)
+
+    # Drop original columns
+    df = df.drop(
+        columns=[
+            "Prior_Season_Grand_Prix_Wins",
+            "Prior_Season_Grand_Prix_Count"
+        ]
+    )
+
+    return df
+
+# Apply to raw data set
+raw_data_2026 = create_prior_season_win_prop(raw_data_2026)
+
+# ==========================================================
+# Simplify Engine Branding
 # ==========================================================
 
 def simplify_engine_branding(df, col="Engine_Branding"):
@@ -62,21 +110,23 @@ def simplify_engine_branding(df, col="Engine_Branding"):
 
     return df
 
-# Apply to train and test
-train = simplify_engine_branding(train)
-test = simplify_engine_branding(test)
+# Apply to raw data set
+raw_data_2026 = simplify_engine_branding(raw_data_2026)
+
+# ======================================================
+# Split data into train and test sets (for 2026)
+# ======================================================
+
+train = raw_data_2026[raw_data_2026['Season'] != 2026].copy()
+test  = raw_data_2026[raw_data_2026['Season'] == 2026].copy()
 
 # ======================================================
 # Write processed datasets to CSV
 # ======================================================
 
-# Define output directory
 output_dir = "Feature_Engineered"
-
-# Create folder if it doesn't exist
 os.makedirs(output_dir, exist_ok=True)
 
-# Save datasets
 train.to_csv(os.path.join(output_dir, "Train.csv"), index=False)
 test.to_csv(os.path.join(output_dir, "Test.csv"), index=False)
 
