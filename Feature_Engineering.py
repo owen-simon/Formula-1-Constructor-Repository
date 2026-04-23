@@ -30,10 +30,6 @@ raw_data_2026 = process_id_column(raw_data_2026, id_cols)
 # Create Prior Season Points Proportion
 # ==========================================================
 
-# ==========================================================
-# Create Prior Season Points Proportion
-# ==========================================================
-
 def create_prior_season_points_prop(df):
     df = df.copy()
 
@@ -70,7 +66,7 @@ def create_prior_season_win_prop(df):
     # Avoid division by zero
     df["Prior_Season_Win_Prop"] = (
         df["Prior_Season_Grand_Prix_Wins"] /
-        df["Prior_Season_Grand_Prix_Count"]
+        df["Prior_Season_GP_Count"]
     ).replace([float("inf"), -float("inf")], 0)
 
     # Handle NaN values and clip to [0, 1]
@@ -78,10 +74,93 @@ def create_prior_season_win_prop(df):
     df["Prior_Season_Win_Prop"] = df["Prior_Season_Win_Prop"].clip(0, 1)
 
     # Drop original columns
+    df = df.drop("Prior_Season_Grand_Prix_Wins")
+
+    return df
+
+# Apply to raw data set
+raw_data_2026 = create_prior_season_win_prop(raw_data_2026)
+
+# ============================================================================
+# Create Proportion of Previous 3 Season Race Starts for the Driver Lineup
+# ============================================================================
+
+def create_driver_lineup_3_season_race_start_prop(df):
+    df = df.copy()
+
+    # Avoid division by zero
+    df["Driver_Lineup_3_Season_Race_Start_Prop"] = (
+        df["Driver_Lineup_3_Season_Race_Starts"] /
+        (df["Prior_3_Season_GP_Count"] * 2))
+
+    # Handle NaN values and clip to [0, 1]
+    df["Driver_Lineup_3_Season_Race_Start_Prop"] = df["Driver_Lineup_3_Season_Race_Start_Prop"].fillna(0)
+    df["Driver_Lineup_3_Season_Race_Start_Prop"] = df["Driver_Lineup_3_Season_Race_Start_Prop"].clip(0, 1)
+
+    # Drop original columns
     df = df.drop(
         columns=[
-            "Prior_Season_Grand_Prix_Wins",
-            "Prior_Season_Grand_Prix_Count"
+            "Driver_Lineup_3_Season_Race_Starts",
+            "Prior_3_Season_GP_Count"
+        ]
+    )
+
+    return df
+
+# Apply to raw data set
+raw_data_2026 = create_driver_lineup_3_season_race_start_prop(raw_data_2026)
+
+# ============================================================================
+# Create Proportion of Laps Driven in Previous 3 Seasons for the Driver Lineup
+# ============================================================================
+
+def create_driver_lineup_3_season_laps_prop(df):
+    df = df.copy()
+
+    # Avoid division by zero
+    df["Driver_Lineup_3_Season_Laps_Prop"] = (
+        df["Driver_Lineup_3_Season_Laps_Completed"] /
+        (df["Prior_3_Season_Lap_Count"] * 2))
+
+    # Handle NaN values and clip to [0, 1]
+    df["Driver_Lineup_3_Season_Laps_Prop"] = df["Driver_Lineup_3_Season_Laps_Prop"].fillna(0)
+    df["Driver_Lineup_3_Season_Laps_Prop"] = df["Driver_Lineup_3_Season_Laps_Prop"].clip(0, 1)
+
+    # Drop original columns
+    df = df.drop(
+        columns=[
+            "Driver_Lineup_3_Season_Laps_Completed",
+            "Prior_3_Season_Lap_Count"
+        ]
+    )
+
+    return df
+
+# Apply to raw data set
+raw_data_2026 = create_driver_lineup_3_season_laps_prop(raw_data_2026)
+
+# ==========================================================
+# Create Prior Season Fastest Lap Proportion
+# ==========================================================
+
+def create_prior_season_win_prop(df):
+    df = df.copy()
+
+    # Avoid division by zero
+    df["Prior_Season_Fastest_Lap_Prop"] = (
+        df["Prior_Season_Fastest_Lap_Count"] /
+        df["Prior_Season_GP_Count"]
+    ).replace([float("inf"), -float("inf")], 0)
+
+    # Handle NaN values and clip to [0, 1]
+    df["Prior_Season_Fastest_Lap_Prop"] = df["Prior_Season_Fastest_Lap_Prop"].fillna(0)
+    df["Prior_Season_Fastest_Lap_Prop"] = df["Prior_Season_Fastest_Lap_Prop"].clip(0, 1)
+
+    # Drop original columns
+    df = df.drop(
+        columns=[
+            "Prior_Season_Fastest_Lap_Count",
+            "Prior_Season_GP_Count"
         ]
     )
 
