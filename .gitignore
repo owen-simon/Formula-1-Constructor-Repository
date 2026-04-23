@@ -24,10 +24,18 @@ Thumbs.db
 # ----------------------------
 # Feature engineering outputs
 # ----------------------------
-Feature_Engineered/*
-!Feature_Engineered/.gitkeep
+Train.csv
+Test.csv
 
 # -------------------------
 # Quarto source docs
 # -------------------------
 *.qmd
+
+# -------------------------
+# Alternate data files
+# -------------------------
+3_Year_Rolling_Lap_Counts.xlsx
+3_Year_Rolling_Race_Counts.xlsx
+Driver_Experience.xlsx
+Laps_Completed.xlsx
