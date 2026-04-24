@@ -16,6 +16,7 @@ The 2002 season was selected as the starting point because it is the first year 
 
 The target variable, `Constructor_Champion`, is a binary indicator of whether a constructor won the championship in a given season.
 
+Supplementary driver-level datasets are also included, which document driver experience, measured by the number of race starts and laps completed throughout their careers.
 
 ## Data Sources
 
@@ -68,4 +69,4 @@ python Feature_Engineering.py
 
 ### 4) Confirm Outputs
 
-Processed datasets should appear in `Feature_Engineered/`
+Processed datasets should appear in the `Data_Files/` folder.
