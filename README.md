@@ -6,7 +6,7 @@ Formula One teams analyze massive volumes of data to design, develop, and optimi
 
 ## Project Goal
 
-This project builds a predictive model using over two decades of constructor-level data to forecast the Formula One Constructors’ Champion before the season begins.
+This project builds a predictive model using over two decades of publicly accessible performance data to forecast the Formula One Constructors’ Champion before the season begins.
 
 ## Data Description
 
