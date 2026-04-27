@@ -202,6 +202,36 @@ def create_prior_season_win_prop(df):
 # Apply to raw data set
 raw_data_2026 = create_prior_season_win_prop(raw_data_2026)
 
+# ==========================================================
+# Create Prior Season Fastest Lap Proportion
+# ==========================================================
+#
+#def create_prior_season_win_prop(df):
+#    df = df.copy()
+#
+#    # Avoid division by zero
+#    df["Prior_Season_Fastest_Lap_Prop"] = (
+#        df["Prior_Season_Fastest_Lap_Count"] /
+#        df["Prior_Season_GP_Count"]
+#    ).replace([float("inf"), -float("inf")], 0)
+#
+#    # Handle NaN values and clip to [0, 1]
+#    df["Prior_Season_Fastest_Lap_Prop"] = df["Prior_Season_Fastest_Lap_Prop"].fillna(0)
+#    df["Prior_Season_Fastest_Lap_Prop"] = df["Prior_Season_Fastest_Lap_Prop"].clip(0, 1)
+#
+#    # Drop original columns
+#    df = df.drop(
+#        columns=[
+#            "Prior_Season_Fastest_Lap_Count",
+#            "Prior_Season_GP_Count"
+#        ]
+#    )
+#
+#    return df
+#
+# Apply to raw data set
+#raw_data_2026 = create_prior_season_win_prop(raw_data_2026)
+
 # ============================================================================
 # Create Proportion of Previous 3 Season Race Starts for the Driver Lineup
 # ============================================================================
@@ -261,37 +291,7 @@ def create_driver_lineup_3_season_laps_prop(df):
 raw_data_2026 = create_driver_lineup_3_season_laps_prop(raw_data_2026)
 
 # ==========================================================
-# Create Prior Season Fastest Lap Proportion
-# ==========================================================
-#
-#def create_prior_season_win_prop(df):
-#    df = df.copy()
-#
-#    # Avoid division by zero
-#    df["Prior_Season_Fastest_Lap_Prop"] = (
-#        df["Prior_Season_Fastest_Lap_Count"] /
-#        df["Prior_Season_GP_Count"]
-#    ).replace([float("inf"), -float("inf")], 0)
-#
-#    # Handle NaN values and clip to [0, 1]
-#    df["Prior_Season_Fastest_Lap_Prop"] = df["Prior_Season_Fastest_Lap_Prop"].fillna(0)
-#    df["Prior_Season_Fastest_Lap_Prop"] = df["Prior_Season_Fastest_Lap_Prop"].clip(0, 1)
-#
-#    # Drop original columns
-#    df = df.drop(
-#        columns=[
-#            "Prior_Season_Fastest_Lap_Count",
-#            "Prior_Season_GP_Count"
-#        ]
-#    )
-#
-#    return df
-#
-# Apply to raw data set
-#raw_data_2026 = create_prior_season_win_prop(raw_data_2026)
-
-# ==========================================================
-# Simplify Engine Branding
+# Simplify Engine Branding to match 2026 Season Providers
 # ==========================================================
 
 def simplify_engine_branding(df, col="Engine_Branding"):
