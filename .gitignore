@@ -35,6 +35,12 @@ Test.csv
 *.qmd
 
 # -------------------------------
+# configuration files
+# -------------------------------
+config.R
+
+
+# -------------------------------
 # Excel copies of data files
 # -------------------------------
 3_Year_Rolling_Lap_Counts.xlsx
