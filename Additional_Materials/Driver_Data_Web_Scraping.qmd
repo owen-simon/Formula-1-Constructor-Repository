@@ -1,0 +1,147 @@
+---
+title: "F1 Results Web Scraping"
+format: html
+---
+
+```{r}
+# Import packages
+library(rvest)
+library(dplyr)
+library(purrr)
+library(tidyr)
+library(stringr)
+```
+
+```{r}
+# Function to retrieve race URLs from seasonal results pages
+scrape_seasons <- function(urls) {
+  
+  map_df(urls, function(url) {
+    
+    page <- read_html(url)
+    rows <- page %>% html_elements("table tbody tr")
+    
+    map_df(rows, function(row) {
+      
+      race_node <- row %>% html_element("td:first-child a")
+      
+      tibble(
+        race_link = race_node %>% html_attr("href")
+      )
+    })
+  }) %>%
+    mutate(full_link = paste0("https://www.formula1.com", race_link)) %>%
+    pull(full_link)
+}
+```
+
+```{r}
+# List of seasonal results pages
+
+f1_season_urls <- c(
+  "https://www.formula1.com/en/results/1989/races",
+  "https://www.formula1.com/en/results/1990/races",
+  "https://www.formula1.com/en/results/1991/races",
+  "https://www.formula1.com/en/results/1992/races",
+  "https://www.formula1.com/en/results/1993/races",
+  "https://www.formula1.com/en/results/1994/races",
+  "https://www.formula1.com/en/results/1995/races",
+  "https://www.formula1.com/en/results/1996/races",
+  "https://www.formula1.com/en/results/1997/races",
+  "https://www.formula1.com/en/results/1998/races",
+  "https://www.formula1.com/en/results/1999/races",
+  "https://www.formula1.com/en/results/2000/races",
+  "https://www.formula1.com/en/results/2001/races",
+  "https://www.formula1.com/en/results/2002/races",
+  "https://www.formula1.com/en/results/2003/races",
+  "https://www.formula1.com/en/results/2004/races",
+  "https://www.formula1.com/en/results/2005/races",
+  "https://www.formula1.com/en/results/2006/races",
+  "https://www.formula1.com/en/results/2007/races",
+  "https://www.formula1.com/en/results/2008/races",
+  "https://www.formula1.com/en/results/2009/races",
+  "https://www.formula1.com/en/results/2010/races",
+  "https://www.formula1.com/en/results/2011/races",
+  "https://www.formula1.com/en/results/2012/races",
+  "https://www.formula1.com/en/results/2013/races",
+  "https://www.formula1.com/en/results/2014/races",
+  "https://www.formula1.com/en/results/2015/races",
+  "https://www.formula1.com/en/results/2016/races",
+  "https://www.formula1.com/en/results/2017/races",
+  "https://www.formula1.com/en/results/2018/races",
+  "https://www.formula1.com/en/results/2019/races",
+  "https://www.formula1.com/en/results/2020/races",
+  "https://www.formula1.com/en/results/2021/races",
+  "https://www.formula1.com/en/results/2022/races",
+  "https://www.formula1.com/en/results/2023/races",
+  "https://www.formula1.com/en/results/2024/races",
+  "https://www.formula1.com/en/results/2025/races"
+)
+
+race_result_urls <- scrape_seasons(f1_season_urls)
+```
+
+```{r}
+# Function to retrieve race result data
+scrape_races <- function(urls) {
+  
+  race_name <- urls %>%
+    str_split("/") %>%
+    unlist() %>%
+    .[length(.) - 1] %>%
+    str_to_title()
+  
+  year <- urls %>%
+    str_split("/") %>%
+    unlist() %>%
+    .[6]
+  
+  page <- read_html(urls)
+  
+  df <- page %>%
+    html_node("table") %>%
+    html_table() %>%
+    select(Driver, Laps) %>%
+    mutate(
+      Driver = Driver %>%
+        str_replace_all("\u00A0", " ") %>%
+        str_squish() %>%
+        str_remove("\\s*[A-Z]{3}$") %>%
+        stringi::stri_trans_general("Latin-ASCII") %>%
+        str_squish(),
+      
+      Race = race_name,
+      Year = year
+    )
+  
+  return(df)
+}
+```
+
+```{r}
+# Run web scraping function on all race results (1989-present)
+all_races <- map_dfr(race_result_urls, scrape_races)
+```
+
+```{r}
+# Confirm unique driver names
+all_drivers <- as.data.frame(unique(all_races$Driver))
+```
+
+```{r}
+# Create `laps_completed.csv` and `race_starts.csv`
+laps_by_year <- all_races %>%
+  group_by(Driver, Year) %>%
+  summarise(Laps_Completed = sum(Laps, na.rm = TRUE), .groups = "drop")
+
+write.csv(laps_by_year, "Data_Files/laps_completed.csv", row.names = FALSE)
+
+starts_by_year <- all_races %>%
+  group_by(Driver, Year) %>%
+  summarise(Race_Starts = n(), .groups = "drop")
+
+write.csv(starts_by_year, "Data_Files/race_starts.csv", row.names = FALSE)
+```
+
+
+

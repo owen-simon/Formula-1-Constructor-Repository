@@ -33,6 +33,7 @@ Test.csv
 # Quarto source docs
 # -------------------------------
 *.qmd
+!Driver_Data_Web_Scraping.qmd
 
 # -------------------------------
 # configuration files
