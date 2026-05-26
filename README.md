@@ -10,9 +10,7 @@ This project builds a predictive model using over two decades of publicly access
 
 ## Data Description
 
-The `raw_data_2026.csv` dataset includes constructor-level seasonal performance data from the Formula One World Championship spanning 2002 to the present.
-
-The 2002 season was selected as the starting point because it is the first year in which all competing constructors are consistently recorded in official championship standings published by the Formula One Group.
+The `raw_data_2026.csv` dataset includes constructor-level seasonal performance data from the Formula One World Championship since the turn of the century.
 
 The target variable, `Constructor_Champion`, is a binary indicator of whether a constructor won the championship in a given season.
 
