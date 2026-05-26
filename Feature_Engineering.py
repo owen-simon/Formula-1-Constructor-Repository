@@ -35,40 +35,39 @@ raw_data_2026 = raw_data_2026.copy()
 raw_data_2026["Season"] = raw_data_2026["ID"].str.split("_").str[1].astype(int)
 
 # ======================================================
-#  Driver-Level Features from Supplementary Data:
-# - `Driver_Lineup_Total_Race_Starts`
-# - `Driver_Lineup_3_Season_Race_Starts`
-# - `Driver_Lineup_Total_Laps_Completed`
-# - `Driver_Lineup_3_Season_Laps_Completed`
+# Driver-Level Features from Supplementary Data:
+# - Driver_Lineup_Total_Race_Starts
+# - Driver_Lineup_3_Season_Race_Starts
+# - Driver_Lineup_Total_Laps_Completed
+# - Driver_Lineup_3_Season_Laps_Completed
 # ======================================================
 
 # ------------------------------------------------------
-# 1) Reshape driver stat tables
+# 1) Prepare supplementary tables
 # ------------------------------------------------------
-race_starts_long = race_starts.melt(
-    id_vars="Driver",
-    var_name="Year",
-    value_name="Race_Starts"
-)
 
-laps_long = laps_completed.melt(
-    id_vars="Driver",
-    var_name="Year",
-    value_name="Laps_Completed"
-)
+race_starts["Race_Starts"] = pd.to_numeric(
+    race_starts["Race_Starts"],
+    errors="coerce"
+).fillna(0)
 
-race_starts_long["Year"] = race_starts_long["Year"].astype(int)
-laps_long["Year"] = laps_long["Year"].astype(int)
+race_starts["Year"] = race_starts["Year"].astype(int)
+
+laps_completed["Laps_Completed"] = pd.to_numeric(
+    laps_completed["Laps_Completed"],
+    errors="coerce"
+).fillna(0)
+
+laps_completed["Year"] = laps_completed["Year"].astype(int)
 
 # ------------------------------------------------------
 # 2) Feature configuration
 # ------------------------------------------------------
-features = [
-    ("Race_Starts", race_starts_long),
-    ("Laps_Completed", laps_long)
-]
 
-driver_cols = ["Driver_A", "Driver_B"]
+features = [
+    ("Race_Starts", race_starts),
+    ("Laps_Completed", laps_completed)
+]
 
 # output containers
 results = {
@@ -81,6 +80,7 @@ results = {
 # ------------------------------------------------------
 # 3) Feature engineering loop
 # ------------------------------------------------------
+
 for value_col, stat_long in features:
 
     for driver_prefix in ["A", "B"]:
@@ -88,7 +88,7 @@ for value_col, stat_long in features:
         driver_col = f"Driver_{driver_prefix}"
 
         # -------------------------
-        # TOTAL (career)
+        # Merge supplementary data
         # -------------------------
         tmp = raw_data_2026.merge(
             stat_long,
@@ -97,8 +97,16 @@ for value_col, stat_long in features:
             how="left"
         )
 
+        # -------------------------
+        # TOTAL (career before season)
+        # -------------------------
         tmp_total = tmp[tmp["Year"] < tmp["Season"]]
-        total = tmp_total.groupby("ID")[value_col].sum()
+
+        total = (
+            tmp_total
+            .groupby("ID")[value_col]
+            .sum()
+        )
 
         results[f"{driver_prefix}_total"][value_col] = total
 
@@ -110,13 +118,18 @@ for value_col, stat_long in features:
             (tmp["Year"] >= tmp["Season"] - 3)
         ]
 
-        window_3s = tmp_3s.groupby("ID")[value_col].sum()
+        window_3s = (
+            tmp_3s
+            .groupby("ID")[value_col]
+            .sum()
+        )
 
         results[f"{driver_prefix}_3s"][value_col] = window_3s
 
 # ------------------------------------------------------
 # 4) Build final dataframe
 # ------------------------------------------------------
+
 df = raw_data_2026.copy()
 
 df["Driver_Lineup_Total_Race_Starts"] = (
@@ -140,11 +153,14 @@ df["Driver_Lineup_3_Season_Laps_Completed"] = (
 )
 
 # ------------------------------------------------------
-# 5) Drop columns used for feature engineering
+# 5) Cleanup
 # ------------------------------------------------------
+
 df = df.drop(columns=["Driver_A", "Driver_B"])
 
 raw_data_2026 = df
+
+# Verify changes
 raw_data_2026.columns
 
 # ==========================================================
