@@ -25,6 +25,9 @@ Seasonal constructor entry and results data were collected from official champio
 Constructor lineage, branding continuity, and ownership transitions were compiled using documentation from the Fédération Internationale de l’Automobile (FIA) and compared against the Formula 1 Lineage Project:
 - [Formula 1 Lineage Project](https://flamingtempura.github.io/formula1-lineage/)
 
+Information regarding major regulations changes:
+- [**Article:** The Key Regulation Changes in F1 History](https://www.formula1.com/en/latest/article/the-key-regulation-changes-in-f1-history-and-the-teams-that-nailed-them.2iq8c5E6S1HOffT5PBLl6i)
+
 ## Repo Files
 **Data**
 - `Data Files/`
