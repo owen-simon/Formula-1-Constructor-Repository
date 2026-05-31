@@ -20,7 +20,7 @@ Supplementary driver-level datasets are also included, which document driver exp
 
 Seasonal constructor entry and results data were collected from official championship records and supplemented with historical data from external sources:  
 - [Formula 1 Results](https://www.formula1.com/en/results.html)
-- [F1 Fansite](https://www.f1-fansite.com/)
+- [F1 Fansite](https://www.f1-fansite.com/all-time-f1-archive/)
 
 Constructor lineage, branding continuity, and ownership transitions were compiled using documentation from the Fédération Internationale de l’Automobile (FIA) and compared against the Formula 1 Lineage Project:
 - [Formula 1 Teams and Drivers Over the Years](https://flamingtempura.github.io/formula1-lineage/)
