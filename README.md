@@ -19,14 +19,14 @@ Supplementary driver-level datasets are also included, which document driver exp
 ## Data Sources
 
 Seasonal constructor entry and results data were collected from official championship records and supplemented with historical data from external sources:  
-- <a href="https://www.formula1.com/en/results.html" target="_blank" rel="noopener noreferrer">Formula 1 Results</a>
-- <a href="https://www.f1-fansite.com/" target="_blank" rel="noopener noreferrer">F1 Fansite</a>
+- [Formula 1 Results](https://www.formula1.com/en/results.html)
+- [F1 Fansite](https://www.f1-fansite.com/)
 
 Constructor lineage, branding continuity, and ownership transitions were compiled using documentation from the Fédération Internationale de l’Automobile (FIA) and compared against the Formula 1 Lineage Project:
-- <a href="https://flamingtempura.github.io/formula1-lineage/" target="_blank" rel="noopener noreferrer">Formula 1 Lineage Project</a>
+- [Formula 1 Teams and Drivers Over the Years](https://flamingtempura.github.io/formula1-lineage/)
 
 Information regarding major regulation changes:
-- <a href="https://www.formula1.com/en/latest/article/the-key-regulation-changes-in-f1-history-and-the-teams-that-nailed-them.2iq8c5E6S1HOffT5PBLl6i" target="_blank" rel="noopener noreferrer">Article: The Key Regulation Changes in F1 History</a>
+- [The Key Regulation Changes in F1 History](https://www.formula1.com/en/latest/article/the-key-regulation-changes-in-f1-history-and-the-teams-that-nailed-them.2iq8c5E6S1HOffT5PBLl6i)
 
 ## Repo Files
 **Data**
