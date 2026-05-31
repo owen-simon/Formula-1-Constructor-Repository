@@ -1,287 +1,287 @@
-﻿Constructor_Lineage_ID,Season,Team_Name,Constructor_Champion,Engine_Branding,New_Name,New_Team,UK_Based,Prior_Season_Points_Earned,Prior_Season_Points_Total,Prior_Season_Grand_Prix_Wins,Prior_Season_GP_Count,Defending_Driver_Champ,Defending_Constructor_Champ,Prior_Season_Grand_Prix_Wins_First5GP,Prior_Season_Grand_Prix_Wins_Last5GP,Driver_A,Driver_B,Returning_Driver_Lineup,Prior_3_Season_GP_Count,Prior_3_Season_Lap_Count
-1,2000,Ferrari,1,Ferrari,0,0,0,128,416,6,16,0,1,3,1,Michael Schumacher,Rubens Barrichello,0,49,3069
-2,2000,McLaren,0,Mercedes,0,0,1,124,416,7,16,1,0,2,2,David Coulthard,Mika Hakkinen,1,49,3069
-3,2000,Williams,0,BMW,0,0,1,35,416,0,16,0,0,0,0,Ralf Schumacher,Jenson Button,0,49,3069
-4,2000,Sauber,0,Petronas,0,0,0,5,416,0,16,0,0,0,0,Mika Salo,Pedro Diniz,0,49,3069
-5,2000,BAR,0,Honda,0,0,1,0,416,0,16,0,0,0,0,Jacques Villeneuve,Ricardo Zonta,1,49,3069
-6,2000,Benetton,0,Playlife,0,0,1,16,416,0,16,0,0,0,0,Alexander Wurz,Giancarlo Fisichella,1,49,3069
-7,2000,Jordan,0,Honda,0,0,1,61,416,2,16,0,0,0,1,Heinz-Harald Frentzen,Jarno Trulli,0,49,3069
-8,2000,Jaguar,0,Cosworth,1,0,1,36,416,1,16,0,0,0,1,Eddie Irvine,Johnny Herbert,0,49,3069
-9,2000,Minardi,0,Fondmetal,0,0,0,1,416,0,16,0,0,0,0,Marc Gene,Gaston Mazzacane,0,49,3069
-11,2000,Arrows,0,Supertec,0,0,1,1,416,0,16,0,0,0,0,Pedro de la Rosa,Jos Verstappen,0,49,3069
-0,2000,Prost,0,Peugeot,0,0,0,9,416,0,16,0,0,0,0,Nick Heidfeld,Jean Alesi,0,49,3069
-1,2001,Ferrari,1,Ferrari,0,0,0,170,432,10,17,1,1,3,4,Michael Schumacher,Rubens Barrichello,1,49,3089
-2,2001,McLaren,0,Mercedes,0,0,1,152,432,7,17,0,0,2,1,David Coulthard,Mika Hakkinen,1,49,3089
-3,2001,Williams,0,BMW,0,0,1,36,432,0,17,0,0,0,0,Juan Pablo Montoya,Ralf Schumacher,0,49,3089
-4,2001,Sauber,0,Petronas,0,0,0,6,432,0,17,0,0,0,0,Kimi Raikkonen,Nick Heidfeld,0,49,3089
-5,2001,BAR,0,Honda,0,0,1,20,432,0,17,0,0,0,0,Jacques Villeneuve,Olivier Panis,0,49,3089
-6,2001,Benetton,0,Renault,0,0,1,20,432,0,17,0,0,0,0,Jenson Button,Giancarlo Fisichella,0,49,3089
-7,2001,Jordan,0,Honda,0,0,1,17,432,0,17,0,0,0,0,Heinz-Harald Frentzen,Jarno Trulli,1,49,3089
-8,2001,Jaguar,0,Cosworth,1,0,1,4,432,0,17,0,0,0,0,Eddie Irvine,Luciano Burti,0,49,3089
-9,2001,Minardi,0,European,0,0,0,0,432,0,17,0,0,0,0,Fernando Alonso,Tarso Marques,0,49,3089
-11,2001,Arrows,0,Asiatech,0,0,1,7,432,0,17,0,0,0,0,Jos Verstappen,Enrique Bernoldi,0,49,3089
-0,2001,Prost,0,Acer,0,0,0,0,432,0,17,0,0,0,0,Jean Alesi,Gaston Mazzacane,0,49,3089
-1,2002,Ferrari,1,Ferrari,0,0,0,179,442,9,17,1,1,3,3,Michael Schumacher,Rubens Barrichello,1,50,3139
-2,2002,McLaren,0,Mercedes,0,0,1,102,442,4,17,0,0,1,1,David Coulthard,Kimi Raikkonen,0,50,3139
-3,2002,Williams,0,BMW,0,0,1,80,442,4,17,0,0,1,1,Juan Pablo Montoya,Ralf Schumacher,1,50,3139
-4,2002,Sauber,0,Petronas,0,0,0,21,442,0,17,0,0,0,0,Nick Heidfeld,Felipe Massa,0,50,3139
-5,2002,BAR,0,Honda,0,0,1,17,442,0,17,0,0,0,0,Jacques Villeneuve,Olivier Panis,1,50,3139
-6,2002,Renault,0,Renault,1,0,1,10,442,0,17,0,0,0,0,Jenson Button,Jarno Trulli,0,50,3139
-7,2002,Jordan,0,Honda,0,0,1,19,442,0,17,0,0,0,0,Takuma Sato,Giancarlo Fisichella,0,50,3139
-8,2002,Jaguar,0,Cosworth,0,0,1,9,442,0,17,0,0,0,0,Pedro de la Rosa,Eddie Irvine,0,50,3139
-9,2002,Minardi,0,Asiatech,0,0,0,0,442,0,17,0,0,0,0,Mark Webber,Alex Yoong,0,50,3139
-10,2002,Toyota,0,Toyota,1,1,0,0,442,0,17,0,0,0,0,Mika Salo,Allan McNish,0,50,3139
-11,2002,Arrows,0,Cosworth,0,0,1,1,442,0,17,0,0,0,0,Enrique Bernoldi,Heinz-Harald Frentzen,0,50,3139
-1,2003,Ferrari,1,Ferrari,0,0,0,221,442,15,17,1,1,4,5,Michael Schumacher,Rubens Barrichello,1,51,3229
-2,2003,McLaren,0,Mercedes,0,0,1,65,442,1,17,0,0,0,0,David Coulthard,Kimi Raikkonen,1,51,3229
-3,2003,Williams,0,BMW,0,0,1,92,442,1,17,0,0,1,0,Juan Pablo Montoya,Ralf Schumacher,1,51,3229
-4,2003,Sauber,0,Petronas,0,0,0,11,442,0,17,0,0,0,0,Nick Heidfeld,Heinz-Harald Frentzen,0,51,3229
-5,2003,BAR,0,Honda,0,0,1,7,442,0,17,0,0,0,0,Jenson Button,Jacques Villeneuve,0,51,3229
-6,2003,Renault,0,Renault,0,0,1,23,442,0,17,0,0,0,0,Fernando Alonso,Jarno Trulli,0,51,3229
-7,2003,Jordan,0,Ford,0,0,1,9,442,0,17,0,0,0,0,Giancarlo Fisichella,Ralph Firman,0,51,3229
-8,2003,Jaguar,0,Cosworth,0,0,1,8,442,0,17,0,0,0,0,Mark Webber,Antonio Pizzonia,0,51,3229
-9,2003,Minardi,0,Cosworth,0,0,0,2,442,0,17,0,0,0,0,Justin Wilson,Jos Verstappen,0,51,3229
-10,2003,Toyota,0,Toyota,0,0,0,2,442,0,17,0,0,0,0,Olivier Panis,Cristiano da Matta,0,51,3229
-1,2004,Ferrari,1,Ferrari,0,0,0,158,624,8,16,1,1,2,3,Michael Schumacher,Rubens Barrichello,1,50,3173
-2,2004,McLaren,0,Mercedes,0,0,1,142,624,2,16,0,0,2,0,David Coulthard,Kimi Raikkonen,1,50,3173
-3,2004,Williams,0,BMW,0,0,1,144,624,4,16,0,0,0,1,Juan Pablo Montoya,Ralf Schumacher,1,50,3173
-4,2004,Sauber,0,Petronas,0,0,0,19,624,0,16,0,0,0,0,Felipe Massa,Giancarlo Fisichella,0,50,3173
-5,2004,BAR,0,Honda,0,0,1,26,624,0,16,0,0,0,0,Jenson Button,Takuma Sato,0,50,3173
-6,2004,Renault,0,Renault,0,0,1,88,624,1,16,0,0,0,1,Fernando Alonso,Jarno Trulli,1,50,3173
-7,2004,Jordan,0,Ford,0,0,1,13,624,1,16,0,0,1,0,Nick Heidfeld,Giorgio Pantano,0,50,3173
-8,2004,Jaguar,0,Cosworth,0,0,1,18,624,0,16,0,0,0,0,Mark Webber,Christian Klien,0,50,3173
-9,2004,Minardi,0,Cosworth,0,0,0,0,624,0,16,0,0,0,0,Zsolt Baumgartner,Gianmaria Bruni,0,50,3173
-10,2004,Toyota,0,Toyota,0,0,0,16,624,0,16,0,0,0,0,Olivier Panis,Cristiano da Matta,1,50,3173
-1,2005,Ferrari,0,Ferrari,0,0,0,262,702,15,18,1,1,5,3,Michael Schumacher,Rubens Barrichello,1,51,3230
-2,2005,McLaren,0,Mercedes,0,0,1,69,702,1,18,0,0,0,1,Kimi Raikkonen,Juan Pablo Montoya,0,51,3230
-3,2005,Williams,0,BMW,0,0,1,88,702,1,18,0,0,0,1,Nick Heidfeld,Mark Webber,0,51,3230
-4,2005,Sauber,0,Petronas,0,0,0,34,702,0,18,0,0,0,0,Felipe Massa,Jacques Villeneuve,0,51,3230
-5,2005,BAR,0,Honda,0,0,1,119,702,0,18,0,0,0,0,Jenson Button,Takuma Sato,1,51,3230
-6,2005,Renault,1,Renault,0,0,1,105,702,1,18,0,0,0,0,Fernando Alonso,Giancarlo Fisichella,0,51,3230
-7,2005,Jordan,0,Toyota,0,0,1,5,702,0,18,0,0,0,0,Tiago Monteiro,Narain Karthikeyan,0,51,3230
-8,2005,Red Bull Racing,0,Cosworth,1,0,1,10,702,0,18,0,0,0,0,David Coulthard,Christian Klien,0,51,3230
-9,2005,Minardi,0,Cosworth,0,0,0,1,702,0,18,0,0,0,0,Christijan Albers,Patrick Friesacher,0,51,3230
-10,2005,Toyota,0,Toyota,0,0,0,9,702,0,18,0,0,0,0,Ralf Schumacher,Jarno Trulli,0,51,3230
-1,2006,Ferrari,0,Ferrari,0,0,0,100,738,1,19,0,0,0,0,Michael Schumacher,Felipe Massa,0,53,3320
-2,2006,McLaren,0,Mercedes,0,0,1,182,738,10,19,0,0,1,4,Kimi Raikkonen,Juan Pablo Montoya,1,53,3320
-3,2006,Williams,0,Cosworth,0,0,1,66,738,0,19,0,0,0,0,Nico Rosberg,Mark Webber,0,53,3320
-4,2006,BMW Sauber,0,BMW,1,0,0,20,738,0,19,0,0,0,0,Nick Heidfeld,Jacques Villeneuve,0,53,3320
-5,2006,Honda,0,Honda,1,0,1,38,738,0,19,0,0,0,0,Jenson Button,Rubens Barrichello,0,53,3320
-6,2006,Renault,1,Renault,0,0,1,191,738,8,19,1,1,4,1,Fernando Alonso,Giancarlo Fisichella,1,53,3320
-7,2006,Midland F1,0,Toyota,1,0,1,12,738,0,19,0,0,0,0,Tiago Monteiro,Christijan Albers,0,53,3320
-8,2006,Red Bull Racing,0,Ferrari,0,0,1,34,738,0,19,0,0,0,0,David Coulthard,Christian Klien,1,53,3320
-9,2006,Scuderia Toro Rosso,0,Cosworth,1,0,0,7,738,0,19,0,0,0,0,Vitantonio Liuzzi,Scott Speed,0,53,3320
-10,2006,Toyota,0,Toyota,0,0,0,88,738,0,19,0,0,0,0,Ralf Schumacher,Jarno Trulli,1,53,3320
-11,2006,Super Aguri,0,Honda,1,0,1,0,738,0,19,0,0,0,0,Takuma Sato,Yuji Ide,0,53,3320
-1,2007,Ferrari,1,Ferrari,0,0,0,201,702,9,18,0,0,2,4,Felipe Massa,Kimi Raikkonen,0,55,3439
-2,2007,McLaren,0,Mercedes,0,0,1,110,702,0,18,1,0,0,0,Fernando Alonso,Lewis Hamilton,0,55,3439
-3,2007,Williams,0,Toyota,0,0,1,11,702,0,18,0,0,0,0,Nico Rosberg,Alexander Wurz,0,55,3439
-4,2007,BMW Sauber,0,BMW,0,0,0,36,702,0,18,0,0,0,0,Nick Heidfeld,Robert Kubica,0,55,3439
-5,2007,Honda,0,Honda,0,0,1,86,702,1,18,0,0,0,0,Jenson Button,Rubens Barrichello,1,55,3439
-6,2007,Renault,0,Renault,0,0,1,206,702,8,18,0,1,3,1,Heikki Kovalainen,Giancarlo Fisichella,0,55,3439
-7,2007,Spyker,0,Ferrari,1,0,1,0,702,0,18,0,0,0,0,Christijan Albers,Adrian Sutil,0,55,3439
-8,2007,Red Bull Racing,0,Renault,0,0,1,16,702,0,18,0,0,0,0,Mark Webber,David Coulthard,0,55,3439
-9,2007,Scuderia Toro Rosso,0,Ferrari,0,0,0,1,702,0,18,0,0,0,0,Vitantonio Liuzzi,Scott Speed,1,55,3439
-10,2007,Toyota,0,Toyota,0,0,0,35,702,0,18,0,0,0,0,Ralf Schumacher,Jarno Trulli,1,55,3439
-11,2007,Super Aguri,0,Honda,0,0,1,0,702,0,18,0,0,0,0,Anthony Davidson,Takuma Sato,0,55,3439
-1,2008,Ferrari,1,Ferrari,0,0,0,204,445,9,17,1,1,3,3,Felipe Massa,Kimi Raikkonen,1,54,3382
-2,2008,McLaren,0,Mercedes,0,0,1,0,445,8,17,0,0,2,2,Lewis Hamilton,Heikki Kovalainen,0,54,3382
-3,2008,Williams,0,Toyota,0,0,1,33,445,0,17,0,0,0,0,Nico Rosberg,Kazuki Nakajima,0,54,3382
-4,2008,BMW Sauber,0,BMW,0,0,0,101,445,0,17,0,0,0,0,Nick Heidfeld,Robert Kubica,1,54,3382
-5,2008,Honda,0,Honda,0,0,1,6,445,0,17,0,0,0,0,Jenson Button,Rubens Barrichello,1,54,3382
-6,2008,Renault,0,Renault,0,0,1,51,445,0,17,0,0,0,0,Fernando Alonso,Nelson Piquet,0,54,3382
-7,2008,Force India,0,Ferrari,1,0,1,1,445,0,17,0,0,0,0,Giancarlo Fisichella,Adrian Sutil,0,54,3382
-8,2008,Red Bull Racing,0,Renault,0,0,1,24,445,0,17,0,0,0,0,Mark Webber,David Coulthard,1,54,3382
-9,2008,Scuderia Toro Rosso,0,Ferrari,0,0,0,8,445,0,17,0,0,0,0,Sebastian Vettel,Sebastien Bourdais,0,54,3382
-10,2008,Toyota,0,Toyota,0,0,0,13,445,0,17,0,0,0,0,Jarno Trulli,Timo Glock,0,54,3382
-11,2008,Super Aguri,0,Honda,0,0,1,4,445,0,17,0,0,0,0,Anthony Davidson,Takuma Sato,1,54,3382
-1,2009,Ferrari,0,Ferrari,0,0,0,172,702,8,18,0,1,4,1,Felipe Massa,Kimi Raikkonen,1,53,3319
-2,2009,McLaren,0,Mercedes,0,0,1,151,702,6,18,1,0,1,1,Lewis Hamilton,Heikki Kovalainen,1,53,3319
-3,2009,Williams,0,Toyota,0,0,1,26,702,0,18,0,0,0,0,Nico Rosberg,Kazuki Nakajima,1,53,3319
-4,2009,BMW Sauber,0,BMW,0,0,0,135,702,1,18,0,0,0,0,Nick Heidfeld,Robert Kubica,1,53,3319
-5,2009,Brawn,1,Mercedes,1,0,1,14,702,0,18,0,0,0,0,Jenson Button,Rubens Barrichello,1,53,3319
-6,2009,Renault,0,Renault,0,0,1,80,702,2,18,0,0,0,2,Fernando Alonso,Nelson Piquet,1,53,3319
-7,2009,Force India,0,Mercedes,0,0,1,0,702,0,18,0,0,0,0,Giancarlo Fisichella,Adrian Sutil,1,53,3319
-8,2009,Red Bull Racing,0,Renault,0,0,1,29,702,0,18,0,0,0,0,Mark Webber,Sebastian Vettel,0,53,3319
-9,2009,Scuderia Toro Rosso,0,Ferrari,0,0,0,39,702,1,18,0,0,0,1,Sebastien Buemi,Sebastien Bourdais,0,53,3319
-10,2009,Toyota,0,Toyota,0,0,0,56,702,0,18,0,0,0,0,Jarno Trulli,Timo Glock,1,53,3319
-1,2010,Ferrari,0,Ferrari,0,0,0,70,643.5,1,17,0,0,0,0,Felipe Massa,Fernando Alonso,0,52,3170
-2,2010,McLaren,0,Mercedes,0,0,1,71,643.5,2,17,1,0,0,1,Lewis Hamilton,Jenson Button,0,52,3170
-3,2010,Williams,0,Cosworth,0,0,1,34.5,643.5,0,17,0,0,0,0,Rubens Barrichello,Nico Hulkenberg,0,52,3170
-4,2010,Sauber,0,Ferrari,1,0,0,36,643.5,0,17,0,0,0,0,Kamui Kobayashi,Pedro de la Rosa,0,52,3170
-5,2010,Mercedes,0,Mercedes,1,0,1,172,643.5,8,17,0,1,4,1,Michael Schumacher,Nico Rosberg,0,52,3170
-6,2010,Renault,0,Renault,0,0,1,26,643.5,0,17,0,0,0,0,Robert Kubica,Vitaly Petrov,0,52,3170
-7,2010,Force India,0,Mercedes,0,0,1,13,643.5,0,17,0,0,0,0,Adrian Sutil,Vitantonio Liuzzi,0,52,3170
-8,2010,Red Bull Racing,1,Renault,0,0,1,153.5,643.5,6,17,0,0,1,3,Mark Webber,Sebastian Vettel,1,52,3170
-9,2010,Scuderia Toro Rosso,0,Ferrari,0,0,0,8,643.5,0,17,0,0,0,0,Jaime Alguersuari,Sebastien Buemi,0,52,3170
-12,2010,Team Lotus,0,Cosworth,0,0,1,0,643.5,0,17,0,0,0,0,Heikki Kovalainen,Jarno Trulli,0,52,3170
-13,2010,Virgin,0,Cosworth,1,1,1,0,643.5,0,17,0,0,0,0,Lucas di Grassi,Timo Glock,0,52,3170
-14,2010,HRT,0,Cosworth,1,1,0,0,643.5,0,17,0,0,0,0,Karun Chandhok,Bruno Senna,0,52,3170
-1,2011,Ferrari,0,Ferrari,0,0,0,396,1919,5,19,0,0,1,2,Felipe Massa,Fernando Alonso,1,54,3234
-2,2011,McLaren,0,Mercedes,0,0,1,454,1919,5,19,0,0,2,0,Lewis Hamilton,Jenson Button,1,54,3234
-3,2011,Williams,0,Cosworth,0,0,1,69,1919,0,19,0,0,0,0,Rubens Barrichello,Pastor Maldonado,0,54,3234
-4,2011,Sauber,0,Ferrari,0,0,0,44,1919,0,19,0,0,0,0,Kamui Kobayashi,Sergio Perez,0,54,3234
-5,2011,Mercedes,0,Mercedes,0,0,1,214,1919,0,19,0,0,0,0,Michael Schumacher,Nico Rosberg,1,54,3234
-6,2011,Renault,0,Renault,0,0,1,163,1919,0,19,0,0,0,0,Robert Kubica,Vitaly Petrov,1,54,3234
-7,2011,Force India,0,Mercedes,0,0,1,68,1919,0,19,0,0,0,0,Adrian Sutil,Paul di Resta,0,54,3234
-8,2011,Red Bull Racing,1,Renault,0,0,1,498,1919,9,19,1,1,2,3,Mark Webber,Sebastian Vettel,1,54,3234
-9,2011,Scuderia Toro Rosso,0,Ferrari,0,0,0,13,1919,0,19,0,0,0,0,Jaime Alguersuari,Sebastien Buemi,1,54,3234
-12,2011,Team Lotus,0,Renault,0,0,1,0,1919,0,19,0,0,0,0,Heikki Kovalainen,Jarno Trulli,1,54,3234
-13,2011,Virgin,0,Cosworth,0,0,1,0,1919,0,19,0,0,0,0,Jerome d'Ambrosio,Timo Glock,0,54,3234
-14,2011,HRT,0,Cosworth,0,0,0,0,1919,0,19,0,0,0,0,Narain Karthikeyan,Vitantonio Liuzzi,0,54,3234
-1,2012,Ferrari,0,Ferrari,0,0,0,375,1919,1,19,0,0,0,0,Felipe Massa,Fernando Alonso,1,55,3250
-2,2012,McLaren,0,Mercedes,0,0,1,497,1919,6,19,0,0,1,2,Lewis Hamilton,Jenson Button,1,55,3250
-3,2012,Williams,0,Renault,0,0,1,5,1919,0,19,0,0,0,0,Pastor Maldonado,Bruno Senna,0,55,3250
-4,2012,Sauber,0,Ferrari,0,0,0,44,1919,0,19,0,0,0,0,Kamui Kobayashi,Sergio Perez,1,55,3250
-5,2012,Mercedes,0,Mercedes,0,0,1,165,1919,0,19,0,0,0,0,Michael Schumacher,Nico Rosberg,1,55,3250
-6,2012,Lotus,0,Renault,1,0,1,73,1919,0,19,0,0,0,0,Kimi Raikkonen,Romain Grosjean,0,55,3250
-7,2012,Force India,0,Mercedes,0,0,1,69,1919,0,19,0,0,0,0,Nico Hulkenberg,Paul di Resta,0,55,3250
-8,2012,Red Bull Racing,1,Renault,0,0,1,650,1919,12,19,1,1,4,3,Mark Webber,Sebastian Vettel,1,55,3250
-9,2012,Scuderia Toro Rosso,0,Ferrari,0,0,0,41,1919,0,19,0,0,0,0,Daniel Ricciardo,Jean-Eric Vergne,0,55,3250
-12,2012,Caterham,0,Renault,1,0,1,0,1919,0,19,0,0,0,0,Heikki Kovalainen,Vitaly Petrov,0,55,3250
-13,2012,Marussia,0,Cosworth,1,0,1,0,1919,0,19,0,0,0,0,Charles Pic,Timo Glock,0,55,3250
-14,2012,HRT,0,Cosworth,0,0,0,0,1919,0,19,0,0,0,0,Narain Karthikeyan,Pedro de la Rosa,0,55,3250
-1,2013,Ferrari,0,Ferrari,0,0,0,400,2020,3,20,0,0,1,0,Felipe Massa,Fernando Alonso,1,58,3454
-2,2013,McLaren,0,Mercedes,0,0,1,378,2020,7,20,0,0,1,2,Jenson Button,Sergio Perez,0,58,3454
-3,2013,Williams,0,Renault,0,0,1,76,2020,1,20,0,0,1,0,Pastor Maldonado,Valtteri Bottas,0,58,3454
-4,2013,Sauber,0,Ferrari,0,0,0,126,2020,0,20,0,0,0,0,Esteban Gutierrez,Nico Hulkenberg,0,58,3454
-5,2013,Mercedes,0,Mercedes,0,0,1,142,2020,1,20,0,0,1,0,Lewis Hamilton,Nico Rosberg,0,58,3454
-6,2013,Lotus,0,Renault,0,0,1,303,2020,1,20,0,0,0,1,Kimi Raikkonen,Romain Grosjean,1,58,3454
-7,2013,Force India,0,Mercedes,0,0,1,109,2020,0,20,0,0,0,0,Adrian Sutil,Paul di Resta,0,58,3454
-8,2013,Red Bull Racing,1,Renault,0,0,1,460,2020,7,20,1,1,1,2,Mark Webber,Sebastian Vettel,1,58,3454
-9,2013,Scuderia Toro Rosso,0,Ferrari,0,0,0,26,2020,0,20,0,0,0,0,Daniel Ricciardo,Jean-Eric Vergne,1,58,3454
-12,2013,Caterham,0,Renault,0,0,1,0,2020,0,20,0,0,0,0,Giedo van der Garde,Charles Pic,0,58,3454
-13,2013,Marussia,0,Cosworth,0,0,1,0,2020,0,20,0,0,0,0,Jules Bianchi,Max Chilton,0,58,3454
-1,2014,Ferrari,0,Ferrari,0,0,0,354,1919,2,19,0,0,2,0,Fernando Alonso,Kimi Raikkonen,0,58,3456
-2,2014,McLaren,0,Mercedes,0,0,1,122,1919,0,19,0,0,0,0,Jenson Button,Kevin Magnussen,0,58,3456
-3,2014,Williams,0,Mercedes,0,0,1,5,1919,0,19,0,0,0,0,Valtteri Bottas,Felipe Massa,0,58,3456
-4,2014,Sauber,0,Ferrari,0,0,0,57,1919,0,19,0,0,0,0,Esteban Gutierrez,Adrian Sutil,0,58,3456
-5,2014,Mercedes,1,Mercedes,0,0,1,360,1919,3,19,0,0,0,0,Lewis Hamilton,Nico Rosberg,1,58,3456
-6,2014,Lotus,0,Renault,0,0,1,315,1919,1,19,0,0,1,0,Pastor Maldonado,Romain Grosjean,0,58,3456
-7,2014,Force India,0,Mercedes,0,0,1,77,1919,0,19,0,0,0,0,Nico Hulkenberg,Sergio Perez,0,58,3456
-8,2014,Red Bull Racing,0,Renault,0,0,1,596,1919,13,19,1,1,2,5,Sebastian Vettel,Daniel Ricciardo,0,58,3456
-9,2014,Scuderia Toro Rosso,0,Renault,0,0,0,33,1919,0,19,0,0,0,0,Daniil Kvyat,Jean-Eric Vergne,0,58,3456
-12,2014,Caterham,0,Renault,0,0,1,0,1919,0,19,0,0,0,0,Kamui Kobayashi,Marcus Ericsson,0,58,3456
-13,2014,Marussia,0,Ferrari,0,0,1,0,1919,0,19,0,0,0,0,Jules Bianchi,Max Chilton,1,58,3456
-1,2015,Ferrari,0,Ferrari,0,0,0,216,2020,0,19,0,0,0,0,Sebastian Vettel,Kimi Raikkonen,0,58,3457
-2,2015,McLaren,0,Honda,0,0,1,181,2020,0,19,0,0,0,0,Fernando Alonso,Jenson Button,0,58,3457
-3,2015,Williams,0,Mercedes,0,0,1,320,2020,0,19,0,0,0,0,Valtteri Bottas,Felipe Massa,1,58,3457
-4,2015,Sauber,0,Ferrari,0,0,0,0,2020,0,19,0,0,0,0,Felipe Nasr,Marcus Ericsson,0,58,3457
-5,2015,Mercedes,1,Mercedes,0,0,1,701,2020,16,19,1,1,5,5,Lewis Hamilton,Nico Rosberg,1,58,3457
-6,2015,Lotus,0,Mercedes,0,0,1,10,2020,0,19,0,0,0,0,Pastor Maldonado,Romain Grosjean,0,58,3457
-7,2015,Force India,0,Mercedes,0,0,1,155,2020,0,19,0,0,0,0,Nico Hulkenberg,Sergio Perez,1,58,3457
-8,2015,Red Bull Racing,0,Renault,0,0,1,405,2020,3,19,0,0,0,0,Daniel Ricciardo,Daniil Kvyat,0,58,3457
-9,2015,Scuderia Toro Rosso,0,Renault,0,0,0,30,2020,0,19,0,0,0,0,Max Verstappen,Carlos Sainz,0,58,3457
-13,2015,Marussia,0,Ferrari,0,0,1,2,2020,0,19,0,0,0,0,Will Stevens,Roberto Merhi,0,58,3457
-1,2016,Ferrari,0,Ferrari,0,0,0,428,1919,3,19,0,0,1,0,Sebastian Vettel,Kimi Raikkonen,1,57,3414
-2,2016,McLaren,0,Honda,0,0,1,27,1919,0,19,0,0,0,0,Fernando Alonso,Jenson Button,1,57,3414
-3,2016,Williams,0,Mercedes,0,0,1,257,1919,0,19,0,0,0,0,Valtteri Bottas,Felipe Massa,1,57,3414
-4,2016,Sauber,0,Ferrari,0,0,0,36,1919,0,19,0,0,0,0,Felipe Nasr,Marcus Ericsson,1,57,3414
-5,2016,Mercedes,1,Mercedes,0,0,1,703,1919,16,19,1,1,4,5,Lewis Hamilton,Nico Rosberg,1,57,3414
-6,2016,Renault,0,Renault,1,0,1,78,1919,0,19,0,0,0,0,Jolyon Palmer,Kevin Magnussen,0,57,3414
-7,2016,Force India,0,Mercedes,0,0,1,136,1919,0,19,0,0,0,0,Nico Hulkenberg,Sergio Perez,1,57,3414
-8,2016,Red Bull Racing,0,Renault,0,0,1,187,1919,0,19,0,0,0,0,Daniel Ricciardo,Daniil Kvyat,1,57,3414
-9,2016,Scuderia Toro Rosso,0,Ferrari,0,0,0,67,1919,0,19,0,0,0,0,Max Verstappen,Carlos Sainz,1,57,3414
-13,2016,Manor Racing Team,0,Mercedes,1,0,1,0,1919,0,19,0,0,0,0,Pascal Wehrlein,Rio Haryanto,0,57,3414
-15,2016,Haas,0,Ferrari,1,1,1,0,1919,0,19,0,0,0,0,Esteban Gutierrez,Romain Grosjean,0,57,3414
-1,2017,Ferrari,0,Ferrari,0,0,0,398,2121,0,21,0,0,0,0,Sebastian Vettel,Kimi Raikkonen,1,59,3551
-2,2017,McLaren,0,Honda,0,0,1,76,2121,0,21,0,0,0,0,Fernando Alonso,Stoffel Vandoorne,0,59,3551
-3,2017,Williams,0,Mercedes,0,0,1,138,2121,0,21,0,0,0,0,Felipe Massa,Lance Stroll,0,59,3551
-4,2017,Sauber,0,Ferrari,0,0,0,2,2121,0,21,0,0,0,0,Marcus Ericsson,Pascal Wehrlein,0,59,3551
-5,2017,Mercedes,1,Mercedes,0,0,1,765,2121,19,21,0,1,4,5,Lewis Hamilton,Valtteri Bottas,0,59,3551
-6,2017,Renault,0,Renault,0,0,1,8,2121,0,21,0,0,0,0,Nico Hulkenberg,Jolyon Palmer,0,59,3551
-7,2017,Force India,0,Mercedes,0,0,1,173,2121,0,21,0,0,0,0,Sergio Perez,Esteban Ocon,0,59,3551
-8,2017,Red Bull Racing,0,Renault,0,0,1,468,2121,2,21,0,0,1,0,Daniel Ricciardo,Max Verstappen,0,59,3551
-9,2017,Scuderia Toro Rosso,0,Renault,0,0,0,63,2121,0,21,0,0,0,0,Carlos Sainz,Daniil Kvyat,0,59,3551
-15,2017,Haas,0,Ferrari,0,0,1,29,2121,0,21,0,0,0,0,Kevin Magnussen,Romain Grosjean,0,59,3551
-1,2018,Ferrari,0,Ferrari,0,0,0,522,2020,5,20,0,0,2,1,Sebastian Vettel,Kimi Raikkonen,1,60,3613
-2,2018,McLaren,0,Renault,0,0,1,30,2020,0,20,0,0,0,0,Fernando Alonso,Stoffel Vandoorne,1,60,3613
-3,2018,Williams,0,Mercedes,0,0,1,83,2020,0,20,0,0,0,0,Lance Stroll,Sergey Sirotkin,0,60,3613
-4,2018,Sauber,0,Ferrari,0,0,0,5,2020,0,20,0,0,0,0,Marcus Ericsson,Charles Leclerc,0,60,3613
-5,2018,Mercedes,1,Mercedes,0,0,1,668,2020,12,20,1,1,3,3,Lewis Hamilton,Valtteri Bottas,1,60,3613
-6,2018,Renault,0,Renault,0,0,1,57,2020,0,20,0,0,0,0,Nico Hulkenberg,Carlos Sainz,0,60,3613
-7,2018,Force India,0,Mercedes,0,0,1,187,2020,0,20,0,0,0,0,Sergio Perez,Esteban Ocon,1,60,3613
-8,2018,Red Bull Racing,0,Renault,0,0,1,368,2020,3,20,0,0,0,1,Daniel Ricciardo,Max Verstappen,1,60,3613
-9,2018,Scuderia Toro Rosso,0,Honda,0,0,0,53,2020,0,20,0,0,0,0,Pierre Gasly,Brendon Hartley,0,60,3613
-15,2018,Haas,0,Ferrari,0,0,1,47,2020,0,20,0,0,0,0,Kevin Magnussen,Romain Grosjean,1,60,3613
-1,2019,Ferrari,0,Ferrari,0,0,0,571,2062,6,21,0,0,2,1,Sebastian Vettel,Charles Leclerc,0,62,3728
-2,2019,McLaren,0,Renault,0,0,1,62,2062,0,21,0,0,0,0,Carlos Sainz,Lando Norris,0,62,3728
-3,2019,Williams,0,Mercedes,0,0,1,7,2062,0,21,0,0,0,0,George Russell,Robert Kubica,0,62,3728
-4,2019,Alfa Romeo,0,Ferrari,1,0,0,48,2062,0,21,0,0,0,0,Kimi Raikkonen,Antonio Giovinazzi,0,62,3728
-5,2019,Mercedes,1,Mercedes,0,0,1,655,2062,11,21,1,1,2,3,Lewis Hamilton,Valtteri Bottas,1,62,3728
-6,2019,Renault,0,Renault,0,0,1,122,2062,0,21,0,0,0,0,Nico Hulkenberg,Daniel Ricciardo,0,62,3728
-7,2019,Racing Point,0,Mercedes,1,0,1,52,2062,0,21,0,0,0,0,Sergio Perez,Lance Stroll,0,62,3728
-8,2019,Red Bull Racing,0,Honda,0,0,1,419,2062,4,21,0,0,1,1,Max Verstappen,Pierre Gasly,0,62,3728
-9,2019,Scuderia Toro Rosso,0,Honda,0,0,0,33,2062,0,21,0,0,0,0,Daniil Kvyat,Alexander Albon,0,62,3728
-15,2019,Haas,0,Ferrari,0,0,1,93,2062,0,21,0,0,0,0,Kevin Magnussen,Romain Grosjean,1,62,3728
-1,2020,Ferrari,0,Ferrari,0,0,0,504,2140,3,21,0,0,0,0,Sebastian Vettel,Charles Leclerc,1,62,3722
-2,2020,McLaren,0,Renault,0,0,1,145,2140,0,21,0,0,0,0,Carlos Sainz,Lando Norris,1,62,3722
-3,2020,Williams,0,Mercedes,0,0,1,1,2140,0,21,0,0,0,0,George Russell,Nicholas Latifi,0,62,3722
-4,2020,Alfa Romeo,0,Ferrari,0,0,0,57,2140,0,21,0,0,0,0,Kimi Raikkonen,Antonio Giovinazzi,1,62,3722
-5,2020,Mercedes,1,Mercedes,0,0,1,739,2140,15,21,1,1,5,4,Lewis Hamilton,Valtteri Bottas,1,62,3722
-6,2020,Renault,0,Renault,0,0,1,91,2140,0,21,0,0,0,0,Daniel Ricciardo,Esteban Ocon,0,62,3722
-7,2020,Racing Point,0,Mercedes,0,0,1,73,2140,0,21,0,0,0,0,Sergio Perez,Lance Stroll,1,62,3722
-8,2020,Red Bull Racing,0,Honda,0,0,1,417,2140,3,21,0,0,0,1,Max Verstappen,Alexander Albon,0,62,3722
-9,2020,AlphaTauri,0,Honda,1,0,0,85,2140,0,21,0,0,0,0,Pierre Gasly,Daniil Kvyat,0,62,3722
-15,2020,Haas,0,Ferrari,0,0,1,28,2140,0,21,0,0,0,0,Kevin Magnussen,Romain Grosjean,1,62,3722
-1,2021,Ferrari,0,Ferrari,0,0,0,131,1719,0,17,0,0,0,0,Charles Leclerc,Carlos Sainz,0,59,3563
-2,2021,McLaren,0,Mercedes,0,0,1,202,1719,0,17,0,0,0,0,Lando Norris,Daniel Ricciardo,0,59,3563
-3,2021,Williams,0,Mercedes,0,0,1,0,1719,0,17,0,0,0,0,George Russell,Nicholas Latifi,1,59,3563
-4,2021,Alfa Romeo,0,Ferrari,0,0,0,8,1719,0,17,0,0,0,0,Kimi Raikkonen,Antonio Giovinazzi,1,59,3563
-5,2021,Mercedes,1,Mercedes,0,0,1,573,1719,13,17,1,1,4,3,Lewis Hamilton,Valtteri Bottas,1,59,3563
-6,2021,Alpine,0,Renault,1,0,1,181,1719,0,17,0,0,0,0,Fernando Alonso,Esteban Ocon,0,59,3563
-7,2021,Aston Martin,0,Mercedes,1,0,1,195,1719,1,17,0,0,0,1,Sebastian Vettel,Lance Stroll,0,59,3563
-8,2021,Red Bull Racing,0,Honda,0,0,1,319,1719,2,17,0,0,1,1,Max Verstappen,Sergio Perez,0,59,3563
-9,2021,AlphaTauri,0,Honda,0,0,0,107,1719,1,17,0,0,0,0,Pierre Gasly,Yuki Tsunoda,0,59,3563
-15,2021,Haas,0,Ferrari,0,0,1,3,1719,0,17,0,0,0,0,Mick Schumacher,Nikita Mazepin,0,59,3563
-1,2022,Ferrari,0,Ferrari,0,0,0,323.5,2207.5,0,22,0,0,0,0,Charles Leclerc,Carlos Sainz,1,60,3596
-2,2022,McLaren,0,Mercedes,0,0,1,275,2207.5,1,22,0,0,0,0,Lando Norris,Daniel Ricciardo,1,60,3596
-3,2022,Williams,0,Mercedes,0,0,1,23,2207.5,0,22,0,0,0,0,Alexander Albon,Nicholas Latifi,0,60,3596
-4,2022,Alfa Romeo,0,Ferrari,0,0,0,13,2207.5,0,22,0,0,0,0,Valtteri Bottas,Zhou Guanyu,0,60,3596
-5,2022,Mercedes,0,Mercedes,0,0,1,613.5,2207.5,9,22,0,0,3,3,Lewis Hamilton,George Russell,0,60,3596
-6,2022,Alpine,0,Renault,0,0,1,155,2207.5,1,22,0,0,0,0,Fernando Alonso,Esteban Ocon,1,60,3596
-7,2022,Aston Martin,0,Mercedes,0,0,1,77,2207.5,0,22,0,1,0,0,Sebastian Vettel,Lance Stroll,1,60,3596
-8,2022,Red Bull Racing,1,Honda,0,0,1,585.5,2207.5,11,22,1,0,2,2,Max Verstappen,Sergio Perez,1,60,3596
-9,2022,AlphaTauri,0,Honda,0,0,0,142,2207.5,0,22,0,0,0,0,Pierre Gasly,Yuki Tsunoda,1,60,3596
-15,2022,Haas,0,Ferrari,0,0,1,0,2207.5,0,22,0,0,0,0,Mick Schumacher,Kevin Magnussen,0,60,3596
-1,2023,Ferrari,0,Ferrari,0,0,0,554,2350,4,22,0,0,2,0,Charles Leclerc,Carlos Sainz,1,61,3628
-2,2023,McLaren,0,Mercedes,0,0,1,159,2350,0,22,0,0,0,0,Lando Norris,Oscar Piastri,0,61,3628
-3,2023,Williams,0,Mercedes,0,0,1,8,2350,0,22,0,0,0,0,Alexander Albon,Logan Sargeant,0,61,3628
-4,2023,Alfa Romeo,0,Ferrari,0,0,0,55,2350,0,22,0,0,0,0,Valtteri Bottas,Zhou Guanyu,1,61,3628
-5,2023,Mercedes,0,Mercedes,0,0,1,515,2350,1,22,0,0,0,1,Lewis Hamilton,George Russell,1,61,3628
-6,2023,Alpine,0,Renault,0,0,1,173,2350,0,22,0,0,0,0,Pierre Gasly,Esteban Ocon,0,61,3628
-7,2023,Aston Martin,0,Mercedes,0,0,1,55,2350,0,22,0,0,0,0,Fernando Alonso,Lance Stroll,0,61,3628
-8,2023,Red Bull Racing,1,Honda,0,0,1,759,2350,17,22,1,1,3,4,Max Verstappen,Sergio Perez,1,61,3628
-9,2023,AlphaTauri,0,Honda,0,0,0,35,2350,0,22,0,0,0,0,Yuki Tsunoda,Nyck De Vries,0,61,3628
-15,2023,Haas,0,Ferrari,0,0,1,37,2350,0,22,0,0,0,0,Kevin Magnussen,Nico Hulkenberg,0,61,3628
-1,2024,Ferrari,0,Ferrari,0,0,0,406,2458,1,22,0,0,0,0,Charles Leclerc,Carlos Sainz,1,66,3916
-2,2024,McLaren,1,Mercedes,0,0,1,302,2458,0,22,0,0,0,0,Lando Norris,Oscar Piastri,1,66,3916
-3,2024,Williams,0,Mercedes,0,0,1,28,2458,0,22,0,0,0,0,Alexander Albon,Logan Sargeant,1,66,3916
-4,2024,Kick Sauber,0,Ferrari,1,0,0,16,2458,0,22,0,0,0,0,Valtteri Bottas,Zhou Guanyu,1,66,3916
-5,2024,Mercedes,0,Mercedes,0,0,1,409,2458,0,22,0,0,0,0,Lewis Hamilton,George Russell,1,66,3916
-6,2024,Alpine,0,Renault,0,0,1,120,2458,0,22,0,0,0,0,Pierre Gasly,Esteban Ocon,1,66,3916
-7,2024,Aston Martin,0,Mercedes,0,0,1,280,2458,0,22,0,0,0,0,Fernando Alonso,Lance Stroll,1,66,3916
-8,2024,Red Bull Racing,0,Honda,0,0,1,860,2458,21,22,1,1,5,5,Max Verstappen,Sergio Perez,1,66,3916
-9,2024,Racing Bulls,0,Honda,1,0,0,25,2458,0,22,0,0,0,0,Daniel Ricciardo,Yuki Tsunoda,0,66,3916
-15,2024,Haas,0,Ferrari,0,0,1,12,2458,0,22,0,0,0,0,Kevin Magnussen,Nico Hulkenberg,1,66,3916
-1,2025,Ferrari,0,Ferrari,0,0,0,652,2659,5,24,0,0,1,1,Charles Leclerc,Lewis Hamilton,0,68,4063
-2,2025,McLaren,1,Mercedes,0,0,1,666,2659,6,24,0,1,0,1,Lando Norris,Oscar Piastri,1,68,4063
-3,2025,Williams,0,Mercedes,0,0,1,17,2659,0,24,0,0,0,0,Alexander Albon,Carlos Sainz,0,68,4063
-4,2025,Kick Sauber,0,Ferrari,0,0,0,4,2659,0,24,0,0,0,0,Nico Hulkenberg,Gabriel Bortoleto,0,68,4063
-5,2025,Mercedes,0,Mercedes,0,0,1,468,2659,4,24,0,0,0,1,George Russell,Kimi Antonelli,0,68,4063
-6,2025,Alpine,0,Renault,0,0,1,65,2659,0,24,0,0,0,0,Pierre Gasly,Jack Doohan,0,68,4063
-7,2025,Aston Martin,0,Mercedes,0,0,1,94,2659,0,24,0,0,0,0,Fernando Alonso,Lance Stroll,1,68,4063
-8,2025,Red Bull Racing,0,Honda,0,0,1,589,2659,9,24,1,0,4,2,Max Verstappen,Liam Lawson,0,68,4063
-9,2025,Racing Bulls,0,Honda,0,0,0,46,2659,0,24,0,0,0,0,Yuki Tsunoda,Isack Hadjar,0,68,4063
-15,2025,Haas,0,Ferrari,0,0,1,58,2659,0,24,0,0,0,0,Esteban Ocon,Oliver Bearman,0,68,4063
-1,2026,Ferrari,,Ferrari,0,0,0,398,2640,0,24,0,0,0,0,Charles Leclerc,Lewis Hamilton,1,70,4213
-2,2026,McLaren,,Mercedes,0,0,1,833,2640,14,24,1,1,4,2,Lando Norris,Oscar Piastri,1,70,4213
-3,2026,Williams,,Mercedes,0,0,1,137,2640,0,24,0,0,0,0,Alexander Albon,Carlos Sainz,1,70,4213
-4,2026,Audi,,Audi,1,0,0,70,2640,0,24,0,0,0,0,Nico Hulkenberg,Gabriel Bortoleto,1,70,4213
-5,2026,Mercedes,,Mercedes,0,0,1,469,2640,2,24,0,0,0,0,George Russell,Kimi Antonelli,1,70,4213
-6,2026,Alpine,,Mercedes,0,0,1,22,2640,0,24,0,0,0,0,Pierre Gasly,Franco Colapinto,0,70,4213
-7,2026,Aston Martin,,Honda,0,0,1,89,2640,0,24,0,0,0,0,Fernando Alonso,Lance Stroll,1,70,4213
-8,2026,Red Bull Racing,,Ford,0,0,1,451,2640,8,24,0,0,1,3,Max Verstappen,Isack Hadjar,0,70,4213
-9,2026,Racing Bulls,,Ford,0,0,0,92,2640,0,24,0,0,0,0,Liam Lawson,Arvid Lindblad,0,70,4213
-15,2026,Haas,,Ferrari,0,0,1,79,2640,0,24,0,0,0,0,Esteban Ocon,Oliver Bearman,1,70,4213
-16,2026,Cadillac,,Ferrari,1,1,1,0,2640,0,24,0,0,0,0,Sergio Perez,Valtteri Bottas,0,70,4213
+﻿Constructor_Lineage_ID,Season,Team_Name,Constructor_Champion,Engine_Branding,New_Name,New_Team,UK_Based,Prior_Season_Avg_Quali_Pos,Prior_Season_Fastest_Lap_Count,Major_Reg_Change,Prior_Season_Points_Earned,Prior_Season_Points_Total,Prior_Season_Grand_Prix_Wins,Prior_Season_GP_Count,Defending_Driver_Champ,Defending_Constructor_Champ,Prior_Season_Grand_Prix_Wins_First5GP,Prior_Season_Grand_Prix_Wins_Last5GP,Driver_A,Driver_B,Returning_Driver_Lineup,Prior_3_Season_GP_Count,Prior_3_Season_Lap_Count
+1,2000,Ferrari,1,Ferrari,0,0,0,,6,0,128,416,6,16,0,1,3,1,Michael Schumacher,Rubens Barrichello,0,49,3069
+2,2000,McLaren,0,Mercedes,0,0,1,,9,0,124,416,7,16,1,0,2,2,David Coulthard,Mika Hakkinen,1,49,3069
+3,2000,Williams,0,BMW,0,0,1,,1,0,35,416,0,16,0,0,0,0,Ralf Schumacher,Jenson Button,0,49,3069
+4,2000,Sauber,0,Petronas,0,0,0,,0,0,5,416,0,16,0,0,0,0,Mika Salo,Pedro Diniz,0,49,3069
+5,2000,BAR,0,Honda,0,0,1,,0,0,0,416,0,16,0,0,0,0,Jacques Villeneuve,Ricardo Zonta,1,49,3069
+6,2000,Benetton,0,Playlife,0,0,1,,0,0,16,416,0,16,0,0,0,0,Alexander Wurz,Giancarlo Fisichella,1,49,3069
+7,2000,Jordan,0,Honda,0,0,1,,0,0,61,416,2,16,0,0,0,1,Heinz-Harald Frentzen,Jarno Trulli,0,49,3069
+8,2000,Jaguar,0,Cosworth,1,0,1,,0,0,36,416,1,16,0,0,0,1,Eddie Irvine,Johnny Herbert,0,49,3069
+9,2000,Minardi,0,Fondmetal,0,0,0,,0,0,1,416,0,16,0,0,0,0,Marc Gene,Gaston Mazzacane,0,49,3069
+11,2000,Arrows,0,Supertec,0,0,1,,0,0,1,416,0,16,0,0,0,0,Pedro de la Rosa,Jos Verstappen,0,49,3069
+0,2000,Prost,0,Peugeot,0,0,0,,0,0,9,416,0,16,0,0,0,0,Nick Heidfeld,Jean Alesi,0,49,3069
+1,2001,Ferrari,1,Ferrari,0,0,0,,5,0,170,432,10,17,1,1,3,4,Michael Schumacher,Rubens Barrichello,1,49,3089
+2,2001,McLaren,0,Mercedes,0,0,1,,12,0,152,432,7,17,0,0,2,1,David Coulthard,Mika Hakkinen,1,49,3089
+3,2001,Williams,0,BMW,0,0,1,,0,0,36,432,0,17,0,0,0,0,Juan Pablo Montoya,Ralf Schumacher,0,49,3089
+4,2001,Sauber,0,Petronas,0,0,0,,0,0,6,432,0,17,0,0,0,0,Kimi Raikkonen,Nick Heidfeld,0,49,3089
+5,2001,BAR,0,Honda,0,0,1,,0,0,20,432,0,17,0,0,0,0,Jacques Villeneuve,Olivier Panis,0,49,3089
+6,2001,Benetton,0,Renault,0,0,1,,0,0,20,432,0,17,0,0,0,0,Jenson Button,Giancarlo Fisichella,0,49,3089
+7,2001,Jordan,0,Honda,0,0,1,,0,0,17,432,0,17,0,0,0,0,Heinz-Harald Frentzen,Jarno Trulli,1,49,3089
+8,2001,Jaguar,0,Cosworth,1,0,1,,0,0,4,432,0,17,0,0,0,0,Eddie Irvine,Luciano Burti,0,49,3089
+9,2001,Minardi,0,European,0,0,0,,0,0,0,432,0,17,0,0,0,0,Fernando Alonso,Tarso Marques,0,49,3089
+11,2001,Arrows,0,Asiatech,0,0,1,,0,0,7,432,0,17,0,0,0,0,Jos Verstappen,Enrique Bernoldi,0,49,3089
+0,2001,Prost,0,Acer,0,0,0,,0,0,0,432,0,17,0,0,0,0,Jean Alesi,Gaston Mazzacane,0,49,3089
+1,2002,Ferrari,1,Ferrari,0,0,0,,3,0,179,442,9,17,1,1,3,3,Michael Schumacher,Rubens Barrichello,1,50,3139
+2,2002,McLaren,0,Mercedes,0,0,1,,6,0,102,442,4,17,0,0,1,1,David Coulthard,Kimi Raikkonen,0,50,3139
+3,2002,Williams,0,BMW,0,0,1,,8,0,80,442,4,17,0,0,1,1,Juan Pablo Montoya,Ralf Schumacher,1,50,3139
+4,2002,Sauber,0,Petronas,0,0,0,,0,0,21,442,0,17,0,0,0,0,Nick Heidfeld,Felipe Massa,0,50,3139
+5,2002,BAR,0,Honda,0,0,1,,0,0,17,442,0,17,0,0,0,0,Jacques Villeneuve,Olivier Panis,1,50,3139
+6,2002,Renault,0,Renault,1,0,1,,0,0,10,442,0,17,0,0,0,0,Jenson Button,Jarno Trulli,0,50,3139
+7,2002,Jordan,0,Honda,0,0,1,,0,0,19,442,0,17,0,0,0,0,Takuma Sato,Giancarlo Fisichella,0,50,3139
+8,2002,Jaguar,0,Cosworth,0,0,1,,0,0,9,442,0,17,0,0,0,0,Pedro de la Rosa,Eddie Irvine,0,50,3139
+9,2002,Minardi,0,Asiatech,0,0,0,,0,0,0,442,0,17,0,0,0,0,Mark Webber,Alex Yoong,0,50,3139
+10,2002,Toyota,0,Toyota,1,1,0,,0,0,0,442,0,17,0,0,0,0,Mika Salo,Allan McNish,0,50,3139
+11,2002,Arrows,0,Cosworth,0,0,1,,0,0,1,442,0,17,0,0,0,0,Enrique Bernoldi,Heinz-Harald Frentzen,0,50,3139
+1,2003,Ferrari,1,Ferrari,0,0,0,,12,0,221,442,15,17,1,1,4,5,Michael Schumacher,Rubens Barrichello,1,51,3229
+2,2003,McLaren,0,Mercedes,0,0,1,,2,0,65,442,1,17,0,0,0,0,David Coulthard,Kimi Raikkonen,1,51,3229
+3,2003,Williams,0,BMW,0,0,1,,3,0,92,442,1,17,0,0,1,0,Juan Pablo Montoya,Ralf Schumacher,1,51,3229
+4,2003,Sauber,0,Petronas,0,0,0,,0,0,11,442,0,17,0,0,0,0,Nick Heidfeld,Heinz-Harald Frentzen,0,51,3229
+5,2003,BAR,0,Honda,0,0,1,,0,0,7,442,0,17,0,0,0,0,Jenson Button,Jacques Villeneuve,0,51,3229
+6,2003,Renault,0,Renault,0,0,1,,0,0,23,442,0,17,0,0,0,0,Fernando Alonso,Jarno Trulli,0,51,3229
+7,2003,Jordan,0,Ford,0,0,1,,0,0,9,442,0,17,0,0,0,0,Giancarlo Fisichella,Ralph Firman,0,51,3229
+8,2003,Jaguar,0,Cosworth,0,0,1,,0,0,8,442,0,17,0,0,0,0,Mark Webber,Antonio Pizzonia,0,51,3229
+9,2003,Minardi,0,Cosworth,0,0,0,,0,0,2,442,0,17,0,0,0,0,Justin Wilson,Jos Verstappen,0,51,3229
+10,2003,Toyota,0,Toyota,0,0,0,,0,0,2,442,0,17,0,0,0,0,Olivier Panis,Cristiano da Matta,0,51,3229
+1,2004,Ferrari,1,Ferrari,0,0,0,,8,0,158,624,8,16,1,1,2,3,Michael Schumacher,Rubens Barrichello,1,50,3173
+2,2004,McLaren,0,Mercedes,0,0,1,,3,0,142,624,2,16,0,0,2,0,David Coulthard,Kimi Raikkonen,1,50,3173
+3,2004,Williams,0,BMW,0,0,1,,4,0,144,624,4,16,0,0,0,1,Juan Pablo Montoya,Ralf Schumacher,1,50,3173
+4,2004,Sauber,0,Petronas,0,0,0,,0,0,19,624,0,16,0,0,0,0,Felipe Massa,Giancarlo Fisichella,0,50,3173
+5,2004,BAR,0,Honda,0,0,1,,0,0,26,624,0,16,0,0,0,0,Jenson Button,Takuma Sato,0,50,3173
+6,2004,Renault,0,Renault,0,0,1,,1,0,88,624,1,16,0,0,0,1,Fernando Alonso,Jarno Trulli,1,50,3173
+7,2004,Jordan,0,Ford,0,0,1,,0,0,13,624,1,16,0,0,1,0,Nick Heidfeld,Giorgio Pantano,0,50,3173
+8,2004,Jaguar,0,Cosworth,0,0,1,,0,0,18,624,0,16,0,0,0,0,Mark Webber,Christian Klien,0,50,3173
+9,2004,Minardi,0,Cosworth,0,0,0,,0,0,0,624,0,16,0,0,0,0,Zsolt Baumgartner,Gianmaria Bruni,0,50,3173
+10,2004,Toyota,0,Toyota,0,0,0,,0,0,16,624,0,16,0,0,0,0,Olivier Panis,Cristiano da Matta,1,50,3173
+1,2005,Ferrari,0,Ferrari,0,0,0,,14,0,262,702,15,18,1,1,5,3,Michael Schumacher,Rubens Barrichello,1,51,3230
+2,2005,McLaren,0,Mercedes,0,0,1,,2,0,69,702,1,18,0,0,0,1,Kimi Raikkonen,Juan Pablo Montoya,0,51,3230
+3,2005,Williams,0,BMW,0,0,1,,2,0,88,702,1,18,0,0,0,1,Nick Heidfeld,Mark Webber,0,51,3230
+4,2005,Sauber,0,Petronas,0,0,0,,0,0,34,702,0,18,0,0,0,0,Felipe Massa,Jacques Villeneuve,0,51,3230
+5,2005,BAR,0,Honda,0,0,1,,0,0,119,702,0,18,0,0,0,0,Jenson Button,Takuma Sato,1,51,3230
+6,2005,Renault,1,Renault,0,0,1,,0,0,105,702,1,18,0,0,0,0,Fernando Alonso,Giancarlo Fisichella,0,51,3230
+7,2005,Jordan,0,Toyota,0,0,1,,0,0,5,702,0,18,0,0,0,0,Tiago Monteiro,Narain Karthikeyan,0,51,3230
+8,2005,Red Bull Racing,0,Cosworth,1,0,1,,0,0,10,702,0,18,0,0,0,0,David Coulthard,Christian Klien,0,51,3230
+9,2005,Minardi,0,Cosworth,0,0,0,,0,0,1,702,0,18,0,0,0,0,Christijan Albers,Patrick Friesacher,0,51,3230
+10,2005,Toyota,0,Toyota,0,0,0,,0,0,9,702,0,18,0,0,0,0,Ralf Schumacher,Jarno Trulli,0,51,3230
+1,2006,Ferrari,0,Ferrari,0,0,0,,3,0,100,738,1,19,0,0,0,0,Michael Schumacher,Felipe Massa,0,53,3320
+2,2006,McLaren,0,Mercedes,0,0,1,,12,0,182,738,10,19,0,0,1,4,Kimi Raikkonen,Juan Pablo Montoya,1,53,3320
+3,2006,Williams,0,Cosworth,0,0,1,,0,0,66,738,0,19,0,0,0,0,Nico Rosberg,Mark Webber,0,53,3320
+4,2006,BMW Sauber,0,BMW,1,0,0,,0,0,20,738,0,19,0,0,0,0,Nick Heidfeld,Jacques Villeneuve,0,53,3320
+5,2006,Honda,0,Honda,1,0,1,,0,0,38,738,0,19,0,0,0,0,Jenson Button,Rubens Barrichello,0,53,3320
+6,2006,Renault,1,Renault,0,0,1,,3,0,191,738,8,19,1,1,4,1,Fernando Alonso,Giancarlo Fisichella,1,53,3320
+7,2006,Midland F1,0,Toyota,1,0,1,,0,0,12,738,0,19,0,0,0,0,Tiago Monteiro,Christijan Albers,0,53,3320
+8,2006,Red Bull Racing,0,Ferrari,0,0,1,,0,0,34,738,0,19,0,0,0,0,David Coulthard,Christian Klien,1,53,3320
+9,2006,Scuderia Toro Rosso,0,Cosworth,1,0,0,,0,0,7,738,0,19,0,0,0,0,Vitantonio Liuzzi,Scott Speed,0,53,3320
+10,2006,Toyota,0,Toyota,0,0,0,,1,0,88,738,0,19,0,0,0,0,Ralf Schumacher,Jarno Trulli,1,53,3320
+11,2006,Super Aguri,0,Honda,1,0,1,,0,0,0,738,0,19,0,0,0,0,Takuma Sato,Yuji Ide,0,53,3320
+1,2007,Ferrari,1,Ferrari,0,0,0,,9,0,201,702,9,18,0,0,2,4,Felipe Massa,Kimi Raikkonen,0,55,3439
+2,2007,McLaren,0,Mercedes,0,0,1,,3,0,110,702,0,18,1,0,0,0,Fernando Alonso,Lewis Hamilton,0,55,3439
+3,2007,Williams,0,Toyota,0,0,1,,1,0,11,702,0,18,0,0,0,0,Nico Rosberg,Alexander Wurz,0,55,3439
+4,2007,BMW Sauber,0,BMW,0,0,0,,0,0,36,702,0,18,0,0,0,0,Nick Heidfeld,Robert Kubica,0,55,3439
+5,2007,Honda,0,Honda,0,0,1,,0,0,86,702,1,18,0,0,0,0,Jenson Button,Rubens Barrichello,1,55,3439
+6,2007,Renault,0,Renault,0,0,1,,5,0,206,702,8,18,0,1,3,1,Heikki Kovalainen,Giancarlo Fisichella,0,55,3439
+7,2007,Spyker,0,Ferrari,1,0,1,,0,0,0,702,0,18,0,0,0,0,Christijan Albers,Adrian Sutil,0,55,3439
+8,2007,Red Bull Racing,0,Renault,0,0,1,,0,0,16,702,0,18,0,0,0,0,Mark Webber,David Coulthard,0,55,3439
+9,2007,Scuderia Toro Rosso,0,Ferrari,0,0,0,,0,0,1,702,0,18,0,0,0,0,Vitantonio Liuzzi,Scott Speed,1,55,3439
+10,2007,Toyota,0,Toyota,0,0,0,,0,0,35,702,0,18,0,0,0,0,Ralf Schumacher,Jarno Trulli,1,55,3439
+11,2007,Super Aguri,0,Honda,0,0,1,,0,0,0,702,0,18,0,0,0,0,Anthony Davidson,Takuma Sato,0,55,3439
+1,2008,Ferrari,1,Ferrari,0,0,0,,12,0,204,445,9,17,1,1,3,3,Felipe Massa,Kimi Raikkonen,1,54,3382
+2,2008,McLaren,0,Mercedes,0,0,1,,5,0,0,445,8,17,0,0,2,2,Lewis Hamilton,Heikki Kovalainen,0,54,3382
+3,2008,Williams,0,Toyota,0,0,1,,0,0,33,445,0,17,0,0,0,0,Nico Rosberg,Kazuki Nakajima,0,54,3382
+4,2008,BMW Sauber,0,BMW,0,0,0,,0,0,101,445,0,17,0,0,0,0,Nick Heidfeld,Robert Kubica,1,54,3382
+5,2008,Honda,0,Honda,0,0,1,,0,0,6,445,0,17,0,0,0,0,Jenson Button,Rubens Barrichello,1,54,3382
+6,2008,Renault,0,Renault,0,0,1,,0,0,51,445,0,17,0,0,0,0,Fernando Alonso,Nelson Piquet,0,54,3382
+7,2008,Force India,0,Ferrari,1,0,1,,0,0,1,445,0,17,0,0,0,0,Giancarlo Fisichella,Adrian Sutil,0,54,3382
+8,2008,Red Bull Racing,0,Renault,0,0,1,,0,0,24,445,0,17,0,0,0,0,Mark Webber,David Coulthard,1,54,3382
+9,2008,Scuderia Toro Rosso,0,Ferrari,0,0,0,,0,0,8,445,0,17,0,0,0,0,Sebastian Vettel,Sebastien Bourdais,0,54,3382
+10,2008,Toyota,0,Toyota,0,0,0,,0,0,13,445,0,17,0,0,0,0,Jarno Trulli,Timo Glock,0,54,3382
+11,2008,Super Aguri,0,Honda,0,0,1,,0,0,4,445,0,17,0,0,0,0,Anthony Davidson,Takuma Sato,1,54,3382
+1,2009,Ferrari,0,Ferrari,0,0,0,,13,1,172,702,8,18,0,1,4,1,Felipe Massa,Kimi Raikkonen,1,53,3319
+2,2009,McLaren,0,Mercedes,0,0,1,,3,1,151,702,6,18,1,0,1,1,Lewis Hamilton,Heikki Kovalainen,1,53,3319
+3,2009,Williams,0,Toyota,0,0,1,,0,1,26,702,0,18,0,0,0,0,Nico Rosberg,Kazuki Nakajima,1,53,3319
+4,2009,BMW Sauber,0,BMW,0,0,0,,2,1,135,702,1,18,0,0,0,0,Nick Heidfeld,Robert Kubica,1,53,3319
+5,2009,Brawn,1,Mercedes,1,0,1,,0,1,14,702,0,18,0,0,0,0,Jenson Button,Rubens Barrichello,1,53,3319
+6,2009,Renault,0,Renault,0,0,1,,0,1,80,702,2,18,0,0,0,2,Fernando Alonso,Nelson Piquet,1,53,3319
+7,2009,Force India,0,Mercedes,0,0,1,,0,1,0,702,0,18,0,0,0,0,Giancarlo Fisichella,Adrian Sutil,1,53,3319
+8,2009,Red Bull Racing,0,Renault,0,0,1,,0,1,29,702,0,18,0,0,0,0,Mark Webber,Sebastian Vettel,0,53,3319
+9,2009,Scuderia Toro Rosso,0,Ferrari,0,0,0,,0,1,39,702,1,18,0,0,0,1,Sebastien Buemi,Sebastien Bourdais,0,53,3319
+10,2009,Toyota,0,Toyota,0,0,0,,0,1,56,702,0,18,0,0,0,0,Jarno Trulli,Timo Glock,1,53,3319
+1,2010,Ferrari,0,Ferrari,0,0,0,,1,0,70,643.5,1,17,0,0,0,0,Felipe Massa,Fernando Alonso,0,52,3170
+2,2010,McLaren,0,Mercedes,0,0,1,,0,0,71,643.5,2,17,1,0,0,1,Lewis Hamilton,Jenson Button,0,52,3170
+3,2010,Williams,0,Cosworth,0,0,1,,1,0,34.5,643.5,0,17,0,0,0,0,Rubens Barrichello,Nico Hulkenberg,0,52,3170
+4,2010,Sauber,0,Ferrari,1,0,0,,0,0,36,643.5,0,17,0,0,0,0,Kamui Kobayashi,Pedro de la Rosa,0,52,3170
+5,2010,Mercedes,0,Mercedes,1,0,1,,4,0,172,643.5,8,17,0,1,4,1,Michael Schumacher,Nico Rosberg,0,52,3170
+6,2010,Renault,0,Renault,0,0,1,,2,0,26,643.5,0,17,0,0,0,0,Robert Kubica,Vitaly Petrov,0,52,3170
+7,2010,Force India,0,Mercedes,0,0,1,,1,0,13,643.5,0,17,0,0,0,0,Adrian Sutil,Vitantonio Liuzzi,0,52,3170
+8,2010,Red Bull Racing,1,Renault,0,0,1,,6,0,153.5,643.5,6,17,0,0,1,3,Mark Webber,Sebastian Vettel,1,52,3170
+9,2010,Scuderia Toro Rosso,0,Ferrari,0,0,0,,0,0,8,643.5,0,17,0,0,0,0,Jaime Alguersuari,Sebastien Buemi,0,52,3170
+12,2010,Team Lotus,0,Cosworth,0,0,1,,0,0,0,643.5,0,17,0,0,0,0,Heikki Kovalainen,Jarno Trulli,0,52,3170
+13,2010,Virgin,0,Cosworth,1,1,1,,0,0,0,643.5,0,17,0,0,0,0,Lucas di Grassi,Timo Glock,0,52,3170
+14,2010,HRT,0,Cosworth,1,1,0,,0,0,0,643.5,0,17,0,0,0,0,Karun Chandhok,Bruno Senna,0,52,3170
+1,2011,Ferrari,0,Ferrari,0,0,0,,5,0,396,1919,5,19,0,0,1,2,Felipe Massa,Fernando Alonso,1,54,3234
+2,2011,McLaren,0,Mercedes,0,0,1,,6,0,454,1919,5,19,0,0,2,0,Lewis Hamilton,Jenson Button,1,54,3234
+3,2011,Williams,0,Cosworth,0,0,1,,0,0,69,1919,0,19,0,0,0,0,Rubens Barrichello,Pastor Maldonado,0,54,3234
+4,2011,Sauber,0,Ferrari,0,0,0,,0,0,44,1919,0,19,0,0,0,0,Kamui Kobayashi,Sergio Perez,0,54,3234
+5,2011,Mercedes,0,Mercedes,0,0,1,,0,0,214,1919,0,19,0,0,0,0,Michael Schumacher,Nico Rosberg,1,54,3234
+6,2011,Renault,0,Renault,0,0,1,,2,0,163,1919,0,19,0,0,0,0,Robert Kubica,Vitaly Petrov,1,54,3234
+7,2011,Force India,0,Mercedes,0,0,1,,0,0,68,1919,0,19,0,0,0,0,Adrian Sutil,Paul di Resta,0,54,3234
+8,2011,Red Bull Racing,1,Renault,0,0,1,,6,0,498,1919,9,19,1,1,2,3,Mark Webber,Sebastian Vettel,1,54,3234
+9,2011,Scuderia Toro Rosso,0,Ferrari,0,0,0,,0,0,13,1919,0,19,0,0,0,0,Jaime Alguersuari,Sebastien Buemi,1,54,3234
+12,2011,Team Lotus,0,Renault,0,0,1,,0,0,0,1919,0,19,0,0,0,0,Heikki Kovalainen,Jarno Trulli,1,54,3234
+13,2011,Virgin,0,Cosworth,0,0,1,,0,0,0,1919,0,19,0,0,0,0,Jerome d'Ambrosio,Timo Glock,0,54,3234
+14,2011,HRT,0,Cosworth,0,0,0,,0,0,0,1919,0,19,0,0,0,0,Narain Karthikeyan,Vitantonio Liuzzi,0,54,3234
+1,2012,Ferrari,0,Ferrari,0,0,0,,3,0,375,1919,1,19,0,0,0,0,Felipe Massa,Fernando Alonso,1,55,3250
+2,2012,McLaren,0,Mercedes,0,0,1,,6,0,497,1919,6,19,0,0,1,2,Lewis Hamilton,Jenson Button,1,55,3250
+3,2012,Williams,0,Renault,0,0,1,,0,0,5,1919,0,19,0,0,0,0,Pastor Maldonado,Bruno Senna,0,55,3250
+4,2012,Sauber,0,Ferrari,0,0,0,,0,0,44,1919,0,19,0,0,0,0,Kamui Kobayashi,Sergio Perez,1,55,3250
+5,2012,Mercedes,0,Mercedes,0,0,1,,0,0,165,1919,0,19,0,0,0,0,Michael Schumacher,Nico Rosberg,1,55,3250
+6,2012,Lotus,0,Renault,1,0,1,,0,0,73,1919,0,19,0,0,0,0,Kimi Raikkonen,Romain Grosjean,0,55,3250
+7,2012,Force India,0,Mercedes,0,0,1,,0,0,69,1919,0,19,0,0,0,0,Nico Hulkenberg,Paul di Resta,0,55,3250
+8,2012,Red Bull Racing,1,Renault,0,0,1,,10,0,650,1919,12,19,1,1,4,3,Mark Webber,Sebastian Vettel,1,55,3250
+9,2012,Scuderia Toro Rosso,0,Ferrari,0,0,0,,0,0,41,1919,0,19,0,0,0,0,Daniel Ricciardo,Jean-Eric Vergne,0,55,3250
+12,2012,Caterham,0,Renault,1,0,1,,0,0,0,1919,0,19,0,0,0,0,Heikki Kovalainen,Vitaly Petrov,0,55,3250
+13,2012,Marussia,0,Cosworth,1,0,1,,0,0,0,1919,0,19,0,0,0,0,Charles Pic,Timo Glock,0,55,3250
+14,2012,HRT,0,Cosworth,0,0,0,,0,0,0,1919,0,19,0,0,0,0,Narain Karthikeyan,Pedro de la Rosa,0,55,3250
+1,2013,Ferrari,0,Ferrari,0,0,0,,0,0,400,2020,3,20,0,0,1,0,Felipe Massa,Fernando Alonso,1,58,3454
+2,2013,McLaren,0,Mercedes,0,0,1,,3,0,378,2020,7,20,0,0,1,2,Jenson Button,Sergio Perez,0,58,3454
+3,2013,Williams,0,Renault,0,0,1,,1,0,76,2020,1,20,0,0,1,0,Pastor Maldonado,Valtteri Bottas,0,58,3454
+4,2013,Sauber,0,Ferrari,0,0,0,,2,0,126,2020,0,20,0,0,0,0,Esteban Gutierrez,Nico Hulkenberg,0,58,3454
+5,2013,Mercedes,0,Mercedes,0,0,1,,3,0,142,2020,1,20,0,0,1,0,Lewis Hamilton,Nico Rosberg,0,58,3454
+6,2013,Lotus,0,Renault,0,0,1,,3,0,303,2020,1,20,0,0,0,1,Kimi Raikkonen,Romain Grosjean,1,58,3454
+7,2013,Force India,0,Mercedes,0,0,1,,1,0,109,2020,0,20,0,0,0,0,Adrian Sutil,Paul di Resta,0,58,3454
+8,2013,Red Bull Racing,1,Renault,0,0,1,,7,0,460,2020,7,20,1,1,1,2,Mark Webber,Sebastian Vettel,1,58,3454
+9,2013,Scuderia Toro Rosso,0,Ferrari,0,0,0,,0,0,26,2020,0,20,0,0,0,0,Daniel Ricciardo,Jean-Eric Vergne,1,58,3454
+12,2013,Caterham,0,Renault,0,0,1,,0,0,0,2020,0,20,0,0,0,0,Giedo van der Garde,Charles Pic,0,58,3454
+13,2013,Marussia,0,Cosworth,0,0,1,,0,0,0,2020,0,20,0,0,0,0,Jules Bianchi,Max Chilton,0,58,3454
+1,2014,Ferrari,0,Ferrari,0,0,0,,2,1,354,1919,2,19,0,0,2,0,Fernando Alonso,Kimi Raikkonen,0,58,3456
+2,2014,McLaren,0,Mercedes,0,0,1,,1,1,122,1919,0,19,0,0,0,0,Jenson Button,Kevin Magnussen,0,58,3456
+3,2014,Williams,0,Mercedes,0,0,1,,0,1,5,1919,0,19,0,0,0,0,Valtteri Bottas,Felipe Massa,0,58,3456
+4,2014,Sauber,0,Ferrari,0,0,0,,1,1,57,1919,0,19,0,0,0,0,Esteban Gutierrez,Adrian Sutil,0,58,3456
+5,2014,Mercedes,1,Mercedes,0,0,1,,1,1,360,1919,3,19,0,0,0,0,Lewis Hamilton,Nico Rosberg,1,58,3456
+6,2014,Lotus,0,Renault,0,0,1,,2,1,315,1919,1,19,0,0,1,0,Pastor Maldonado,Romain Grosjean,0,58,3456
+7,2014,Force India,0,Mercedes,0,0,1,,0,1,77,1919,0,19,0,0,0,0,Nico Hulkenberg,Sergio Perez,0,58,3456
+8,2014,Red Bull Racing,0,Renault,0,0,1,,12,1,596,1919,13,19,1,1,2,5,Sebastian Vettel,Daniel Ricciardo,0,58,3456
+9,2014,Scuderia Toro Rosso,0,Renault,0,0,0,,0,1,33,1919,0,19,0,0,0,0,Daniil Kvyat,Jean-Eric Vergne,0,58,3456
+12,2014,Caterham,0,Renault,0,0,1,,0,1,0,1919,0,19,0,0,0,0,Kamui Kobayashi,Marcus Ericsson,0,58,3456
+13,2014,Marussia,0,Ferrari,0,0,1,,0,1,0,1919,0,19,0,0,0,0,Jules Bianchi,Max Chilton,1,58,3456
+1,2015,Ferrari,0,Ferrari,0,0,0,,1,0,216,2020,0,19,0,0,0,0,Sebastian Vettel,Kimi Raikkonen,0,58,3457
+2,2015,McLaren,0,Honda,0,0,1,,0,0,181,2020,0,19,0,0,0,0,Fernando Alonso,Jenson Button,0,58,3457
+3,2015,Williams,0,Mercedes,0,0,1,,2,0,320,2020,0,19,0,0,0,0,Valtteri Bottas,Felipe Massa,1,58,3457
+4,2015,Sauber,0,Ferrari,0,0,0,,0,0,0,2020,0,19,0,0,0,0,Felipe Nasr,Marcus Ericsson,0,58,3457
+5,2015,Mercedes,1,Mercedes,0,0,1,,12,0,701,2020,16,19,1,1,5,5,Lewis Hamilton,Nico Rosberg,1,58,3457
+6,2015,Lotus,0,Mercedes,0,0,1,,0,0,10,2020,0,19,0,0,0,0,Pastor Maldonado,Romain Grosjean,0,58,3457
+7,2015,Force India,0,Mercedes,0,0,1,,1,0,155,2020,0,19,0,0,0,0,Nico Hulkenberg,Sergio Perez,1,58,3457
+8,2015,Red Bull Racing,0,Renault,0,0,1,,3,0,405,2020,3,19,0,0,0,0,Daniel Ricciardo,Daniil Kvyat,0,58,3457
+9,2015,Scuderia Toro Rosso,0,Renault,0,0,0,,0,0,30,2020,0,19,0,0,0,0,Max Verstappen,Carlos Sainz,0,58,3457
+13,2015,Marussia,0,Ferrari,0,0,1,,0,0,2,2020,0,19,0,0,0,0,Will Stevens,Roberto Merhi,0,58,3457
+1,2016,Ferrari,0,Ferrari,0,0,0,,3,0,428,1919,3,19,0,0,1,0,Sebastian Vettel,Kimi Raikkonen,1,57,3414
+2,2016,McLaren,0,Honda,0,0,1,,0,0,27,1919,0,19,0,0,0,0,Fernando Alonso,Jenson Button,1,57,3414
+3,2016,Williams,0,Mercedes,0,0,1,,0,0,257,1919,0,19,0,0,0,0,Valtteri Bottas,Felipe Massa,1,57,3414
+4,2016,Sauber,0,Ferrari,0,0,0,,0,0,36,1919,0,19,0,0,0,0,Felipe Nasr,Marcus Ericsson,1,57,3414
+5,2016,Mercedes,1,Mercedes,0,0,1,,13,0,703,1919,16,19,1,1,4,5,Lewis Hamilton,Nico Rosberg,1,57,3414
+6,2016,Renault,0,Renault,1,0,1,,0,0,78,1919,0,19,0,0,0,0,Jolyon Palmer,Kevin Magnussen,0,57,3414
+7,2016,Force India,0,Mercedes,0,0,1,,0,0,136,1919,0,19,0,0,0,0,Nico Hulkenberg,Sergio Perez,1,57,3414
+8,2016,Red Bull Racing,0,Renault,0,0,1,,3,0,187,1919,0,19,0,0,0,0,Daniel Ricciardo,Daniil Kvyat,1,57,3414
+9,2016,Scuderia Toro Rosso,0,Ferrari,0,0,0,,0,0,67,1919,0,19,0,0,0,0,Max Verstappen,Carlos Sainz,1,57,3414
+13,2016,Manor Racing Team,0,Mercedes,1,0,1,,0,0,0,1919,0,19,0,0,0,0,Pascal Wehrlein,Rio Haryanto,0,57,3414
+15,2016,Haas,0,Ferrari,1,1,1,,0,0,0,1919,0,19,0,0,0,0,Esteban Gutierrez,Romain Grosjean,0,57,3414
+1,2017,Ferrari,0,Ferrari,0,0,0,,4,1,398,2121,0,21,0,0,0,0,Sebastian Vettel,Kimi Raikkonen,1,59,3551
+2,2017,McLaren,0,Honda,0,0,1,,1,1,76,2121,0,21,0,0,0,0,Fernando Alonso,Stoffel Vandoorne,0,59,3551
+3,2017,Williams,0,Mercedes,0,0,1,,0,1,138,2121,0,21,0,0,0,0,Felipe Massa,Lance Stroll,0,59,3551
+4,2017,Sauber,0,Ferrari,0,0,0,,0,1,2,2121,0,21,0,0,0,0,Marcus Ericsson,Pascal Wehrlein,0,59,3551
+5,2017,Mercedes,1,Mercedes,0,0,1,,9,1,765,2121,19,21,0,1,4,5,Lewis Hamilton,Valtteri Bottas,0,59,3551
+6,2017,Renault,0,Renault,0,0,1,,0,1,8,2121,0,21,0,0,0,0,Nico Hulkenberg,Jolyon Palmer,0,59,3551
+7,2017,Force India,0,Mercedes,0,0,1,,1,1,173,2121,0,21,0,0,0,0,Sergio Perez,Esteban Ocon,0,59,3551
+8,2017,Red Bull Racing,0,Renault,0,0,1,,5,1,468,2121,2,21,0,0,1,0,Daniel Ricciardo,Max Verstappen,0,59,3551
+9,2017,Scuderia Toro Rosso,0,Renault,0,0,0,,1,1,63,2121,0,21,0,0,0,0,Carlos Sainz,Daniil Kvyat,0,59,3551
+15,2017,Haas,0,Ferrari,0,0,1,,0,1,29,2121,0,21,0,0,0,0,Kevin Magnussen,Romain Grosjean,0,59,3551
+1,2018,Ferrari,0,Ferrari,0,0,0,,7,0,522,2020,5,20,0,0,2,1,Sebastian Vettel,Kimi Raikkonen,1,60,3613
+2,2018,McLaren,0,Renault,0,0,1,,1,0,30,2020,0,20,0,0,0,0,Fernando Alonso,Stoffel Vandoorne,1,60,3613
+3,2018,Williams,0,Mercedes,0,0,1,,0,0,83,2020,0,20,0,0,0,0,Lance Stroll,Sergey Sirotkin,0,60,3613
+4,2018,Sauber,0,Ferrari,0,0,0,,0,0,5,2020,0,20,0,0,0,0,Marcus Ericsson,Charles Leclerc,0,60,3613
+5,2018,Mercedes,1,Mercedes,0,0,1,,9,0,668,2020,12,20,1,1,3,3,Lewis Hamilton,Valtteri Bottas,1,60,3613
+6,2018,Renault,0,Renault,0,0,1,,0,0,57,2020,0,20,0,0,0,0,Nico Hulkenberg,Carlos Sainz,0,60,3613
+7,2018,Force India,0,Mercedes,0,0,1,,1,0,187,2020,0,20,0,0,0,0,Sergio Perez,Esteban Ocon,1,60,3613
+8,2018,Red Bull Racing,0,Renault,0,0,1,,2,0,368,2020,3,20,0,0,0,1,Daniel Ricciardo,Max Verstappen,1,60,3613
+9,2018,Scuderia Toro Rosso,0,Honda,0,0,0,,0,0,53,2020,0,20,0,0,0,0,Pierre Gasly,Brendon Hartley,0,60,3613
+15,2018,Haas,0,Ferrari,0,0,1,,0,0,47,2020,0,20,0,0,0,0,Kevin Magnussen,Romain Grosjean,1,60,3613
+1,2019,Ferrari,0,Ferrari,0,0,0,,4,0,571,2062,6,21,0,0,2,1,Sebastian Vettel,Charles Leclerc,0,62,3728
+2,2019,McLaren,0,Renault,0,0,1,,0,0,62,2062,0,21,0,0,0,0,Carlos Sainz,Lando Norris,0,62,3728
+3,2019,Williams,0,Mercedes,0,0,1,,0,0,7,2062,0,21,0,0,0,0,George Russell,Robert Kubica,0,62,3728
+4,2019,Alfa Romeo,0,Ferrari,1,0,0,,0,0,48,2062,0,21,0,0,0,0,Kimi Raikkonen,Antonio Giovinazzi,0,62,3728
+5,2019,Mercedes,1,Mercedes,0,0,1,,10,0,655,2062,11,21,1,1,2,3,Lewis Hamilton,Valtteri Bottas,1,62,3728
+6,2019,Renault,0,Renault,0,0,1,,0,0,122,2062,0,21,0,0,0,0,Nico Hulkenberg,Daniel Ricciardo,0,62,3728
+7,2019,Racing Point,0,Mercedes,1,0,1,,0,0,52,2062,0,21,0,0,0,0,Sergio Perez,Lance Stroll,0,62,3728
+8,2019,Red Bull Racing,0,Honda,0,0,1,,6,0,419,2062,4,21,0,0,1,1,Max Verstappen,Pierre Gasly,0,62,3728
+9,2019,Scuderia Toro Rosso,0,Honda,0,0,0,,0,0,33,2062,0,21,0,0,0,0,Daniil Kvyat,Alexander Albon,0,62,3728
+15,2019,Haas,0,Ferrari,0,0,1,,1,0,93,2062,0,21,0,0,0,0,Kevin Magnussen,Romain Grosjean,1,62,3728
+1,2020,Ferrari,0,Ferrari,0,0,0,,6,0,504,2140,3,21,0,0,0,0,Sebastian Vettel,Charles Leclerc,1,62,3722
+2,2020,McLaren,0,Renault,0,0,1,,0,0,145,2140,0,21,0,0,0,0,Carlos Sainz,Lando Norris,1,62,3722
+3,2020,Williams,0,Mercedes,0,0,1,,0,0,1,2140,0,21,0,0,0,0,George Russell,Nicholas Latifi,0,62,3722
+4,2020,Alfa Romeo,0,Ferrari,0,0,0,,0,0,57,2140,0,21,0,0,0,0,Kimi Raikkonen,Antonio Giovinazzi,1,62,3722
+5,2020,Mercedes,1,Mercedes,0,0,1,,9,0,739,2140,15,21,1,1,5,4,Lewis Hamilton,Valtteri Bottas,1,62,3722
+6,2020,Renault,0,Renault,0,0,1,,0,0,91,2140,0,21,0,0,0,0,Daniel Ricciardo,Esteban Ocon,0,62,3722
+7,2020,Racing Point,0,Mercedes,0,0,1,,0,0,73,2140,0,21,0,0,0,0,Sergio Perez,Lance Stroll,1,62,3722
+8,2020,Red Bull Racing,0,Honda,0,0,1,,5,0,417,2140,3,21,0,0,0,1,Max Verstappen,Alexander Albon,0,62,3722
+9,2020,AlphaTauri,0,Honda,1,0,0,,0,0,85,2140,0,21,0,0,0,0,Pierre Gasly,Daniil Kvyat,0,62,3722
+15,2020,Haas,0,Ferrari,0,0,1,,1,0,28,2140,0,21,0,0,0,0,Kevin Magnussen,Romain Grosjean,1,62,3722
+1,2021,Ferrari,0,Ferrari,0,0,0,,0,0,131,1719,0,17,0,0,0,0,Charles Leclerc,Carlos Sainz,0,59,3563
+2,2021,McLaren,0,Mercedes,0,0,1,,3,0,202,1719,0,17,0,0,0,0,Lando Norris,Daniel Ricciardo,0,59,3563
+3,2021,Williams,0,Mercedes,0,0,1,,0,0,0,1719,0,17,0,0,0,0,George Russell,Nicholas Latifi,1,59,3563
+4,2021,Alfa Romeo,0,Ferrari,0,0,0,,0,0,8,1719,0,17,0,0,0,0,Kimi Raikkonen,Antonio Giovinazzi,1,59,3563
+5,2021,Mercedes,1,Mercedes,0,0,1,,9,0,573,1719,13,17,1,1,4,3,Lewis Hamilton,Valtteri Bottas,1,59,3563
+6,2021,Alpine,0,Renault,1,0,1,,2,0,181,1719,0,17,0,0,0,0,Fernando Alonso,Esteban Ocon,0,59,3563
+7,2021,Aston Martin,0,Mercedes,1,0,1,,0,0,195,1719,1,17,0,0,0,1,Sebastian Vettel,Lance Stroll,0,59,3563
+8,2021,Red Bull Racing,0,Honda,0,0,1,,3,0,319,1719,2,17,0,0,1,1,Max Verstappen,Sergio Perez,0,59,3563
+9,2021,AlphaTauri,0,Honda,0,0,0,,0,0,107,1719,1,17,0,0,0,0,Pierre Gasly,Yuki Tsunoda,0,59,3563
+15,2021,Haas,0,Ferrari,0,0,1,,0,0,3,1719,0,17,0,0,0,0,Mick Schumacher,Nikita Mazepin,0,59,3563
+1,2022,Ferrari,0,Ferrari,0,0,0,,0,1,323.5,2207.5,0,22,0,0,0,0,Charles Leclerc,Carlos Sainz,1,60,3596
+2,2022,McLaren,0,Mercedes,0,0,1,,2,1,275,2207.5,1,22,0,0,0,0,Lando Norris,Daniel Ricciardo,1,60,3596
+3,2022,Williams,0,Mercedes,0,0,1,,0,1,23,2207.5,0,22,0,0,0,0,Alexander Albon,Nicholas Latifi,0,60,3596
+4,2022,Alfa Romeo,0,Ferrari,0,0,0,,0,1,13,2207.5,0,22,0,0,0,0,Valtteri Bottas,Zhou Guanyu,0,60,3596
+5,2022,Mercedes,0,Mercedes,0,0,1,,10,1,613.5,2207.5,9,22,0,0,3,3,Lewis Hamilton,George Russell,0,60,3596
+6,2022,Alpine,0,Renault,0,0,1,,0,1,155,2207.5,1,22,0,0,0,0,Fernando Alonso,Esteban Ocon,1,60,3596
+7,2022,Aston Martin,0,Mercedes,0,0,1,,0,1,77,2207.5,0,22,0,1,0,0,Sebastian Vettel,Lance Stroll,1,60,3596
+8,2022,Red Bull Racing,1,Honda,0,0,1,,8,1,585.5,2207.5,11,22,1,0,2,2,Max Verstappen,Sergio Perez,1,60,3596
+9,2022,AlphaTauri,0,Honda,0,0,0,,1,1,142,2207.5,0,22,0,0,0,0,Pierre Gasly,Yuki Tsunoda,1,60,3596
+15,2022,Haas,0,Ferrari,0,0,1,,0,1,0,2207.5,0,22,0,0,0,0,Mick Schumacher,Kevin Magnussen,0,60,3596
+1,2023,Ferrari,0,Ferrari,0,0,0,,5,0,554,2350,4,22,0,0,2,0,Charles Leclerc,Carlos Sainz,1,61,3628
+2,2023,McLaren,0,Mercedes,0,0,1,,2,0,159,2350,0,22,0,0,0,0,Lando Norris,Oscar Piastri,0,61,3628
+3,2023,Williams,0,Mercedes,0,0,1,,0,0,8,2350,0,22,0,0,0,0,Alexander Albon,Logan Sargeant,0,61,3628
+4,2023,Alfa Romeo,0,Ferrari,0,0,0,,1,0,55,2350,0,22,0,0,0,0,Valtteri Bottas,Zhou Guanyu,1,61,3628
+5,2023,Mercedes,0,Mercedes,0,0,1,,6,0,515,2350,1,22,0,0,0,1,Lewis Hamilton,George Russell,1,61,3628
+6,2023,Alpine,0,Renault,0,0,1,,0,0,173,2350,0,22,0,0,0,0,Pierre Gasly,Esteban Ocon,0,61,3628
+7,2023,Aston Martin,0,Mercedes,0,0,1,,0,0,55,2350,0,22,0,0,0,0,Fernando Alonso,Lance Stroll,0,61,3628
+8,2023,Red Bull Racing,1,Honda,0,0,1,,8,0,759,2350,17,22,1,1,3,4,Max Verstappen,Sergio Perez,1,61,3628
+9,2023,AlphaTauri,0,Honda,0,0,0,,0,0,35,2350,0,22,0,0,0,0,Yuki Tsunoda,Nyck De Vries,0,61,3628
+15,2023,Haas,0,Ferrari,0,0,1,,0,0,37,2350,0,22,0,0,0,0,Kevin Magnussen,Nico Hulkenberg,0,61,3628
+1,2024,Ferrari,0,Ferrari,0,0,0,,0,0,406,2458,1,22,0,0,0,0,Charles Leclerc,Carlos Sainz,1,66,3916
+2,2024,McLaren,1,Mercedes,0,0,1,,3,0,302,2458,0,22,0,0,0,0,Lando Norris,Oscar Piastri,1,66,3916
+3,2024,Williams,0,Mercedes,0,0,1,,0,0,28,2458,0,22,0,0,0,0,Alexander Albon,Logan Sargeant,1,66,3916
+4,2024,Kick Sauber,0,Ferrari,1,0,0,,1,0,16,2458,0,22,0,0,0,0,Valtteri Bottas,Zhou Guanyu,1,66,3916
+5,2024,Mercedes,0,Mercedes,0,0,1,,4,0,409,2458,0,22,0,0,0,0,Lewis Hamilton,George Russell,1,66,3916
+6,2024,Alpine,0,Renault,0,0,1,,0,0,120,2458,0,22,0,0,0,0,Pierre Gasly,Esteban Ocon,1,66,3916
+7,2024,Aston Martin,0,Mercedes,0,0,1,,0,0,280,2458,0,22,0,0,0,0,Fernando Alonso,Lance Stroll,1,66,3916
+8,2024,Red Bull Racing,0,Honda,0,0,1,,11,0,860,2458,21,22,1,1,5,5,Max Verstappen,Sergio Perez,1,66,3916
+9,2024,Racing Bulls,0,Honda,1,0,0,,1,0,25,2458,0,22,0,0,0,0,Daniel Ricciardo,Yuki Tsunoda,0,66,3916
+15,2024,Haas,0,Ferrari,0,0,1,,0,0,12,2458,0,22,0,0,0,0,Kevin Magnussen,Nico Hulkenberg,1,66,3916
+1,2025,Ferrari,0,Ferrari,0,0,0,,4,0,652,2659,5,24,0,0,1,1,Charles Leclerc,Lewis Hamilton,0,68,4063
+2,2025,McLaren,1,Mercedes,0,0,1,,7,0,666,2659,6,24,0,1,0,1,Lando Norris,Oscar Piastri,1,68,4063
+3,2025,Williams,0,Mercedes,0,0,1,,0,0,17,2659,0,24,0,0,0,0,Alexander Albon,Carlos Sainz,0,68,4063
+4,2025,Kick Sauber,0,Ferrari,0,0,0,,0,0,4,2659,0,24,0,0,0,0,Nico Hulkenberg,Gabriel Bortoleto,0,68,4063
+5,2025,Mercedes,0,Mercedes,0,0,1,,4,0,468,2659,4,24,0,0,0,1,George Russell,Kimi Antonelli,0,68,4063
+6,2025,Alpine,0,Renault,0,0,1,,1,0,65,2659,0,24,0,0,0,0,Pierre Gasly,Jack Doohan,0,68,4063
+7,2025,Aston Martin,0,Mercedes,0,0,1,,2,0,94,2659,0,24,0,0,0,0,Fernando Alonso,Lance Stroll,1,68,4063
+8,2025,Red Bull Racing,0,Honda,0,0,1,,4,0,589,2659,9,24,1,0,4,2,Max Verstappen,Liam Lawson,0,68,4063
+9,2025,Racing Bulls,0,Honda,0,0,0,,1,0,46,2659,0,24,0,0,0,0,Yuki Tsunoda,Isack Hadjar,0,68,4063
+15,2025,Haas,0,Ferrari,0,0,1,,1,0,58,2659,0,24,0,0,0,0,Esteban Ocon,Oliver Bearman,0,68,4063
+1,2026,Ferrari,,Ferrari,0,0,0,,2,1,398,2640,0,24,0,0,0,0,Charles Leclerc,Lewis Hamilton,1,70,4213
+2,2026,McLaren,,Mercedes,0,0,1,,12,1,833,2640,14,24,1,1,4,2,Lando Norris,Oscar Piastri,1,70,4213
+3,2026,Williams,,Mercedes,0,0,1,,1,1,137,2640,0,24,0,0,0,0,Alexander Albon,Carlos Sainz,1,70,4213
+4,2026,Audi,,Audi,1,0,0,,0,1,70,2640,0,24,0,0,0,0,Nico Hulkenberg,Gabriel Bortoleto,1,70,4213
+5,2026,Mercedes,,Mercedes,0,0,1,,6,1,469,2640,2,24,0,0,0,0,George Russell,Kimi Antonelli,1,70,4213
+6,2026,Alpine,,Mercedes,0,0,1,,0,1,22,2640,0,24,0,0,0,0,Pierre Gasly,Franco Colapinto,0,70,4213
+7,2026,Aston Martin,,Honda,0,0,1,,0,1,89,2640,0,24,0,0,0,0,Fernando Alonso,Lance Stroll,1,70,4213
+8,2026,Red Bull Racing,,Ford,0,0,1,,3,1,451,2640,8,24,0,0,1,3,Max Verstappen,Isack Hadjar,0,70,4213
+9,2026,Racing Bulls,,Ford,0,0,0,,0,1,92,2640,0,24,0,0,0,0,Liam Lawson,Arvid Lindblad,0,70,4213
+15,2026,Haas,,Ferrari,0,0,1,,0,1,79,2640,0,24,0,0,0,0,Esteban Ocon,Oliver Bearman,1,70,4213
+16,2026,Cadillac,,Ferrari,1,1,1,,0,1,0,2640,0,24,0,0,0,0,Sergio Perez,Valtteri Bottas,0,70,4213

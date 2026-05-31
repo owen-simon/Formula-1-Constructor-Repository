@@ -37,45 +37,10 @@ scrape_seasons <- function(urls) {
 
 ```{r}
 # List of seasonal results pages
-
-f1_season_urls <- c(
-  "https://www.formula1.com/en/results/1989/races",
-  "https://www.formula1.com/en/results/1990/races",
-  "https://www.formula1.com/en/results/1991/races",
-  "https://www.formula1.com/en/results/1992/races",
-  "https://www.formula1.com/en/results/1993/races",
-  "https://www.formula1.com/en/results/1994/races",
-  "https://www.formula1.com/en/results/1995/races",
-  "https://www.formula1.com/en/results/1996/races",
-  "https://www.formula1.com/en/results/1997/races",
-  "https://www.formula1.com/en/results/1998/races",
-  "https://www.formula1.com/en/results/1999/races",
-  "https://www.formula1.com/en/results/2000/races",
-  "https://www.formula1.com/en/results/2001/races",
-  "https://www.formula1.com/en/results/2002/races",
-  "https://www.formula1.com/en/results/2003/races",
-  "https://www.formula1.com/en/results/2004/races",
-  "https://www.formula1.com/en/results/2005/races",
-  "https://www.formula1.com/en/results/2006/races",
-  "https://www.formula1.com/en/results/2007/races",
-  "https://www.formula1.com/en/results/2008/races",
-  "https://www.formula1.com/en/results/2009/races",
-  "https://www.formula1.com/en/results/2010/races",
-  "https://www.formula1.com/en/results/2011/races",
-  "https://www.formula1.com/en/results/2012/races",
-  "https://www.formula1.com/en/results/2013/races",
-  "https://www.formula1.com/en/results/2014/races",
-  "https://www.formula1.com/en/results/2015/races",
-  "https://www.formula1.com/en/results/2016/races",
-  "https://www.formula1.com/en/results/2017/races",
-  "https://www.formula1.com/en/results/2018/races",
-  "https://www.formula1.com/en/results/2019/races",
-  "https://www.formula1.com/en/results/2020/races",
-  "https://www.formula1.com/en/results/2021/races",
-  "https://www.formula1.com/en/results/2022/races",
-  "https://www.formula1.com/en/results/2023/races",
-  "https://www.formula1.com/en/results/2024/races",
-  "https://www.formula1.com/en/results/2025/races"
+f1_season_urls <- paste0(
+  "https://www.formula1.com/en/results/",
+  1989:2025,
+  "/races"
 )
 
 race_result_urls <- scrape_seasons(f1_season_urls)

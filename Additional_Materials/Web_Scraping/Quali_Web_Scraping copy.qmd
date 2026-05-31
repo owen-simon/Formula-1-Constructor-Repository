@@ -1,0 +1,100 @@
+---
+title: "F1 Results Web Scraping"
+format: html
+---
+
+```{r}
+# Import packages
+library(rvest)
+library(dplyr)
+library(purrr)
+library(tidyr)
+library(stringr)
+```
+
+```{r}
+# Function to retrieve race result URLs
+scrape_race_results <- function(urls) {
+  
+  map_df(urls, function(url) {
+    
+    page <- read_html(url)
+    rows <- page %>% html_elements("table tbody tr")
+    
+    map_df(rows, function(row) {
+      
+      race_node <- row %>% html_element("td:first-child a")
+      
+      tibble(
+        race_link = race_node %>% html_attr("href")
+      )
+    })
+  }) %>%
+    mutate(full_link = paste0("https://www.formula1.com", race_link)) %>%
+    pull(full_link)
+}
+
+# Function to retrieve qualifying URLs
+scrape_qualifying <- function(urls) {
+  
+  scrape_race_results(urls) %>%
+    str_replace("race-result$", "qualifying")
+}
+```
+
+```{r}
+# List of seasonal results pages
+f1_season_urls <- paste0(
+  "https://www.formula1.com/en/results/",
+  1999:2025,
+  "/races"
+)
+
+quali_urls <- scrape_qualifying(f1_season_urls)
+```
+
+```{r}
+# Function to retrieve qualifying result data
+scrape_qualifying <- function(url) {
+
+  year <- url %>%
+    str_split("/") %>%
+    unlist() %>%
+    .[6]
+
+  page <- read_html(url)
+
+  page %>%
+    html_node("table") %>%
+    html_table() %>%
+    select(`Pos.`, Team) %>%
+    mutate(
+      `Pos.` = suppressWarnings(as.numeric(`Pos.`)),
+      Year = as.integer(year)
+    ) %>%
+    filter(!is.na(`Pos.`))
+}
+```
+
+```{r}
+# Run web scraping function on all fastest lap results (2000-present)
+qualifying_results <- map_dfr(
+  quali_urls,
+  scrape_qualifying
+)
+```
+
+```{r}
+# Group results by year and team
+avg_qualifying_position <- qualifying_results %>%
+  group_by(Year, Team) %>%
+  summarise(
+    Avg_Qualifying_Position = mean(`Pos.`, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  arrange(Year, Avg_Qualifying_Position)
+```
+
+```{r}
+write.csv(avg_qualifying_position, "Data_Files/avg_quali_pos.csv", row.names = FALSE)
+```

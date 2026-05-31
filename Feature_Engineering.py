@@ -221,32 +221,32 @@ raw_data_2026 = create_prior_season_win_prop(raw_data_2026)
 # ==========================================================
 # Create Prior Season Fastest Lap Proportion
 # ==========================================================
-#
-#def create_prior_season_win_prop(df):
-#    df = df.copy()
-#
-#    # Avoid division by zero
-#    df["Prior_Season_Fastest_Lap_Prop"] = (
-#        df["Prior_Season_Fastest_Lap_Count"] /
-#        df["Prior_Season_GP_Count"]
-#    ).replace([float("inf"), -float("inf")], 0)
-#
-#    # Handle NaN values and clip to [0, 1]
-#    df["Prior_Season_Fastest_Lap_Prop"] = df["Prior_Season_Fastest_Lap_Prop"].fillna(0)
-#    df["Prior_Season_Fastest_Lap_Prop"] = df["Prior_Season_Fastest_Lap_Prop"].clip(0, 1)
-#
-#    # Drop original columns
-#    df = df.drop(
-#        columns=[
-#            "Prior_Season_Fastest_Lap_Count",
-#            "Prior_Season_GP_Count"
-#        ]
-#    )
-#
-#    return df
-#
+
+def create_prior_fl_prop(df):
+    df = df.copy()
+
+    # Avoid division by zero
+    df["Prior_Season_Fastest_Lap_Prop"] = (
+        df["Prior_Season_Fastest_Lap_Count"] /
+        df["Prior_Season_GP_Count"]
+    ).replace([float("inf"), -float("inf")], 0)
+
+    # Handle NaN values and clip to [0, 1]
+    df["Prior_Season_Fastest_Lap_Prop"] = df["Prior_Season_Fastest_Lap_Prop"].fillna(0)
+    df["Prior_Season_Fastest_Lap_Prop"] = df["Prior_Season_Fastest_Lap_Prop"].clip(0, 1)
+
+    # Drop original columns
+    df = df.drop(
+        columns=[
+            "Prior_Season_Fastest_Lap_Count",
+            "Prior_Season_GP_Count"
+        ]
+    )
+
+    return df
+
 # Apply to raw data set
-#raw_data_2026 = create_prior_season_win_prop(raw_data_2026)
+raw_data_2026 = create_prior_fl_prop(raw_data_2026)
 
 # ============================================================================
 # Create Proportion of Previous 3 Season Race Starts for the Driver Lineup
@@ -317,7 +317,7 @@ def simplify_engine_branding(df, col="Engine_Branding"):
 
     df[col] = (
         df[col]
-        .fillna("Other")
+        .fillna("OTHER")
         .astype(str)
         .str.upper()
     )
@@ -328,6 +328,15 @@ def simplify_engine_branding(df, col="Engine_Branding"):
 
 # Apply to raw data set
 raw_data_2026 = simplify_engine_branding(raw_data_2026)
+
+# ============================================================
+# Replace null values with the mean
+# ============================================================
+cols_to_fill = raw_data_2026.columns.drop("Constructor_Champion")
+
+for col in cols_to_fill:
+    if raw_data_2026[col].dtype in ["float64", "int64"]:
+        raw_data_2026[col] = raw_data_2026[col].fillna(raw_data_2026[col].mean())
 
 # ============================================================
 # Split data into train and test sets (for 2026 predictions)

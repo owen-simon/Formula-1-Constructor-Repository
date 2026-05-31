@@ -1,0 +1,56 @@
+---
+title: "F1 Results Web Scraping"
+format: html
+---
+
+```{r}
+# Import packages
+library(rvest)
+library(dplyr)
+library(purrr)
+library(tidyr)
+library(stringr)
+```
+
+```{r}
+# Function to retrieve race URLs from seasonal results pages
+get_team_points <- function(url) {
+
+  year <- str_extract(url, "\\d{4}")
+
+  read_html(url) %>%
+    html_node("table") %>%
+    html_table() %>%
+    select(Team, Pts.) %>%
+    mutate(
+      Year = year,
+      Pts. = as.numeric(Pts.)
+    )
+}
+```
+
+```{r}
+# List of seasonal results pages
+season_urls <- paste0(
+  "https://www.formula1.com/en/results/",
+  1999:2025,
+  "/team"
+)
+```
+
+```{r}
+# Run web scraping function on all race results (1989-present)
+team_points <- map_dfr(season_urls, get_team_points)
+```
+
+```{r}
+# write to csv file
+write.csv(
+  team_points,
+  "Data_Files/championship_points.csv",
+  row.names = FALSE
+)
+```
+
+
+
