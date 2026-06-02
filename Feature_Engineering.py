@@ -322,7 +322,7 @@ def simplify_engine_branding(df, col="Engine_Branding"):
         .str.upper()
     )
 
-    df[col] = df[col].where(df[col].isin(keep_brands), "Other")
+    df[col] = df[col].where(df[col].isin(keep_brands), "OTHER")
 
     return df
 
