@@ -1,0 +1,736 @@
+---
+title: "Modeling"
+author: "Team VM"
+format: 
+    html:
+        toc: true
+        toc-depth: 3
+        toc-location: left
+        toc-title: "Table of Contents"
+        embed-resources: true
+---
+
+```{r}
+# Libraries
+library(tidyverse)
+library(dplyr)
+library(tibble)
+library(caret)
+library(pROC)
+library(themis)
+library(ipred)
+library(randomForest)
+library(gbm)
+# remotes::install_github("souravc83/fastAdaboost")
+library(klaR)
+library(fastAdaboost)
+library(kernlab)
+library(glmnet)
+library(doParallel)
+library(foreach)
+library(ggplot2)
+
+set.seed(42)
+RANDOM_SEED <- 42
+```
+
+```{r}
+# Read file
+df <- read.csv("Data_Files/Train.csv") %>%
+  dplyr::select(-ID)
+
+df_holdout = read.csv("Data_Files/Test.csv")
+holdout_ids <- df_holdout$ID
+```
+
+## Data Preparation
+
+### Log Transform Skewed Variables
+```{r}
+# log1p is used to handle zero values
+df$Prior_Season_Grand_Prix_Wins_Last5GP <-
+  log1p(df$Prior_Season_Grand_Prix_Wins_Last5GP)
+
+df_holdout$Prior_Season_Grand_Prix_Wins_Last5GP <-
+  log1p(df_holdout$Prior_Season_Grand_Prix_Wins_Last5GP)
+```
+
+### Stratified Train-Test Split
+
+```{r}
+# Split into train and test datasets
+set.seed(RANDOM_SEED)
+
+train_index <- createDataPartition(
+  df$Constructor_Champion,
+  p = 0.7,
+  list = FALSE,
+  times = 1
+)
+
+train_df <- df[train_index, ]
+test_df  <- df[-train_index, ]
+
+
+cat("Training set size:", nrow(train_df), "\n")
+cat("Test set size:", nrow(test_df), "\n")
+```
+
+```{r}
+# Verify stratified splitting
+print(mean(train_df$Constructor_Champion))
+print(mean(test_df$Constructor_Champion))
+```
+
+### Convert Target Variable to Factor
+
+```{r}
+# Binary predictor variables
+binary_vars <- c(
+  "New_Name",
+  "New_Team",
+  "UK_Based",
+  "Major_Reg_Change",
+  "Defending_Driver_Champ",
+  "Defending_Constructor_Champ",
+  "Returning_Driver_Lineup"
+)
+
+train_df[binary_vars] <- lapply(train_df[binary_vars], factor)
+test_df[binary_vars]  <- lapply(test_df[binary_vars], factor)
+df[binary_vars] <- lapply(df[binary_vars], factor)
+df_holdout[binary_vars] <- lapply(df_holdout[binary_vars], factor)
+
+# Target variable
+train_df$Constructor_Champion <- factor(
+  train_df$Constructor_Champion,
+  levels = c(1, 0),
+  labels = c("Yes", "No")
+)
+
+test_df$Constructor_Champion <- factor(
+  test_df$Constructor_Champion,
+  levels = c(1, 0),
+  labels = c("Yes", "No")
+)
+
+df$Constructor_Champion <- factor(
+  df$Constructor_Champion,
+  levels = c(1, 0),
+  labels = c("Yes", "No")
+)
+```
+
+## Base Model Training
+
+### Parallel Processing Setup
+
+```{r}
+# Use one fewer core than available
+n_cores <- max(1, parallel::detectCores() - 1)
+
+cl <- makeCluster(n_cores)
+registerDoParallel(cl)
+
+cat("Using", foreach::getDoParWorkers(), "cores\n")
+```
+
+### Cross-Validation Setup
+
+```{r}
+set.seed(RANDOM_SEED)
+
+# without SMOTE
+cv_control <- trainControl(
+  method = "cv",
+  number = 5,
+  classProbs = TRUE,
+  summaryFunction = twoClassSummary,
+  savePredictions = "final",
+  allowParallel = TRUE
+)
+
+# with SMOTE
+cv_control_smote <- trainControl(
+  method = "cv",
+  number = 5,
+  classProbs = TRUE,
+  summaryFunction = twoClassSummary,
+  sampling = "smote",
+  savePredictions = "final",
+  allowParallel = TRUE
+)
+```
+
+### Logistic Regression Models
+
+```{r}
+set.seed(RANDOM_SEED)
+
+log_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "glm",
+  family = "binomial",
+  metric = "ROC",
+  trControl = cv_control
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+log_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "glm",
+  family = "binomial",
+  metric = "ROC",
+  trControl = cv_control_smote
+)
+```
+
+### Decision Tree Models
+
+```{r}
+set.seed(RANDOM_SEED)
+
+tree_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "rpart",
+  metric = "ROC",
+  trControl = cv_control_smote
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+tree_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "rpart",
+  metric = "ROC",
+  trControl = cv_control
+)
+```
+
+### Ensemble Models
+
+#### Bagging
+
+```{r}
+set.seed(RANDOM_SEED)
+
+bag_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "treebag",
+  metric = "ROC",
+  trControl = cv_control
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+bag_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "treebag",
+  metric = "ROC",
+  trControl = cv_control_smote
+)
+```
+
+#### Random Forest
+
+```{r}
+set.seed(RANDOM_SEED)
+
+rf_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "rf",
+  metric = "ROC",
+  ntree = 500,
+  importance = TRUE,
+  trControl = cv_control,
+  tuneLength = 3
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+rf_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "rf",
+  metric = "ROC",
+  ntree = 500,
+  importance = TRUE,
+  trControl = cv_control_smote,
+  tuneLength = 3
+)
+```
+
+#### Gradient Boosting
+
+```{r}
+set.seed(RANDOM_SEED)
+
+gbm_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "gbm",
+  metric = "ROC",
+  verbose = FALSE,
+  trControl = cv_control,
+  tuneLength = 3
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+gbm_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "gbm",
+  metric = "ROC",
+  verbose = FALSE,
+  trControl = cv_control_smote,
+  tuneLength = 3
+)
+```
+
+#### AdaBoost
+
+```{r}
+set.seed(RANDOM_SEED)
+
+ada_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "AdaBoost.M1",
+  metric = "ROC",
+  trControl = cv_control,
+  tuneLength = 3
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+ada_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "AdaBoost.M1",
+  metric = "ROC",
+  trControl = cv_control_smote,
+  tuneLength = 3
+)
+```
+
+### Regularization Models
+
+#### Ridge Logistic Regression
+
+```{r}
+set.seed(RANDOM_SEED)
+
+ridge_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "glmnet",
+  family = "binomial",
+  metric = "ROC",
+  trControl = cv_control,
+  tuneGrid = expand.grid(
+    alpha = 0,
+    lambda = 10^seq(-3, 1, length = 3)
+  )
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+ridge_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "glmnet",
+  family = "binomial",
+  metric = "ROC",
+  trControl = cv_control_smote,
+  tuneGrid = expand.grid(
+    alpha = 0,
+    lambda = 10^seq(-3, 1, length = 3)
+  )
+)
+```
+
+#### Lasso Logistic Regression
+
+```{r}
+set.seed(RANDOM_SEED)
+
+lasso_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "glmnet",
+  family = "binomial",
+  metric = "ROC",
+  trControl = cv_control,
+  tuneGrid = expand.grid(
+    alpha = 1,
+    lambda = 10^seq(-3, 1, length = 3)
+  )
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+lasso_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "glmnet",
+  family = "binomial",
+  metric = "ROC",
+  trControl = cv_control_smote,
+  tuneGrid = expand.grid(
+    alpha = 1,
+    lambda = 10^seq(-3, 1, length = 3)
+  )
+)
+```
+
+#### Elastic Net Logistic Regression
+
+```{r}
+set.seed(RANDOM_SEED)
+
+enet_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "glmnet",
+  family = "binomial",
+  metric = "ROC",
+  trControl = cv_control,
+  tuneLength = 3
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+enet_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "glmnet",
+  family = "binomial",
+  metric = "ROC",
+  trControl = cv_control_smote,
+  tuneLength = 3
+)
+```
+
+### Naive Bayes
+
+```{r}
+set.seed(RANDOM_SEED)
+
+nb_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "nb",
+  metric = "ROC",
+  trControl = cv_control,
+  tuneLength = 3
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+nb_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "nb",
+  metric = "ROC",
+  trControl = cv_control_smote,
+  tuneLength = 3
+)
+```
+
+### K-Nearest Neighbors
+
+```{r}
+set.seed(RANDOM_SEED)
+
+knn_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "knn",
+  metric = "ROC",
+  preProcess = c("center", "scale"),
+  trControl = cv_control,
+  tuneLength = 3
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+knn_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "knn",
+  metric = "ROC",
+  preProcess = c("zv", "center", "scale"),
+  trControl = cv_control_smote,
+  tuneLength = 3
+)
+```
+
+### Support Vector Models
+
+#### SVM Linear
+
+```{r}
+set.seed(RANDOM_SEED)
+
+svm_linear_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "svmLinear",
+  metric = "ROC",
+  preProcess = c("zv", "center", "scale"),
+  trControl = cv_control,
+  tuneLength = 3
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+svm_linear_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "svmLinear",
+  metric = "ROC",
+  preProcess = c("zv", "center", "scale"),
+  trControl = cv_control_smote,
+  tuneLength = 3
+)
+```
+
+#### SVM Radial
+
+```{r}
+set.seed(RANDOM_SEED)
+
+svm_radial_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "svmRadial",
+  metric = "ROC",
+  preProcess = c("zv", "center", "scale"),
+  trControl = cv_control,
+  tuneLength = 3
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+svm_radial_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "svmRadial",
+  metric = "ROC",
+  preProcess = c("zv", "center", "scale"),
+  trControl = cv_control_smote,
+  tuneLength = 3
+)
+```
+
+### Neural Network
+
+```{r}
+set.seed(RANDOM_SEED)
+
+nnet_model <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "nnet",
+  metric = "ROC",
+  preProcess = c("center", "scale"),
+  trControl = cv_control,
+  tuneLength = 3,
+  trace = FALSE,
+  maxit = 1000
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+nnet_model_smote <- train(
+  Constructor_Champion ~ .,
+  data = train_df,
+  method = "nnet",
+  metric = "ROC",
+  preProcess = c("center", "scale"),
+  trControl = cv_control_smote,
+  tuneLength = 3,
+  trace = FALSE,
+  maxit = 1000
+)
+```
+
+### Base Model Comparison
+
+```{r}
+get_class_metrics <- function(model, model_name, test_data, target_col = "Constructor_Champion") {
+  
+  preds <- predict(model, test_data)
+  probs <- predict(model, test_data, type = "prob")[, "Yes"]
+  
+  cm <- confusionMatrix(
+    preds,
+    test_data[[target_col]],
+    positive = "Yes"
+  )
+  
+  model_auc <- auc(
+    roc(
+      response = test_data[[target_col]],
+      predictor = probs,
+      levels = c("No", "Yes"),
+      direction = "<"
+    )
+  )
+  
+  data.frame(
+    Model = model_name,
+    AUC = round(as.numeric(model_auc), 6),
+    Accuracy = round(cm$overall["Accuracy"], 6),
+    Precision = round(cm$byClass["Precision"], 6),
+    Recall = round(cm$byClass["Recall"], 6),
+    F1 = round(cm$byClass["F1"], 6),
+    Specificity = round(cm$byClass["Specificity"], 6)
+  )
+}
+```
+
+```{r}
+model_comparison <- bind_rows(
+  get_class_metrics(log_model, "Logistic Regression", test_df),
+  get_class_metrics(log_model_smote, "Logistic Regression + SMOTE", test_df),
+  get_class_metrics(tree_model, "Decision Tree", test_df),
+  get_class_metrics(tree_model_smote, "Decision Tree + SMOTE", test_df),
+  get_class_metrics(bag_model, "Bagging", test_df),
+  get_class_metrics(bag_model_smote, "Bagging + SMOTE", test_df),
+  get_class_metrics(rf_model, "Random Forest", test_df),
+  get_class_metrics(rf_model_smote, "Random Forest + SMOTE", test_df),
+  get_class_metrics(gbm_model, "Gradient Boosting", test_df),
+  get_class_metrics(gbm_model_smote, "Gradient Boosting + SMOTE", test_df),
+  get_class_metrics(ada_model, "AdaBoost", test_df),
+  get_class_metrics(ada_model_smote, "AdaBoost + SMOTE", test_df),
+  get_class_metrics(ridge_model, "Ridge Logistic Regression", test_df),
+  get_class_metrics(ridge_model_smote, "Ridge Logistic Regression + SMOTE", test_df),
+  get_class_metrics(lasso_model, "Lasso Logistic Regression", test_df),
+  get_class_metrics(lasso_model_smote, "Lasso Logistic Regression + SMOTE", test_df),
+  get_class_metrics(enet_model, "Elastic Net", test_df),
+  get_class_metrics(enet_model_smote, "Elastic Net + SMOTE", test_df),
+  get_class_metrics(nb_model, "Naive Bayes", test_df),
+  get_class_metrics(nb_model_smote, "Naive Bayes + SMOTE", test_df),
+  get_class_metrics(knn_model, "KNN", test_df),
+  get_class_metrics(knn_model_smote, "KNN + SMOTE", test_df),
+  get_class_metrics(svm_linear_model, "SVM Linear", test_df),
+  get_class_metrics(svm_linear_model_smote, "SVM Linear + SMOTE", test_df),
+  get_class_metrics(svm_radial_model, "SVM Radial", test_df),
+  get_class_metrics(svm_radial_model_smote, "SVM Radial + SMOTE", test_df),
+  get_class_metrics(nnet_model, "Neural Network", test_df),
+  get_class_metrics(nnet_model_smote, "Neural Network + SMOTE", test_df)
+) %>%
+  arrange(desc(AUC), desc(Precision))
+
+knitr::kable(
+  model_comparison,
+  digits = 4,
+  caption = "Model Comparison Results"
+)
+```
+
+### End Processing Setup
+
+```{r}
+stopCluster(cl)
+registerDoSEQ()
+
+cat("Parallel processing stopped\n")
+```
+
+## Final Model
+
+```{r}
+set.seed(RANDOM_SEED)
+
+svm_radial_grid <- expand.grid(
+  sigma = c(0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1),
+  C = c(0.25, 0.5, 1, 2, 4, 8, 16)
+)
+```
+
+```{r}
+set.seed(RANDOM_SEED)
+
+svm_radial_tuned <- train(
+  Constructor_Champion ~ .,
+  data = df,
+  method = "svmRadial",
+  metric = "ROC",
+  trControl = cv_control,
+  preProcess = c("zv", "center", "scale"),
+  tuneGrid = svm_radial_grid
+)
+```
+
+```{r}
+svm_radial_tuned$bestTune
+```
+
+### Generate Final Predictions
+
+```{r}
+holdout_probs <- predict(
+  svm_radial_tuned,
+  newdata = df_holdout,
+  type = "prob"
+)
+
+holdout_preds <- predict(
+  svm_radial_tuned,
+  newdata = df_holdout
+)
+
+y2026_predictions <- data.frame(
+  ID = holdout_ids,
+  Probability_Yes = holdout_probs$Yes
+) %>%
+  arrange(desc(Probability_Yes)) %>%
+  mutate(
+    Predicted_Standing = row_number()
+  )
+
+write.csv(
+  y2026_predictions,
+  "Data_Files/y2026_predictions.csv",
+  row.names = FALSE
+)
+```

@@ -1,0 +1,175 @@
+---
+title: "Exploratory Data Analysis"
+author: "Team VM"
+format: 
+    html:
+        toc: true
+        toc-depth: 3
+        toc-location: left
+        toc-title: "Table of Contents"
+        embed-resources: true
+execute:
+  echo: false
+---
+
+```{python}
+# load packages
+from scipy.stats import skew
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.impute import SimpleImputer
+from sklearn.model_selection import (
+    StratifiedKFold,
+    cross_validate
+)
+
+RANDOM_STATE = 42
+```
+
+```{python}
+# Read file
+df = pd.read_csv("Data_Files/Train.csv")
+df_final = pd.read_csv("Data_Files/Train.csv")
+```
+
+## Review Data Structure
+
+```{python}
+print(df.shape)
+print(df_final.shape)
+```
+
+```{python}
+df.info()
+df_final.info()
+```
+
+```{python}
+df.describe()
+df_final.describe()
+```
+
+## Numeric Variables
+
+```{python}
+# Identify numeric columns 
+# (Note: binary columns are also listed here as numeric)
+num_cols = df.select_dtypes(include="number").columns.tolist()
+df[num_cols].hist(bins=30, figsize=(12, 8))
+plt.suptitle("Numeric Distributions (Histograms)");
+```
+
+```{python}
+# Evaluate skewness of numeric columns (exclude binary columns)
+num_cols = [
+    "Prior_Season_Avg_Quali_Pos",
+    "Prior_Season_Grand_Prix_Wins_First5GP",
+    "Prior_Season_Grand_Prix_Wins_Last5GP",
+    "Driver_Lineup_Total_Race_Starts",
+    "Driver_Lineup_Total_Laps_Completed",
+    "Prior_Season_Points_Prop",
+    "Prior_Season_Win_Prop",
+    "Prior_Season_Fastest_Lap_Prop",
+    "Driver_Lineup_3_Season_Race_Start_Prop",
+    "Driver_Lineup_3_Season_Laps_Prop",
+]
+
+for var in num_cols:
+    print(f"Skewness of {var}: {skew(df[var])}")
+```
+
+```{python}
+# below are columns with skewness > 2 or < -2
+skew_cols = [
+    "Prior_Season_Grand_Prix_Wins_First5GP",
+    "Prior_Season_Grand_Prix_Wins_Last5GP",
+    "Prior_Season_Win_Prop",
+    "Prior_Season_Fastest_Lap_Prop"
+]
+```
+
+## Log Transformation of Skewed Variables
+
+```{python}
+# Separate target variable and features
+y = df["Constructor_Champion"]
+X = df.drop(columns=["Constructor_Champion", "ID"])
+
+# Perform one-hot encoding on categorical variables
+X_encoded = X.copy()
+X_encoded = pd.get_dummies(X, drop_first=True)
+
+# Verify boolean transformation
+X_encoded.head()
+```
+
+```{python}
+# create cross-validation folds
+cv = StratifiedKFold(
+    n_splits=5,
+    shuffle=True,
+    random_state=RANDOM_STATE
+)
+```
+
+```{python}
+model = Pipeline([
+    ("imputer", SimpleImputer(strategy="median")),
+    ("scaler", StandardScaler()),
+    ("model", LogisticRegression(max_iter=1000, random_state=RANDOM_STATE))
+])
+```
+
+### Log Transformation Evaluation
+
+```{python}
+# Evaluate original model once
+score_original = cross_validate(
+    model,
+    X_encoded,
+    y,
+    cv=cv,
+    scoring="roc_auc",
+    n_jobs=-1
+)
+
+original_auc = score_original["test_score"].mean()
+
+results = []
+
+for var in skew_cols:
+
+    X_log = X_encoded.copy()
+    X_log[var] = np.log1p(X_log[var])
+
+    score_log = cross_validate(
+        model,
+        X_log,
+        y,
+        cv=cv,
+        scoring="roc_auc",
+        n_jobs=-1
+    )
+
+    log_auc = score_log["test_score"].mean()
+
+    results.append({
+        "Variable": var,
+        "Original ROC AUC": original_auc,
+        "Log ROC AUC": log_auc,
+        "Difference": log_auc - original_auc
+    })
+
+results = pd.DataFrame(results)
+results = results.sort_values("Difference", ascending=False)
+
+print(results)
+```
+
+**Recommendation:** Based on the results, it is recommended to log-transform `Prior_Season_Grand_Prix_Wins_Last5GP` due to its high skewness and the improvement in ROC AUC:
+

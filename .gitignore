@@ -31,7 +31,8 @@ Thumbs.db
 
 # Quarto
 *.qmd
-!Additional_Materials/Web_Scraping/*.qmd
+!EDA.qmd
+!Modeling.qmd
 
 # Excel
 *.xlsx
