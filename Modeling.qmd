@@ -12,35 +12,28 @@ format:
 
 ```{r}
 # Libraries
-library(tidyverse)
-library(dplyr)
-library(tibble)
 library(caret)
 library(pROC)
 library(themis)
 library(ipred)
 library(randomForest)
 library(gbm)
-# remotes::install_github("souravc83/fastAdaboost")
 library(klaR)
-library(fastAdaboost)
+library(adabag)
 library(kernlab)
 library(glmnet)
 library(doParallel)
 library(foreach)
-library(ggplot2)
+library(tidyverse)
+library(DT)
 
-set.seed(42)
 RANDOM_SEED <- 42
 ```
 
 ```{r}
 # Read file
-df <- read.csv("Data_Files/Train.csv") %>%
-  dplyr::select(-ID)
-
-df_holdout = read.csv("Data_Files/Test.csv")
-holdout_ids <- df_holdout$ID
+df <- read.csv("Data_Files/Train.csv")
+df_holdout <- read.csv("Data_Files/Test.csv")
 ```
 
 ## Data Preparation
@@ -55,34 +48,54 @@ df_holdout$Prior_Season_Grand_Prix_Wins_Last5GP <-
   log1p(df_holdout$Prior_Season_Grand_Prix_Wins_Last5GP)
 ```
 
-### Stratified Train-Test Split
+### Expanding Window Cross-Validation
 
 ```{r}
-# Split into train and test datasets
-set.seed(RANDOM_SEED)
+# Seasons in chronological order
+seasons <- sort(unique(df$Season))
 
-train_index <- createDataPartition(
-  df$Constructor_Champion,
-  p = 0.7,
-  list = FALSE,
-  times = 1
+# Store training and validation indices
+train_index <- list()
+test_index  <- list()
+
+# Start with the first 15 seasons (2000-2014)
+for (i in 16:length(seasons)) {
+
+  train_seasons <- seasons[1:(i - 1)]
+  test_season   <- seasons[i]
+
+  train_index[[paste0("Fold", i - 15)]] <-
+    which(df$Season %in% train_seasons)
+
+  test_index[[paste0("Fold", i - 15)]] <-
+    which(df$Season == test_season)
+}
+```
+
+```{r}
+# verify fold creation
+length(train_index)
+length(test_index)
+
+sapply(train_index, length)
+sapply(test_index, length)
+```
+
+```{r}
+fold_check <- tibble(
+  Fold = names(test_index),
+  Train_Start = sapply(train_index, function(x) min(df$Season[x])),
+  Train_End = sapply(train_index, function(x) max(df$Season[x])),
+  Validation_Season = sapply(test_index, function(x) unique(df$Season[x])),
+  Training_Rows = sapply(train_index, length),
+  Validation_Rows = sapply(test_index, length)
 )
 
-train_df <- df[train_index, ]
-test_df  <- df[-train_index, ]
-
-
-cat("Training set size:", nrow(train_df), "\n")
-cat("Test set size:", nrow(test_df), "\n")
+#knitr::kable(fold_check)
+datatable(fold_check)
 ```
 
-```{r}
-# Verify stratified splitting
-print(mean(train_df$Constructor_Champion))
-print(mean(test_df$Constructor_Champion))
-```
-
-### Convert Target Variable to Factor
+### Convert Binary Variables to Factors
 
 ```{r}
 # Binary predictor variables
@@ -96,29 +109,36 @@ binary_vars <- c(
   "Returning_Driver_Lineup"
 )
 
-train_df[binary_vars] <- lapply(train_df[binary_vars], factor)
-test_df[binary_vars]  <- lapply(test_df[binary_vars], factor)
 df[binary_vars] <- lapply(df[binary_vars], factor)
 df_holdout[binary_vars] <- lapply(df_holdout[binary_vars], factor)
 
 # Target variable
-train_df$Constructor_Champion <- factor(
-  train_df$Constructor_Champion,
-  levels = c(1, 0),
-  labels = c("Yes", "No")
-)
-
-test_df$Constructor_Champion <- factor(
-  test_df$Constructor_Champion,
-  levels = c(1, 0),
-  labels = c("Yes", "No")
-)
-
 df$Constructor_Champion <- factor(
   df$Constructor_Champion,
   levels = c(1, 0),
   labels = c("Yes", "No")
 )
+
+# Ensure holdout factor levels match training
+for (v in binary_vars) {
+  df_holdout[[v]] <- factor(
+    df_holdout[[v]],
+    levels = levels(df[[v]])
+  )
+}
+```
+
+### Create Modeling Datasets
+
+```{r}
+# Create modeling datasets
+df_model <- df %>%
+  dplyr::select(-ID, -Season)
+
+df_holdout_model <- df_holdout %>%
+  dplyr::select(-ID, -Season, -Constructor_Champion)
+
+holdout_ids <- df_holdout$ID
 ```
 
 ## Base Model Training
@@ -143,22 +163,30 @@ set.seed(RANDOM_SEED)
 # without SMOTE
 cv_control <- trainControl(
   method = "cv",
-  number = 5,
+  index = train_index,
+  indexOut = test_index,
   classProbs = TRUE,
   summaryFunction = twoClassSummary,
   savePredictions = "final",
-  allowParallel = TRUE
+  allowParallel = TRUE,
+  verboseIter = TRUE
 )
+```
+
+```{r}
+set.seed(RANDOM_SEED)
 
 # with SMOTE
 cv_control_smote <- trainControl(
   method = "cv",
-  number = 5,
+  index = train_index,
+  indexOut = test_index,
   classProbs = TRUE,
   summaryFunction = twoClassSummary,
   sampling = "smote",
   savePredictions = "final",
-  allowParallel = TRUE
+  allowParallel = TRUE,
+  verboseIter = TRUE
 )
 ```
 
@@ -169,10 +197,11 @@ set.seed(RANDOM_SEED)
 
 log_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "glm",
   family = "binomial",
   metric = "ROC",
+  preProcess = "zv",
   trControl = cv_control
 )
 ```
@@ -182,10 +211,11 @@ set.seed(RANDOM_SEED)
 
 log_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "glm",
   family = "binomial",
   metric = "ROC",
+  preProcess = "zv",
   trControl = cv_control_smote
 )
 ```
@@ -197,7 +227,7 @@ set.seed(RANDOM_SEED)
 
 tree_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "rpart",
   metric = "ROC",
   trControl = cv_control_smote
@@ -209,7 +239,7 @@ set.seed(RANDOM_SEED)
 
 tree_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "rpart",
   metric = "ROC",
   trControl = cv_control
@@ -225,7 +255,7 @@ set.seed(RANDOM_SEED)
 
 bag_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "treebag",
   metric = "ROC",
   trControl = cv_control
@@ -237,7 +267,7 @@ set.seed(RANDOM_SEED)
 
 bag_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "treebag",
   metric = "ROC",
   trControl = cv_control_smote
@@ -251,7 +281,7 @@ set.seed(RANDOM_SEED)
 
 rf_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "rf",
   metric = "ROC",
   ntree = 500,
@@ -266,7 +296,7 @@ set.seed(RANDOM_SEED)
 
 rf_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "rf",
   metric = "ROC",
   ntree = 500,
@@ -283,7 +313,7 @@ set.seed(RANDOM_SEED)
 
 gbm_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "gbm",
   metric = "ROC",
   verbose = FALSE,
@@ -297,7 +327,7 @@ set.seed(RANDOM_SEED)
 
 gbm_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "gbm",
   metric = "ROC",
   verbose = FALSE,
@@ -313,7 +343,7 @@ set.seed(RANDOM_SEED)
 
 ada_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "AdaBoost.M1",
   metric = "ROC",
   trControl = cv_control,
@@ -326,7 +356,7 @@ set.seed(RANDOM_SEED)
 
 ada_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "AdaBoost.M1",
   metric = "ROC",
   trControl = cv_control_smote,
@@ -343,7 +373,7 @@ set.seed(RANDOM_SEED)
 
 ridge_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "glmnet",
   family = "binomial",
   metric = "ROC",
@@ -360,7 +390,7 @@ set.seed(RANDOM_SEED)
 
 ridge_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "glmnet",
   family = "binomial",
   metric = "ROC",
@@ -379,7 +409,7 @@ set.seed(RANDOM_SEED)
 
 lasso_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "glmnet",
   family = "binomial",
   metric = "ROC",
@@ -396,7 +426,7 @@ set.seed(RANDOM_SEED)
 
 lasso_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "glmnet",
   family = "binomial",
   metric = "ROC",
@@ -415,12 +445,15 @@ set.seed(RANDOM_SEED)
 
 enet_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "glmnet",
   family = "binomial",
   metric = "ROC",
   trControl = cv_control,
-  tuneLength = 3
+  tuneGrid = expand.grid(
+    alpha = c(0.25, 0.50, 0.75),
+    lambda = c(0.001, 0.01, 0.1)
+  )
 )
 ```
 
@@ -429,12 +462,15 @@ set.seed(RANDOM_SEED)
 
 enet_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "glmnet",
   family = "binomial",
   metric = "ROC",
   trControl = cv_control_smote,
-  tuneLength = 3
+  tuneGrid = expand.grid(
+    alpha = c(0.25, 0.50, 0.75),
+    lambda = c(0.001, 0.01, 0.1)
+  )
 )
 ```
 
@@ -445,9 +481,10 @@ set.seed(RANDOM_SEED)
 
 nb_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "nb",
   metric = "ROC",
+  preProcess = "zv",
   trControl = cv_control,
   tuneLength = 3
 )
@@ -458,9 +495,10 @@ set.seed(RANDOM_SEED)
 
 nb_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "nb",
   metric = "ROC",
+  preProcess = "zv",
   trControl = cv_control_smote,
   tuneLength = 3
 )
@@ -473,10 +511,10 @@ set.seed(RANDOM_SEED)
 
 knn_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "knn",
   metric = "ROC",
-  preProcess = c("center", "scale"),
+  preProcess = c("zv", "center", "scale"),
   trControl = cv_control,
   tuneLength = 3
 )
@@ -487,7 +525,7 @@ set.seed(RANDOM_SEED)
 
 knn_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "knn",
   metric = "ROC",
   preProcess = c("zv", "center", "scale"),
@@ -505,7 +543,7 @@ set.seed(RANDOM_SEED)
 
 svm_linear_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "svmLinear",
   metric = "ROC",
   preProcess = c("zv", "center", "scale"),
@@ -519,7 +557,7 @@ set.seed(RANDOM_SEED)
 
 svm_linear_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "svmLinear",
   metric = "ROC",
   preProcess = c("zv", "center", "scale"),
@@ -535,7 +573,7 @@ set.seed(RANDOM_SEED)
 
 svm_radial_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "svmRadial",
   metric = "ROC",
   preProcess = c("zv", "center", "scale"),
@@ -549,7 +587,7 @@ set.seed(RANDOM_SEED)
 
 svm_radial_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "svmRadial",
   metric = "ROC",
   preProcess = c("zv", "center", "scale"),
@@ -565,10 +603,10 @@ set.seed(RANDOM_SEED)
 
 nnet_model <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "nnet",
   metric = "ROC",
-  preProcess = c("center", "scale"),
+  preProcess = c("zv", "center", "scale"),
   trControl = cv_control,
   tuneLength = 3,
   trace = FALSE,
@@ -581,10 +619,10 @@ set.seed(RANDOM_SEED)
 
 nnet_model_smote <- train(
   Constructor_Champion ~ .,
-  data = train_df,
+  data = df_model,
   method = "nnet",
   metric = "ROC",
-  preProcess = c("center", "scale"),
+  preProcess = c("zv", "center", "scale"),
   trControl = cv_control_smote,
   tuneLength = 3,
   trace = FALSE,
@@ -595,76 +633,62 @@ nnet_model_smote <- train(
 ### Base Model Comparison
 
 ```{r}
-get_class_metrics <- function(model, model_name, test_data, target_col = "Constructor_Champion") {
-  
-  preds <- predict(model, test_data)
-  probs <- predict(model, test_data, type = "prob")[, "Yes"]
-  
-  cm <- confusionMatrix(
-    preds,
-    test_data[[target_col]],
-    positive = "Yes"
-  )
-  
-  model_auc <- auc(
-    roc(
-      response = test_data[[target_col]],
-      predictor = probs,
-      levels = c("No", "Yes"),
-      direction = "<"
-    )
-  )
-  
+get_cv_metrics <- function(model, model_name) {
+
+  best <- model$bestTune
+
+  results <- model$results
+
+  # Keep only the row corresponding to the best tuning parameters
+  if (!is.null(best)) {
+    for (param in names(best)) {
+      results <- subset(results, results[[param]] == best[[param]])
+    }
+  }
+
   data.frame(
     Model = model_name,
-    AUC = round(as.numeric(model_auc), 6),
-    Accuracy = round(cm$overall["Accuracy"], 6),
-    Precision = round(cm$byClass["Precision"], 6),
-    Recall = round(cm$byClass["Recall"], 6),
-    F1 = round(cm$byClass["F1"], 6),
-    Specificity = round(cm$byClass["Specificity"], 6)
+    AUC = round(results$ROC, 6),
+    Sensitivity = round(results$Sens, 6),
+    Specificity = round(results$Spec, 6)
   )
 }
 ```
 
 ```{r}
 model_comparison <- bind_rows(
-  get_class_metrics(log_model, "Logistic Regression", test_df),
-  get_class_metrics(log_model_smote, "Logistic Regression + SMOTE", test_df),
-  get_class_metrics(tree_model, "Decision Tree", test_df),
-  get_class_metrics(tree_model_smote, "Decision Tree + SMOTE", test_df),
-  get_class_metrics(bag_model, "Bagging", test_df),
-  get_class_metrics(bag_model_smote, "Bagging + SMOTE", test_df),
-  get_class_metrics(rf_model, "Random Forest", test_df),
-  get_class_metrics(rf_model_smote, "Random Forest + SMOTE", test_df),
-  get_class_metrics(gbm_model, "Gradient Boosting", test_df),
-  get_class_metrics(gbm_model_smote, "Gradient Boosting + SMOTE", test_df),
-  get_class_metrics(ada_model, "AdaBoost", test_df),
-  get_class_metrics(ada_model_smote, "AdaBoost + SMOTE", test_df),
-  get_class_metrics(ridge_model, "Ridge Logistic Regression", test_df),
-  get_class_metrics(ridge_model_smote, "Ridge Logistic Regression + SMOTE", test_df),
-  get_class_metrics(lasso_model, "Lasso Logistic Regression", test_df),
-  get_class_metrics(lasso_model_smote, "Lasso Logistic Regression + SMOTE", test_df),
-  get_class_metrics(enet_model, "Elastic Net", test_df),
-  get_class_metrics(enet_model_smote, "Elastic Net + SMOTE", test_df),
-  get_class_metrics(nb_model, "Naive Bayes", test_df),
-  get_class_metrics(nb_model_smote, "Naive Bayes + SMOTE", test_df),
-  get_class_metrics(knn_model, "KNN", test_df),
-  get_class_metrics(knn_model_smote, "KNN + SMOTE", test_df),
-  get_class_metrics(svm_linear_model, "SVM Linear", test_df),
-  get_class_metrics(svm_linear_model_smote, "SVM Linear + SMOTE", test_df),
-  get_class_metrics(svm_radial_model, "SVM Radial", test_df),
-  get_class_metrics(svm_radial_model_smote, "SVM Radial + SMOTE", test_df),
-  get_class_metrics(nnet_model, "Neural Network", test_df),
-  get_class_metrics(nnet_model_smote, "Neural Network + SMOTE", test_df)
+  get_cv_metrics(log_model, "Logistic Regression"),
+  get_cv_metrics(log_model_smote, "Logistic Regression + SMOTE"),
+  get_cv_metrics(tree_model, "Decision Tree"),
+  get_cv_metrics(tree_model_smote, "Decision Tree + SMOTE"),
+  get_cv_metrics(bag_model, "Bagging"),
+  get_cv_metrics(bag_model_smote, "Bagging + SMOTE"),
+  get_cv_metrics(rf_model, "Random Forest"),
+  get_cv_metrics(rf_model_smote, "Random Forest + SMOTE"),
+  get_cv_metrics(gbm_model, "Gradient Boosting"),
+  get_cv_metrics(gbm_model_smote, "Gradient Boosting + SMOTE"),
+  get_cv_metrics(ada_model, "AdaBoost"),
+  get_cv_metrics(ada_model_smote, "AdaBoost + SMOTE"),
+  get_cv_metrics(ridge_model, "Ridge Logistic Regression"),
+  get_cv_metrics(ridge_model_smote, "Ridge Logistic Regression + SMOTE"),
+  get_cv_metrics(lasso_model, "Lasso Logistic Regression"),
+  get_cv_metrics(lasso_model_smote, "Lasso Logistic Regression + SMOTE"),
+  get_cv_metrics(enet_model, "Elastic Net"),
+  get_cv_metrics(enet_model_smote, "Elastic Net + SMOTE"),
+  get_cv_metrics(nb_model, "Naive Bayes"),
+  get_cv_metrics(nb_model_smote, "Naive Bayes + SMOTE"),
+  get_cv_metrics(knn_model, "KNN"),
+  get_cv_metrics(knn_model_smote, "KNN + SMOTE"),
+  get_cv_metrics(svm_linear_model, "SVM Linear"),
+  get_cv_metrics(svm_linear_model_smote, "SVM Linear + SMOTE"),
+  get_cv_metrics(svm_radial_model, "SVM Radial"),
+  get_cv_metrics(svm_radial_model_smote, "SVM Radial + SMOTE"),
+  get_cv_metrics(nnet_model, "Neural Network"),
+  get_cv_metrics(nnet_model_smote, "Neural Network + SMOTE")
 ) %>%
-  arrange(desc(AUC), desc(Precision))
+  arrange(desc(AUC))
 
-knitr::kable(
-  model_comparison,
-  digits = 4,
-  caption = "Model Comparison Results"
-)
+datatable(model_comparison)
 ```
 
 ### End Processing Setup
@@ -678,49 +702,73 @@ cat("Parallel processing stopped\n")
 
 ## Final Model
 
+### Hyperparameter Tuning
+
 ```{r}
 set.seed(RANDOM_SEED)
 
-svm_radial_grid <- expand.grid(
-  sigma = c(0.0001, 0.0005, 0.001, 0.005, 0.01, 0.05, 0.1),
-  C = c(0.25, 0.5, 1, 2, 4, 8, 16)
+enet_grid <- expand.grid(
+  alpha = seq(0, 1, by = 0.1),
+  lambda = c(0.0001, 0.001, 0.005, 0.01, 0.05, 0.1, 0.5, 1)
 )
-```
 
-```{r}
-set.seed(RANDOM_SEED)
-
-svm_radial_tuned <- train(
+enet_tuned <- train(
   Constructor_Champion ~ .,
-  data = df,
-  method = "svmRadial",
+  data = df_model,
+  method = "glmnet",
+  family = "binomial",
   metric = "ROC",
   trControl = cv_control,
-  preProcess = c("zv", "center", "scale"),
-  tuneGrid = svm_radial_grid
+  tuneGrid = enet_grid
 )
+
+enet_tuned
 ```
 
 ```{r}
-svm_radial_tuned$bestTune
+plot(enet_tuned)
+```
+
+```{r}
+enet_tuned$bestTune
+```
+
+
+### Train Final Model
+
+```{r}
+set.seed(RANDOM_SEED)
+
+enet_final <- train(
+  Constructor_Champion ~ .,
+  data = df_model,
+  method = "glmnet",
+  family = "binomial",
+  trControl = trainControl(
+    method = "none",
+    classProbs = TRUE
+  ),
+  tuneGrid = enet_tuned$bestTune
+)
 ```
 
 ### Generate Final Predictions
 
 ```{r}
 holdout_probs <- predict(
-  svm_radial_tuned,
-  newdata = df_holdout,
+  enet_final,
+  newdata = df_holdout_model,
   type = "prob"
 )
 
 holdout_preds <- predict(
-  svm_radial_tuned,
-  newdata = df_holdout
+  enet_final,
+  newdata = df_holdout_model
 )
 
 y2026_predictions <- data.frame(
   ID = holdout_ids,
+  Predicted_Class = holdout_preds,
   Probability_Yes = holdout_probs$Yes
 ) %>%
   arrange(desc(Probability_Yes)) %>%
@@ -733,4 +781,6 @@ write.csv(
   "Data_Files/y2026_predictions.csv",
   row.names = FALSE
 )
+
+y2026_predictions
 ```

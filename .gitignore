@@ -29,11 +29,6 @@ Thumbs.db
 !race_starts.csv
 !laps_completed.csv
 
-# Quarto
-*.qmd
-!EDA.qmd
-!Modeling.qmd
-
 # Excel
 *.xlsx
 !Data_Dictionary.xlsx

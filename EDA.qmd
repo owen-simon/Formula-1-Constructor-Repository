@@ -18,7 +18,7 @@ from scipy.stats import skew
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
+from statsmodels.stats.outliers_influence import variance_inflation_factor
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
@@ -173,3 +173,30 @@ print(results)
 
 **Recommendation:** Based on the results, it is recommended to log-transform `Prior_Season_Grand_Prix_Wins_Last5GP` due to its high skewness and the improvement in ROC AUC:
 
+## Multicollinearity
+
+```{python}
+# Prepare predictors
+imputer = SimpleImputer(strategy="median")
+
+X_vif = pd.DataFrame(
+    imputer.fit_transform(X_encoded),
+    columns=X_encoded.columns
+)
+
+# Remove constant predictors
+X_vif = X_vif.loc[:, X_vif.nunique() > 1]
+
+# Calculate VIF
+vif = pd.DataFrame({
+    "Variable": X_vif.columns,
+    "VIF": [
+        variance_inflation_factor(X_vif.values, i)
+        for i in range(X_vif.shape[1])
+    ]
+})
+
+vif = vif.sort_values("VIF", ascending=False)
+
+print(vif)
+```

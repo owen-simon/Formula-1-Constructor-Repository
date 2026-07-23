@@ -348,8 +348,8 @@ test  = raw_data_2026[raw_data_2026['Season'] == 2026].copy()
 # ======================================================
 # Drop `Season` column (not necessary for modeling)
 # ======================================================
-test = test.drop(columns=["Season"])
-train = train.drop(columns=["Season"])
+#test = test.drop(columns=["Season"])
+#train = train.drop(columns=["Season"])
 
 # ======================================================
 # Write processed datasets to CSV
