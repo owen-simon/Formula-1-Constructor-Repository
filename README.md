@@ -29,7 +29,7 @@ The final model generates preseason probabilities for each Formula One construct
 </p>
 
 <p align="center">
-<em>Comparison of the model's preseason predictions with the final 2026 Constructors' Championship standings.</em>
+<em>Comparison of the model's preseason predictions with the Mid-Season 2026 Constructors' Championship standings.</em>
 </p>
 
 ## Data Description
