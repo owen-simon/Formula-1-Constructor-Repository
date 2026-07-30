@@ -8,8 +8,12 @@ Formula One teams analyze massive volumes of data to design, develop, and optimi
 
 This project builds a predictive model using over two decades of publicly accessible performance data to forecast the Formula One Constructors’ Champion before the season begins.
 
+## Results
+
+The final model generates preseason probabilities for each Formula One constructor, ranking teams by their likelihood of winning the Constructors' Championship. The visualization below summarizes the model's predictions for the 2026 season.
+
 <p align="center">
-  <img src="Additional_Materials/2026%20Predictions.png" alt="2026 Constructor Championship Predictions" width="900">
+  <img src="Additional_Materials/2026%20Predictions.png" alt="2026 Constructor Championship Predictions" width="600">
 </p>
 
 <p align="center">
