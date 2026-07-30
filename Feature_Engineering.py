@@ -36,9 +36,9 @@ raw_data_2026["Season"] = raw_data_2026["ID"].str.split("_").str[1].astype(int)
 
 # ======================================================
 # Driver-Level Features from Supplementary Data:
-# - Driver_Lineup_Total_Race_Starts
+# - Driver_Lineup_Career_Race_Starts
 # - Driver_Lineup_3_Season_Race_Starts
-# - Driver_Lineup_Total_Laps_Completed
+# - Driver_Lineup_Career_Laps_Completed
 # - Driver_Lineup_3_Season_Laps_Completed
 # ======================================================
 
@@ -132,7 +132,7 @@ for value_col, stat_long in features:
 
 df = raw_data_2026.copy()
 
-df["Driver_Lineup_Total_Race_Starts"] = (
+df["Driver_Lineup_Career_Race_Starts"] = (
     results["A_total"]["Race_Starts"].reindex(df["ID"]).fillna(0).values +
     results["B_total"]["Race_Starts"].reindex(df["ID"]).fillna(0).values
 )
@@ -142,7 +142,7 @@ df["Driver_Lineup_3_Season_Race_Starts"] = (
     results["B_3s"]["Race_Starts"].reindex(df["ID"]).fillna(0).values
 )
 
-df["Driver_Lineup_Total_Laps_Completed"] = (
+df["Driver_Lineup_Career_Laps_Completed"] = (
     results["A_total"]["Laps_Completed"].reindex(df["ID"]).fillna(0).values +
     results["B_total"]["Laps_Completed"].reindex(df["ID"]).fillna(0).values
 )
