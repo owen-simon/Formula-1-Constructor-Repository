@@ -24,8 +24,8 @@ The final model generates preseason probabilities for each Formula One construct
 
 <p align="center">
   <img src="Additional_Materials/Prediction_Graphics/2026_Predictions_vs_Actual.png"
-       alt="2026 Prediction Comparison"
-       width="700">
+       alt="2026 Predictions vs. Final Standings"
+       width="800">
 </p>
 
 ## Data Description
