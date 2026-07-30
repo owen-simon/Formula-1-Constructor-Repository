@@ -75,7 +75,7 @@ Information regarding major regulation changes was obtained from the following r
 ### Additional Materials
 - `Additional_Materials/`
   - `Web_Scraping/`: Quarto (`.qmd`) documents written in R that were used to scrape and compile the `raw_data_2026.csv` dataset.
-  - `2026 Predictions.png`: Graphic displaying the model's predicted probability of each constructor winning the 2026 Formula 1 Constructors' Championship.
+  - `Prediction Graphics/`: Contains graphics showing the model's predicted probability of each constructor winning the 2026 Formula One Constructors' Championship, along with a comparison of the preseason predictions and the final championship standings.
   - `Formula1-Regular.ttf`: Official Formula 1 font used to create the `2026 Predictions.png` graphic.
 
 
