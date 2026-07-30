@@ -12,8 +12,6 @@ This project builds a predictive model using over two decades of publicly access
 
 The final model generates preseason probabilities for each Formula One constructor and can be evaluated against the completed season standings.
 
-### 2026 Championship Predictions
-
 <p align="center">
   <img src="Additional_Materials/Prediction%20Graphics/2026_Predictions.png"
        alt="2026 Constructor Championship Predictions"
@@ -24,11 +22,9 @@ The final model generates preseason probabilities for each Formula One construct
 <em>Preseason predicted probability of each constructor winning the 2026 Formula One Constructors' Championship.</em>
 </p>
 
-### Predictions vs. Mid-Season Standings
-
 <p align="center">
-  <img src="Additional_Materials/Prediction_Graphics/2026_Predictions_vs_Actual.png"
-       alt="2026 Constructor Championship Predictions"
+  <img src="Additional_Materials/Prediction%20Graphics/2026_Predictions_vs_Actual.png"
+       alt="2026 Prediction Comparison"
        width="450">
 </p>
 
