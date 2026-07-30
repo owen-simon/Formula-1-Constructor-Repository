@@ -20,6 +20,10 @@ The final model generates preseason probabilities for each Formula One construct
 <b>2026 Formula One Constructors' Championship Prediction Probabilities</b>
 </p>
 
+<p align="center">
+  <img src="Additional_Materials/2026%20Predictions%20vs.%20Actual Standings" alt="2026 Constructor Predictions vs Actual" width="600">
+</p>
+
 ## Data Description
 
 The `raw_data_2026.csv` dataset includes constructor-level seasonal performance data from the Formula One World Championship since the turn of the century.
