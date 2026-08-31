@@ -28,6 +28,15 @@ The final model generates preseason probabilities for each Formula One construct
        width="700">
 </p>
 
+### Future Iterations
+
+The final model predictions were closely related to the final results of the 2025 Formula One season. While prior-season performance is generally a strong predictor of constructor performance within a stable regulation period, the 2026 season introduced significant technical regulation changes that may reduce the predictive value of previous-season results.
+
+The current model represents major regulation changes using a single binary `Major_Reg_Change` variable. A future iteration could provide greater detail by separating regulation changes into individual components, such as `Aerodynamic_Reg_Change`, `Power_Unit_Reg_Change`, `Tyre_Reg_Change`, and `Chassis_Reg_Change`. These variables could also be combined into a `Regulation_Change_Score` representing the extent of technical change introduced in a given season.
+
+This approach may allow the model to better distinguish between relatively stable seasons and substantial regulatory resets, such as 2026, where prior-season performance may be less indicative of future constructor performance.
+
+
 ## Data Description
 
 The `raw_data_2026.csv` dataset includes constructor-level seasonal performance data from the Formula One World Championship since the turn of the century.
