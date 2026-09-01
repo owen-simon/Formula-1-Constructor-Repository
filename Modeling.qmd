@@ -784,3 +784,21 @@ write.csv(
 
 y2026_predictions
 ```
+
+### Variable Importance
+
+```{r}
+enet_coefs <- coef(
+  enet_final$finalModel,
+  s = enet_final$bestTune$lambda
+)
+
+enet_coefs <- data.frame(
+  Variable = rownames(enet_coefs),
+  Coefficient = -as.numeric(enet_coefs)
+) %>%
+  filter(Variable != "(Intercept)") %>%
+  arrange(desc(abs(Coefficient)))
+
+enet_coefs
+```
