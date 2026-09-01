@@ -30,12 +30,13 @@ The final model generates preseason probabilities for each Formula One construct
 
 ### Future Iterations
 
-The final model predictions were closely related to the final results of the 2025 Formula One season. While prior-season performance is generally a strong predictor of constructor performance within a stable regulation period, the 2026 season introduced significant technical regulation changes that may reduce the predictive value of previous-season results.
+The final model predictions were closely related to the final results of the 2025 Formula One season. This behavior is consistent with the Elastic Net model's variable importance, as the predictors retained by the model were primarily measures of prior-season performance. `Prior_Season_Points_Prop` was the strongest predictor, followed by `Defending_Constructor_Champ`, `Prior_Season_Win_Prop`, `Defending_Driver_Champ`, and `Prior_Season_Grand_Prix_Wins_Last5GP`. In contrast, the coefficient for `Major_Reg_Change` was reduced to zero through regularization.
 
-The current model represents major regulation changes using a single binary `Major_Reg_Change` variable. A future iteration could provide greater detail by separating regulation changes into individual components, such as `Aerodynamic_Reg_Change`, `Power_Unit_Reg_Change`, `Tyre_Reg_Change`, and `Chassis_Reg_Change`. These variables could also be combined into a `Regulation_Change_Score` representing the extent of technical change introduced in a given season.
+While prior-season performance is generally a strong predictor of constructor performance within a stable regulation period, the 2026 season introduced significant technical regulation changes that may reduce the predictive value of previous-season results. The current binary `Major_Reg_Change` variable provides limited information about the type or extent of these changes.
 
-This approach may allow the model to better distinguish between relatively stable seasons and substantial regulatory resets, such as 2026, where prior-season performance may be less indicative of future constructor performance.
+A future iteration could provide greater detail by separating regulation changes into individual components, such as `Aerodynamic_Reg_Change`, `Power_Unit_Reg_Change`, `Tyre_Reg_Change`, and `Chassis_Reg_Change`. These variables could also contribute to a `Regulation_Change_Score` representing the extent of technical change introduced in a given season. Interaction terms between the regulation change score and prior-season performance could also be explored to determine whether the predictive value of previous-season results decreases during larger regulatory changes.
 
+This approach could allow future models to better distinguish between relatively stable seasons and substantial regulatory resets, such as 2026, rather than relying as heavily on constructor performance from the preceding season.
 
 ## Data Description
 
