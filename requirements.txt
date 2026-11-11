@@ -12,3 +12,8 @@ doParallel
 foreach
 tidyverse
 DT
+rvest
+dplyr
+purrr
+tidyr
+stringr

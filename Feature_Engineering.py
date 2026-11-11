@@ -1,19 +1,19 @@
-# ======================================================
+# ============================================================================
 # Import libraries
-# ======================================================
+# ============================================================================
 import pandas as pd
 import os
 
-# ======================================================
+# ============================================================================
 # Load raw dataset
-# ======================================================
+# ============================================================================
 raw_data_2027 = pd.read_csv("Data_Files/raw_data_2027.csv")
 race_starts = pd.read_csv("Data_Files/race_starts.csv")
 laps_completed = pd.read_csv("Data_Files/laps_completed.csv")
 
-# ======================================================
+# ============================================================================
 # Replace identifying columns with single composite ID
-# ======================================================
+# ============================================================================
 
 def process_id_column(df, id_cols):
     df = df.copy()
@@ -28,15 +28,15 @@ def process_id_column(df, id_cols):
 id_cols = ["Constructor_Lineage_ID", "Season", "Team_Name"]
 raw_data_2027 = process_id_column(raw_data_2027, id_cols)
 
-# ====================================================================
+# ============================================================================
 # Recreate `Season` column from ID for feature engineering purposes
-# ====================================================================
+# ============================================================================
 raw_data_2027 = raw_data_2027.copy()
 raw_data_2027["Season"] = raw_data_2027["ID"].str.split("_").str[1].astype(int)
 
-# ====================================================================
+# ============================================================================
 # Create `Regulation_Change_Score` column
-# ====================================================================
+# ============================================================================
 raw_data_2027 = raw_data_2027.copy()
 
 raw_data_2027["Regulation_Change_Score"] = raw_data_2027[
@@ -48,17 +48,17 @@ raw_data_2027["Regulation_Change_Score"] = raw_data_2027[
     ]
 ].sum(axis=1)
 
-# ======================================================
+# ============================================================================
 # Driver-Level Features from Supplementary Data:
 # - Driver_Lineup_Career_Race_Starts
 # - Driver_Lineup_3_Season_Race_Starts
 # - Driver_Lineup_Career_Laps_Completed
 # - Driver_Lineup_3_Season_Laps_Completed
-# ======================================================
+# ============================================================================
 
-# ------------------------------------------------------
+# ----------------------------------------------------------------------------
 # 1) Prepare supplementary tables
-# ------------------------------------------------------
+# ----------------------------------------------------------------------------
 
 race_starts["Race_Starts"] = pd.to_numeric(
     race_starts["Race_Starts"],
@@ -74,9 +74,9 @@ laps_completed["Laps_Completed"] = pd.to_numeric(
 
 laps_completed["Year"] = laps_completed["Year"].astype(int)
 
-# ------------------------------------------------------
+# ----------------------------------------------------------------------------
 # 2) Feature configuration
-# ------------------------------------------------------
+# ----------------------------------------------------------------------------
 
 features = [
     ("Race_Starts", race_starts),
@@ -91,9 +91,9 @@ results = {
     "B_3s": {}
 }
 
-# ------------------------------------------------------
+# ----------------------------------------------------------------------------
 # 3) Feature engineering loop
-# ------------------------------------------------------
+# ----------------------------------------------------------------------------
 
 for value_col, stat_long in features:
 
@@ -101,9 +101,9 @@ for value_col, stat_long in features:
 
         driver_col = f"Driver_{driver_prefix}"
 
-        # -------------------------
+        # ------------------------------
         # Merge supplementary data
-        # -------------------------
+        # ------------------------------
         tmp = raw_data_2027.merge(
             stat_long,
             left_on=driver_col,
@@ -111,9 +111,9 @@ for value_col, stat_long in features:
             how="left"
         )
 
-        # -------------------------
+        # ------------------------------
         # TOTAL (career before season)
-        # -------------------------
+        # ------------------------------
         tmp_total = tmp[tmp["Year"] < tmp["Season"]]
 
         total = (
@@ -124,9 +124,9 @@ for value_col, stat_long in features:
 
         results[f"{driver_prefix}_total"][value_col] = total
 
-        # -------------------------
+        # ------------------------------
         # Prior 3 Seasons
-        # -------------------------
+        # ------------------------------
         tmp_3s = tmp[
             (tmp["Year"] < tmp["Season"]) &
             (tmp["Year"] >= tmp["Season"] - 3)
@@ -140,9 +140,9 @@ for value_col, stat_long in features:
 
         results[f"{driver_prefix}_3s"][value_col] = window_3s
 
-# ------------------------------------------------------
+# ----------------------------------------------------------------------------
 # 4) Build final dataframe
-# ------------------------------------------------------
+# ----------------------------------------------------------------------------
 
 df = raw_data_2027.copy()
 
@@ -166,9 +166,9 @@ df["Driver_Lineup_3_Season_Laps_Completed"] = (
     results["B_3s"]["Laps_Completed"].reindex(df["ID"]).fillna(0).values
 )
 
-# ------------------------------------------------------
+# ----------------------------------------------------------------------------
 # 5) Cleanup
-# ------------------------------------------------------
+# ----------------------------------------------------------------------------
 
 df = df.drop(columns=["Driver_A", "Driver_B"])
 
@@ -177,9 +177,9 @@ raw_data_2027 = df
 # Verify changes
 raw_data_2027.columns
 
-# ==========================================================
+# ============================================================================
 # Create Prior Season Points Proportion
-# ==========================================================
+# ============================================================================
 
 def create_prior_season_points_prop(df):
     df = df.copy()
@@ -207,34 +207,94 @@ def create_prior_season_points_prop(df):
 # Apply to raw data set
 raw_data_2027 = create_prior_season_points_prop(raw_data_2027)
 
-# ==========================================================
-# Create Prior Season Win Proportion
-# ==========================================================
+# ============================================================================
+# Create Prior Season Points Proportion (First 7 Race Weekends)
+# ============================================================================
 
-def create_prior_season_win_prop(df):
+def create_prior_season_points_prop_first7(df):
     df = df.copy()
 
     # Avoid division by zero
-    df["Prior_Season_Win_Prop"] = (
-        df["Prior_Season_Grand_Prix_Wins"] /
-        df["Prior_Season_GP_Count"]
+    df["Prior_Season_Points_Prop_First7"] = (
+        df["Prior_Season_Points_Earned_First7"] /
+        df["Prior_Season_Points_Total_First7"]
     ).replace([float("inf"), -float("inf")], 0)
 
     # Handle NaN values and clip to [0, 1]
-    df["Prior_Season_Win_Prop"] = df["Prior_Season_Win_Prop"].fillna(0)
-    df["Prior_Season_Win_Prop"] = df["Prior_Season_Win_Prop"].clip(0, 1)
+    df["Prior_Season_Points_Prop_First7"] = df["Prior_Season_Points_Prop_First7"].fillna(0)
+    df["Prior_Season_Points_Prop_First7"] = df["Prior_Season_Points_Prop_First7"].clip(0, 1)
 
     # Drop original columns
-    df = df.drop(columns=["Prior_Season_Grand_Prix_Wins"])
+    df = df.drop(
+        columns=[
+            "Prior_Season_Points_Earned_First7",
+            "Prior_Season_Points_Total_First7"
+        ]
+    )
 
     return df
 
 # Apply to raw data set
-raw_data_2027 = create_prior_season_win_prop(raw_data_2027)
+raw_data_2027 = create_prior_season_points_prop(raw_data_2027)
 
-# ==========================================================
+# ============================================================================
+# Create Prior Season Points Proportion (Last 7 Race Weekends)
+# ============================================================================
+
+def create_prior_season_points_prop_last7(df):
+    df = df.copy()
+
+    # Avoid division by zero
+    df["Prior_Season_Points_Prop_Last7"] = (
+        df["Prior_Season_Points_Earned_Last7"] /
+        df["Prior_Season_Points_Total_Last7"]
+    ).replace([float("inf"), -float("inf")], 0)
+
+    # Handle NaN values and clip to [0, 1]
+    df["Prior_Season_Points_Prop_Last7"] = df["Prior_Season_Points_Prop_Last7"].fillna(0)
+    df["Prior_Season_Points_Prop_Last7"] = df["Prior_Season_Points_Prop_Last7"].clip(0, 1)
+
+    # Drop original columns
+    df = df.drop(
+        columns=[
+            "Prior_Season_Points_Earned_Last7",
+            "Prior_Season_Points_Total_Last7"
+        ]
+    )
+
+    return df
+
+# Apply to raw data set
+raw_data_2027 = create_prior_season_points_prop(raw_data_2027)
+
+# ============================================================================
+# Create Prior Season Win Proportion
+# ============================================================================
+
+def create_prior_season_gp_win_prop(df):
+    df = df.copy()
+
+    # Avoid division by zero
+    df["Prior_Season_GP_Win_Prop"] = (
+        df["Prior_Season_GP_Wins"] /
+        df["Prior_Season_GP_Count"]
+    ).replace([float("inf"), -float("inf")], 0)
+
+    # Handle NaN values and clip to [0, 1]
+    df["Prior_Season_GP_Win_Prop"] = df["Prior_Season_GP_Win_Prop"].fillna(0)
+    df["Prior_Season_GP_Win_Prop"] = df["Prior_Season_GP_Win_Prop"].clip(0, 1)
+
+    # Drop original columns
+    df = df.drop(columns=["Prior_Season_GP_Wins"])
+
+    return df
+
+# Apply to raw data set
+raw_data_2027 = create_prior_season_gp_win_prop(raw_data_2027)
+
+# ============================================================================
 # Create Prior Season Fastest Lap Proportion
-# ==========================================================
+# ============================================================================
 
 def create_prior_fl_prop(df):
     df = df.copy()
@@ -320,14 +380,14 @@ def create_driver_lineup_3_season_laps_prop(df):
 # Apply to raw data set
 raw_data_2027 = create_driver_lineup_3_season_laps_prop(raw_data_2027)
 
-# ==========================================================
-# Simplify Engine Branding to match 2026 Season Providers
-# ==========================================================
+# ============================================================================
+# Simplify Engine Branding to match 2027 Season Providers
+# ============================================================================
 
 def simplify_engine_branding(df, col="Engine_Branding"):
     df = df.copy()
 
-    keep_brands = {"FERRARI", "MERCEDES", "HONDA", "FORD"}
+    keep_brands = {"FERRARI", "MERCEDES", "HONDA", "FORD", "AUDI"}
 
     df[col] = (
         df[col]
@@ -343,31 +403,31 @@ def simplify_engine_branding(df, col="Engine_Branding"):
 # Apply to raw data set
 raw_data_2027 = simplify_engine_branding(raw_data_2027)
 
-# ============================================================
+# ============================================================================
 # Replace null values with the mean
-# ============================================================
+# ============================================================================
 cols_to_fill = raw_data_2027.columns.drop("Constructor_Champion")
 
 for col in cols_to_fill:
     if raw_data_2027[col].dtype in ["float64", "int64"]:
         raw_data_2027[col] = raw_data_2027[col].fillna(raw_data_2027[col].mean())
 
-# ============================================================
+# ============================================================================
 # Split data into train and test sets (for 2026 predictions)
-# ============================================================
+# ============================================================================
 
 train = raw_data_2027[raw_data_2027['Season'] != 2026].copy()
 test  = raw_data_2027[raw_data_2027['Season'] == 2026].copy()
 
-# ======================================================
+# ============================================================================
 # Drop `Season` column (not necessary for modeling)
-# ======================================================
+# ============================================================================
 #test = test.drop(columns=["Season"])
 #train = train.drop(columns=["Season"])
 
-# ======================================================
+# ============================================================================
 # Write processed datasets to CSV
-# ======================================================
+# ============================================================================
 
 output_dir = "Data_Files"
 os.makedirs(output_dir, exist_ok=True)

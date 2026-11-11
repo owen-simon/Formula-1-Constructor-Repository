@@ -1,0 +1,270 @@
+---
+title: "Web Scraping: F1 Team Points in the First and Last Seven Race Weekends"
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+## Objective
+
+Collect constructor points for the first seven and last seven **completed Grand Prix weekends** of each Formula 1 season from 1999 through 2026. Team names and links come from the official seasonal team standings page; per-weekend points come from each team's results page. The official race results page determines weekend order, including weekends where a team scored zero points.
+
+**Interpretation:** These are the points published by Formula 1 for each Grand Prix weekend (including sprint points when included in the site's team table). The last seven weekends of an ongoing season are the last seven *completed* weekends, not the final seven scheduled weekends. `Season_Complete` flags seasons for which this distinction matters. Historical scoring systems differ, so raw points are not directly comparable across all years.
+
+```{r setup}
+library(rvest)
+library(dplyr)
+library(purrr)
+library(tidyr)
+library(stringr)
+library(readr)
+library(tibble)
+
+years <- 1999:2026
+base_url <- "https://www.formula1.com"
+
+# Pause between requests to reduce load on the site.
+get_page <- function(url) {
+  Sys.sleep(0.5)
+  read_html(url)
+}
+
+# Return the table with the expected column names.
+get_results_table <- function(page, required) {
+  tables <- html_elements(page, "table")
+  for (table in tables) {
+    data <- html_table(table, fill = TRUE)
+    names(data) <- str_squish(names(data))
+    if (all(required %in% names(data))) {
+      return(list(node = table, data = data))
+    }
+  }
+  stop("Could not find results table with columns: ", paste(required, collapse = ", "))
+}
+
+# Convert relative links into absolute F1 URLs.
+absolute_url <- function(href) {
+  ifelse(str_starts(href, "https?://"), href, paste0(base_url, href))
+}
+
+# Normalize labels for joining race calendars to team results.
+race_key <- function(x) {
+  x %>%
+    str_replace_all("\\u00a0", " ") %>%
+    str_squish() %>%
+    str_to_lower() %>%
+    str_replace_all("[^a-z0-9]", "")
+}
+```
+
+## 1. Retrieve teams and team-page URLs
+
+For example, the 2026 standings page is `https://www.formula1.com/en/results/2026/team`. Extract links from the **standings table itself**, rather than guessing URL slugs from team names.
+
+```{r teams}
+get_season_teams <- function(year) {
+  url <- paste0(base_url, "/en/results/", year, "/team")
+  result <- get_results_table(get_page(url), c("Team", "Pts."))
+
+  # The Team column contains links to individual team results pages.
+  team_cells <- html_elements(result$node, "tbody tr")
+  links <- map_chr(team_cells, function(row) {
+    node <- html_element(row, "td a[href*='/team/']")
+    if (inherits(node, "xml_missing")) NA_character_ else html_attr(node, "href")
+  })
+
+  standings <- result$data
+  if (length(links) != nrow(standings)) {
+    stop("Team link count does not match standings rows for ", year)
+  }
+  if (anyNA(links)) stop("Missing team URL(s) for ", year)
+
+  tibble(
+    Year = year,
+    Team = str_squish(standings$Team),
+    Season_Points = parse_number(as.character(standings$`Pts.`)),
+    Team_URL = absolute_url(links)
+  )
+}
+
+# Quick check before scraping every year:
+get_season_teams(2026)
+```
+
+## 2. Retrieve the official race order
+
+The season's race results table lists completed Grands Prix in chronological order. This prevents a zero-point weekend from accidentally shifting a team's first/last seven-weekend window.
+
+```{r calendar}
+get_season_races <- function(year) {
+  url <- paste0(base_url, "/en/results/", year, "/races")
+  races <- get_results_table(get_page(url), c("Grand Prix", "Date"))$data
+
+  tibble(
+    Year = year,
+    Round = seq_len(nrow(races)),
+    Grand_Prix = str_squish(races$`Grand Prix`),
+    Date = str_squish(as.character(races$Date)),
+    Race_Key = race_key(races$`Grand Prix`)
+  )
+}
+
+get_season_races(2026) %>% slice_head(n = 7)
+```
+
+## 3. Retrieve points earned at each Grand Prix
+
+Each team's page contains `Grand Prix`, `Date`, and `Pts.` columns. A missing race row is treated as zero **only after confirming that the race exists in the official completed-race calendar**.
+
+```{r team-races}
+get_team_races <- function(team_url) {
+  result <- get_results_table(
+    get_page(team_url),
+    c("Grand Prix", "Date", "Pts.")
+  )$data
+
+  tibble(
+    Race_Key = race_key(result$`Grand Prix`),
+    Points = parse_number(as.character(result$`Pts.`))
+  )
+}
+
+get_team_races("https://www.formula1.com/en/results/2026/team/Mercedes") %>%
+  slice_head(n = 7)
+```
+
+## 4. Scrape one season and calculate the two windows
+
+The output keeps full race-level data for validation. We compare summed weekend points with published season totals and flag differences rather than stopping the full scrape. Historical penalties and exclusions can make these totals legitimately differ, notably McLaren in 2007. Review every flagged row before interpreting it.
+
+```{r scrape-season}
+scrape_season <- function(year) {
+  teams <- get_season_teams(year)
+  calendar <- get_season_races(year)
+
+  if (nrow(calendar) < 7) stop("Fewer than seven completed races in ", year)
+  if (anyDuplicated(calendar$Race_Key)) stop("Duplicate race labels in ", year)
+
+  race_data <- map2_dfr(teams$Team, teams$Team_URL, function(team, url) {
+    results <- get_team_races(url)
+    if (anyDuplicated(results$Race_Key)) {
+      stop("Duplicate Grand Prix rows for ", team, " in ", year)
+    }
+    if (anyNA(results$Points)) stop("Unparseable points for ", team, " in ", year)
+
+    unmatched <- setdiff(results$Race_Key, calendar$Race_Key)
+    if (length(unmatched)) {
+      stop("Team race(s) not found in calendar for ", team, " (", year, "): ",
+           paste(unmatched, collapse = ", "))
+    }
+
+    calendar %>%
+      left_join(results, by = "Race_Key") %>%
+      mutate(Team = team, Points = replace_na(Points, 0))
+  })
+
+  n_races <- nrow(calendar)
+  race_data <- race_data %>%
+    mutate(
+      Window = case_when(
+        Round <= 7 ~ "First 7",
+        Round > n_races - 7 ~ "Last 7",
+        TRUE ~ "Middle"
+      )
+    )
+
+  summary <- race_data %>%
+    group_by(Year, Team) %>%
+    summarise(
+      First_7_Points = sum(Points[Round <= 7]),
+      Last_7_Points = sum(Points[Round > n_races - 7]),
+      Scraped_Season_Points = sum(Points),
+      Completed_Races = n_races,
+      .groups = "drop"
+    ) %>%
+    left_join(teams, by = c("Year", "Team")) %>%
+    mutate(Points_Match = near(Scraped_Season_Points, Season_Points))
+
+  if (any(!summary$Points_Match)) {
+    warning("Published and scraped points differ in ", year,
+            ". Review the flagged rows for penalties or scraping issues.")
+    print(summary %>% filter(!Points_Match))
+  }
+
+  list(summary = summary, races = race_data)
+}
+
+# Test a complete historical season first:
+example <- scrape_season(2025)
+example$summary
+```
+
+## 5. Scrape 1999 through 2026
+
+This makes several hundred requests. Run only after the single-season test works, and avoid repeated full scrapes unnecessarily. The 2026 season is still in progress as of November 9, 2026.
+
+```{r all-seasons}
+season_results <- map(years, scrape_season)
+
+team_window_points <- map_dfr(season_results, "summary") %>%
+  group_by(Year) %>%
+  mutate(
+    First_7_All_Teams_Points = sum(First_7_Points, na.rm = TRUE),
+    Last_7_All_Teams_Points = sum(Last_7_Points, na.rm = TRUE)
+  ) %>%
+  ungroup() %>%
+  mutate(
+    Season_Complete = Year < 2026,
+    Points_Difference = Scraped_Season_Points - Season_Points
+  ) %>%
+  select(
+    Year,
+    Team,
+    First_7_Points,
+    First_7_All_Teams_Points,
+    Last_7_Points,
+    Last_7_All_Teams_Points,
+    Season_Points,
+    Completed_Races,
+    Season_Complete,
+    Scraped_Season_Points,
+    Points_Difference,
+    Points_Match,
+    Team_URL
+  )
+
+team_race_points <- map_dfr(season_results, "races") %>%
+  select(Year, Team, Round, Grand_Prix, Date, Points, Window)
+
+print(team_window_points, n = 20)
+```
+
+## 6. Review championship point discrepancies
+
+A mismatch can reflect an official penalty or exclusion, but can also indicate a scraping problem. Inspect all mismatches rather than automatically adjusting the first/last seven values. In particular, McLaren was excluded from the 2007 Constructors' Championship, so its published season total is zero.
+
+```{r validation}
+points_discrepancies <- team_window_points %>%
+  filter(!Points_Match) %>%
+  arrange(Year, Team)
+
+print(points_discrepancies, n = Inf)
+```
+
+## 7. Export data
+
+```{r export}
+dir.create("Data_Files", showWarnings = FALSE, recursive = TRUE)
+
+write_csv(team_window_points, "Data_Files/team_first_last_7_points.csv")
+write_csv(team_race_points, "Data_Files/team_race_points.csv")
+```
+
+## Notes and limitations
+
+- **Season status:** The last-seven figure for 2026 is provisional until the season finishes. Re-run the script after the final Grand Prix.
+- **Zero-point constructors:** This method starts with teams listed in the official constructor standings table. If F1 omits a constructor with zero season points in a historical year, that team will not appear in the output.
+- **Points adjustments:** A difference between race-level totals and official championship standings can occur because of historical rules or penalties. The script flags these for investigation without forcing agreement. Race-level points and official standings totals represent different concepts when a penalty applies.
+- **Window definition:** Race weekends are ordered by the official completed Grand Prix results, not by the number of team rows. First and last windows overlap only when fewer than 14 races have been completed.
+- **Website changes:** HTML table structure or URL patterns may change. Test on one year before executing the full scrape.

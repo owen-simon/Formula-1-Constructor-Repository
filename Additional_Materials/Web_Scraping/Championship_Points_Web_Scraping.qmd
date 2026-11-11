@@ -33,7 +33,7 @@ get_team_points <- function(url) {
 # List of seasonal results pages
 season_urls <- paste0(
   "https://www.formula1.com/en/results/",
-  1999:2025,
+  1999:2026,
   "/team"
 )
 ```
@@ -51,6 +51,3 @@ write.csv(
   row.names = FALSE
 )
 ```
-
-
-

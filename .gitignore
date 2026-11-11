@@ -26,6 +26,7 @@ Thumbs.db
 # Data outputs
 *.csv
 !raw_data_2026.csv
+!raw_data_2027.csv
 !race_starts.csv
 !laps_completed.csv
 

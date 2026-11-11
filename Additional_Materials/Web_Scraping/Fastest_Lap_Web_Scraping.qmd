@@ -47,7 +47,7 @@ scrape_fastest_laps <- function(urls) {
 # List of seasonal results pages
 f1_season_urls <- paste0(
   "https://www.formula1.com/en/results/",
-  1999:2025,
+  1999:2026,
   "/races"
 )
 

@@ -39,7 +39,7 @@ scrape_seasons <- function(urls) {
 # List of seasonal results pages
 f1_season_urls <- paste0(
   "https://www.formula1.com/en/results/",
-  1989:2025,
+  1989:2026,
   "/races"
 )
 
