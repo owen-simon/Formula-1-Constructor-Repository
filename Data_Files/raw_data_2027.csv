@@ -194,46 +194,46 @@
 8,2017,Red Bull Racing,130,707,178,707,0,Renault,0,5.146341463,5,1,468,2121,2,21,0,0,Daniel Ricciardo,Max Verstappen,0,59,3551
 9,2017,Scuderia Toro Rosso,32,707,18,707,0,Renault,0,12.38095238,1,1,63,2121,0,21,0,0,Carlos Sainz,Daniil Kvyat,0,59,3551
 15,2017,Haas,22,707,1,707,0,Ferrari,0,13.61904762,0,1,29,2121,0,21,0,0,Kevin Magnussen,Romain Grosjean,0,59,3551
-1,2018,Ferrari,,,,,0,Ferrari,0,3.128205128,7,0,522,2020,5,20,0,0,Sebastian Vettel,Kimi Raikkonen,1,60,3613
-2,2018,McLaren,,,,,0,Renault,0,12.375,1,0,30,2020,0,20,0,0,Fernando Alonso,Stoffel Vandoorne,1,60,3613
-3,2018,Williams,,,,,0,Mercedes,0,13,0,0,83,2020,0,20,0,0,Lance Stroll,Sergey Sirotkin,0,60,3613
-4,2018,Sauber,,,,,0,Ferrari,0,17.9,0,0,5,2020,0,20,0,0,Marcus Ericsson,Charles Leclerc,0,60,3613
-5,2018,Mercedes,,,,,1,Mercedes,0,2.769230769,9,0,668,2020,12,20,1,1,Lewis Hamilton,Valtteri Bottas,1,60,3613
-6,2018,Renault,,,,,0,Renault,0,11.38461538,0,0,57,2020,0,20,0,0,Nico Hulkenberg,Carlos Sainz,0,60,3613
-7,2018,Force India,,,,,0,Mercedes,0,9.725,1,0,187,2020,0,20,0,0,Sergio Perez,Esteban Ocon,1,60,3613
-8,2018,Red Bull Racing,,,,,0,Renault,0,5.725,2,0,368,2020,3,20,0,0,Daniel Ricciardo,Max Verstappen,1,60,3613
-9,2018,Scuderia Toro Rosso,,,,,0,Honda,0,13.15384615,0,0,53,2020,0,20,0,0,Pierre Gasly,Brendon Hartley,0,60,3613
-15,2018,Haas,,,,,0,Ferrari,0,14.46153846,0,0,47,2020,0,20,0,0,Kevin Magnussen,Romain Grosjean,1,60,3613
-1,2019,Ferrari,,,,,0,Ferrari,0,3.238095238,4,0,571,2062,6,21,0,0,Sebastian Vettel,Charles Leclerc,0,62,3728
-2,2019,McLaren,,,,,0,Renault,0,15.07142857,0,0,62,2062,0,21,0,0,Carlos Sainz,Lando Norris,0,62,3728
-3,2019,Williams,,,,,0,Mercedes,0,17.09756098,0,0,7,2062,0,21,0,0,George Russell,Robert Kubica,0,62,3728
-4,2019,Alfa Romeo,,,,,0,Ferrari,0,14.02380952,0,0,48,2062,0,21,0,0,Kimi Raikkonen,Antonio Giovinazzi,0,62,3728
-5,2019,Mercedes,,,,,1,Mercedes,0,3,10,0,655,2062,11,21,1,1,Lewis Hamilton,Valtteri Bottas,1,62,3728
-6,2019,Renault,,,,,0,Renault,0,10.57142857,0,0,122,2062,0,21,0,0,Nico Hulkenberg,Daniel Ricciardo,0,62,3728
-7,2019,Racing Point,,,,,0,Mercedes,0,10.69047619,0,0,52,2062,0,21,0,0,Sergio Perez,Lance Stroll,0,62,3728
-8,2019,Red Bull Racing,,,,,0,Honda,0,6.56097561,6,0,419,2062,4,21,0,0,Max Verstappen,Pierre Gasly,0,62,3728
-9,2019,Scuderia Toro Rosso,,,,,0,Honda,0,13.66666667,0,0,33,2062,0,21,0,0,Daniil Kvyat,Alexander Albon,0,62,3728
-15,2019,Haas,,,,,0,Ferrari,0,9.8,1,0,93,2062,0,21,0,0,Kevin Magnussen,Romain Grosjean,1,62,3728
-1,2020,Ferrari,,,,,0,Ferrari,0,3.804878049,6,0,504,2140,3,21,0,0,Sebastian Vettel,Charles Leclerc,1,62,3722
-2,2020,McLaren,,,,,0,Renault,0,9.609756098,0,0,145,2140,0,21,0,0,Carlos Sainz,Lando Norris,1,62,3722
-3,2020,Williams,,,,,0,Mercedes,0,18.85,0,0,1,2140,0,21,0,0,George Russell,Nicholas Latifi,0,62,3722
-4,2020,Alfa Romeo,,,,,0,Ferrari,0,12.5,0,0,57,2140,0,21,0,0,Kimi Raikkonen,Antonio Giovinazzi,1,62,3722
-5,2020,Mercedes,,,,,1,Mercedes,0,2.642857143,9,0,739,2140,15,21,1,1,Lewis Hamilton,Valtteri Bottas,1,62,3722
-6,2020,Renault,,,,,0,Renault,0,10.53658537,0,0,91,2140,0,21,0,0,Daniel Ricciardo,Esteban Ocon,0,62,3722
-7,2020,Racing Point,,,,,0,Mercedes,0,14.5,0,0,73,2140,0,21,0,0,Sergio Perez,Lance Stroll,1,62,3722
-8,2020,Red Bull Racing,,,,,0,Honda,0,5.925,5,0,417,2140,3,21,0,0,Max Verstappen,Alexander Albon,0,62,3722
-9,2020,AlphaTauri,,,,,0,Honda,0,12.575,0,0,85,2140,0,21,0,0,Pierre Gasly,Daniil Kvyat,0,62,3722
-15,2020,Haas,,,,,0,Ferrari,0,11.63414634,1,0,28,2140,0,21,0,0,Kevin Magnussen,Romain Grosjean,1,62,3722
-1,2021,Ferrari,,,,,0,Ferrari,0,10.26470588,0,0,131,1719,0,17,0,0,Charles Leclerc,Carlos Sainz,0,59,3563
-2,2021,McLaren,,,,,0,Mercedes,0,8.264705882,3,0,202,1719,0,17,0,0,Lando Norris,Daniel Ricciardo,0,59,3563
-3,2021,Williams,,,,,0,Mercedes,0,17.29411765,0,0,0,1719,0,17,0,0,George Russell,Nicholas Latifi,1,59,3563
-4,2021,Alfa Romeo,,,,,0,Ferrari,0,16.76470588,0,0,8,1719,0,17,0,0,Kimi Raikkonen,Antonio Giovinazzi,1,59,3563
-5,2021,Mercedes,,,,,1,Mercedes,0,2,9,0,573,1719,13,17,1,1,Lewis Hamilton,Valtteri Bottas,1,59,3563
-6,2021,Alpine,,,,,0,Renault,0,8.823529412,2,0,181,1719,0,17,0,0,Fernando Alonso,Esteban Ocon,0,59,3563
-7,2021,Aston Martin,,,,,0,Mercedes,0,8.235294118,0,0,195,1719,1,17,0,0,Sebastian Vettel,Lance Stroll,0,59,3563
-8,2021,Red Bull Racing,,,,,0,Honda,0,5.147058824,3,0,319,1719,2,17,0,0,Max Verstappen,Sergio Perez,0,59,3563
-9,2021,AlphaTauri,,,,,0,Honda,0,11.11764706,0,0,107,1719,1,17,0,0,Pierre Gasly,Yuki Tsunoda,0,59,3563
-15,2021,Haas,,,,,0,Ferrari,0,17.08823529,0,0,3,1719,0,17,0,0,Mick Schumacher,Nikita Mazepin,0,59,3563
+1,2018,Ferrari,214,707,149,707,0,Ferrari,0,3.128205128,7,0,522,2020,5,20,0,0,Sebastian Vettel,Kimi Raikkonen,1,60,3613
+2,2018,McLaren,0,707,19,707,0,Renault,0,12.375,1,0,30,2020,0,20,0,0,Fernando Alonso,Stoffel Vandoorne,1,60,3613
+3,2018,Williams,22,707,28,707,0,Mercedes,0,13,0,0,83,2020,0,20,0,0,Lance Stroll,Sergey Sirotkin,0,60,3613
+4,2018,Sauber,4,707,0,707,0,Ferrari,0,17.9,0,0,5,2020,0,20,0,0,Marcus Ericsson,Charles Leclerc,0,60,3613
+5,2018,Mercedes,222,707,233,707,1,Mercedes,0,2.769230769,9,0,668,2020,12,20,1,1,Lewis Hamilton,Valtteri Bottas,1,60,3613
+6,2018,Renault,18,707,23,707,0,Renault,0,11.38461538,0,0,57,2020,0,20,0,0,Nico Hulkenberg,Carlos Sainz,0,60,3613
+7,2018,Force India,71,707,74,707,0,Mercedes,0,9.725,1,0,187,2020,0,20,0,0,Sergio Perez,Esteban Ocon,1,60,3613
+8,2018,Red Bull Racing,112,707,156,707,0,Renault,0,5.725,2,0,368,2020,3,20,0,0,Daniel Ricciardo,Max Verstappen,1,60,3613
+9,2018,Scuderia Toro Rosso,29,707,13,707,0,Honda,0,13.15384615,0,0,53,2020,0,20,0,0,Pierre Gasly,Brendon Hartley,0,60,3613
+15,2018,Haas,15,707,12,707,0,Ferrari,0,14.46153846,0,0,47,2020,0,20,0,0,Kevin Magnussen,Romain Grosjean,1,60,3613
+1,2019,Ferrari,189,679,181,707,0,Ferrari,0,3.238095238,4,0,571,2062,6,21,0,0,Sebastian Vettel,Charles Leclerc,0,62,3728
+2,2019,McLaren,40,679,10,707,0,Renault,0,15.07142857,0,0,62,2062,0,21,0,0,Carlos Sainz,Lando Norris,0,62,3728
+3,2019,Williams,4,679,0,707,0,Mercedes,0,17.09756098,0,0,7,2062,0,21,0,0,George Russell,Robert Kubica,0,62,3728
+4,2019,Alfa Romeo,12,679,29,707,0,Ferrari,0,14.02380952,0,0,48,2062,0,21,0,0,Kimi Raikkonen,Antonio Giovinazzi,0,62,3728
+5,2019,Mercedes,206,679,240,707,1,Mercedes,0,3,10,0,655,2062,11,21,1,1,Lewis Hamilton,Valtteri Bottas,1,62,3728
+6,2019,Renault,56,679,36,707,0,Renault,0,10.57142857,0,0,122,2062,0,21,0,0,Nico Hulkenberg,Daniel Ricciardo,0,62,3728
+7,2019,Racing Point,0,679,20,707,0,Mercedes,0,10.69047619,0,0,52,2062,0,21,0,0,Sergio Perez,Lance Stroll,0,62,3728
+8,2019,Red Bull Racing,134,679,171,707,0,Honda,0,6.56097561,6,0,419,2062,4,21,0,0,Max Verstappen,Pierre Gasly,0,62,3728
+9,2019,Scuderia Toro Rosso,19,679,3,707,0,Honda,0,13.66666667,0,0,33,2062,0,21,0,0,Daniil Kvyat,Alexander Albon,0,62,3728
+15,2019,Haas,19,679,17,707,0,Ferrari,0,9.8,1,0,93,2062,0,21,0,0,Kevin Magnussen,Romain Grosjean,1,62,3728
+1,2020,Ferrari,172,714,153,712,0,Ferrari,0,3.804878049,6,0,504,2140,3,21,0,0,Sebastian Vettel,Charles Leclerc,1,62,3722
+2,2020,McLaren,30,714,62,712,0,Renault,0,9.609756098,0,0,145,2140,0,21,0,0,Carlos Sainz,Lando Norris,1,62,3722
+3,2020,Williams,0,714,0,712,0,Mercedes,0,18.85,0,0,1,2140,0,21,0,0,George Russell,Nicholas Latifi,0,62,3722
+4,2020,Alfa Romeo,13,714,23,712,0,Ferrari,0,12.5,0,0,57,2140,0,21,0,0,Kimi Raikkonen,Antonio Giovinazzi,1,62,3722
+5,2020,Mercedes,295,714,234,712,1,Mercedes,0,2.642857143,9,0,739,2140,15,21,1,1,Lewis Hamilton,Valtteri Bottas,1,62,3722
+6,2020,Renault,28,714,26,712,0,Renault,0,10.53658537,0,0,91,2140,0,21,0,0,Daniel Ricciardo,Esteban Ocon,0,62,3722
+7,2020,Racing Point,19,714,27,712,0,Mercedes,0,14.5,0,0,73,2140,0,21,0,0,Sergio Perez,Lance Stroll,1,62,3722
+8,2020,Red Bull Racing,124,714,151,712,0,Honda,0,5.925,5,0,417,2140,3,21,0,0,Max Verstappen,Alexander Albon,0,62,3722
+9,2020,AlphaTauri,17,714,34,712,0,Honda,0,12.575,0,0,85,2140,0,21,0,0,Pierre Gasly,Daniil Kvyat,0,62,3722
+15,2020,Haas,16,714,2,712,0,Ferrari,0,11.63414634,1,0,28,2140,0,21,0,0,Kevin Magnussen,Romain Grosjean,1,62,3722
+1,2021,Ferrari,61,699,57,714,0,Ferrari,0,10.26470588,0,0,131,1719,0,17,0,0,Charles Leclerc,Carlos Sainz,0,59,3563
+2,2021,McLaren,68,699,96,714,0,Mercedes,0,8.264705882,3,0,202,1719,0,17,0,0,Lando Norris,Daniel Ricciardo,0,59,3563
+3,2021,Williams,0,699,0,714,0,Mercedes,0,17.29411765,0,0,0,1719,0,17,0,0,George Russell,Nicholas Latifi,1,59,3563
+4,2021,Alfa Romeo,2,699,4,714,0,Ferrari,0,16.76470588,0,0,8,1719,0,17,0,0,Kimi Raikkonen,Antonio Giovinazzi,1,59,3563
+5,2021,Mercedes,264,699,207,714,1,Mercedes,0,2,9,0,573,1719,13,17,1,1,Lewis Hamilton,Valtteri Bottas,1,59,3563
+6,2021,Alpine,59,699,82,714,0,Renault,0,8.823529412,2,0,181,1719,0,17,0,0,Fernando Alonso,Esteban Ocon,0,59,3563
+7,2021,Aston Martin,66,699,91,714,0,Mercedes,0,8.235294118,0,0,195,1719,1,17,0,0,Sebastian Vettel,Lance Stroll,0,59,3563
+8,2021,Red Bull Racing,158,699,127,714,0,Honda,0,5.147058824,3,0,319,1719,2,17,0,0,Max Verstappen,Sergio Perez,0,59,3563
+9,2021,AlphaTauri,20,699,48,714,0,Honda,0,11.11764706,0,0,107,1719,1,17,0,0,Pierre Gasly,Yuki Tsunoda,0,59,3563
+15,2021,Haas,1,699,2,714,0,Ferrari,0,17.08823529,0,0,3,1719,0,17,0,0,Mick Schumacher,Nikita Mazepin,0,59,3563
 1,2022,Ferrari,,,,,0,Ferrari,0,7.340909091,0,1,323.5,2207.5,0,22,0,0,Charles Leclerc,Carlos Sainz,1,60,3596
 2,2022,McLaren,,,,,0,Mercedes,0,8.068181818,2,1,275,2207.5,1,22,0,0,Lando Norris,Daniel Ricciardo,1,60,3596
 3,2022,Williams,,,,,0,Mercedes,0,14.47727273,0,1,23,2207.5,0,22,0,0,Alexander Albon,Nicholas Latifi,0,60,3596
