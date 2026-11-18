@@ -211,23 +211,23 @@ raw_data_2027 = create_prior_season_points_prop(raw_data_2027)
 # Create Prior Season Points Proportion (First 7 Race Weekends)
 # ============================================================================
 
-def create_prior_season_points_prop_first7(df):
+def create_Prior_Season_Points_Prop_First7_Weekends(df):
     df = df.copy()
 
     # Avoid division by zero
-    df["Prior_Season_Points_Prop_First7"] = (
-        df["Prior_Season_Points_Earned_First7"] /
-        df["Prior_Season_Points_Total_First7"]
+    df["Prior_Season_Points_Prop_First7_Weekends"] = (
+        df["Prior_Season_Points_Earned_First7_Weekends"] /
+        df["Prior_Season_Points_Total_First7_Weekends"]
     ).replace([float("inf"), -float("inf")], 0)
 
     # Handle NaN values and clip to [0, 1]
-    df["Prior_Season_Points_Prop_First7"] = df["Prior_Season_Points_Prop_First7"].fillna(0)
-    df["Prior_Season_Points_Prop_First7"] = df["Prior_Season_Points_Prop_First7"].clip(0, 1)
+    df["Prior_Season_Points_Prop_First7_Weekends"] = df["Prior_Season_Points_Prop_First7_Weekends"].fillna(0)
+    df["Prior_Season_Points_Prop_First7_Weekends"] = df["Prior_Season_Points_Prop_First7_Weekends"].clip(0, 1)
 
     # Drop original columns
     df = df.drop(
         columns=[
-            "Prior_Season_Points_Earned_First7",
+            "Prior_Season_Points_Earned_First7_Weekends",
             "Prior_Season_Points_Total_First7"
         ]
     )
@@ -235,37 +235,37 @@ def create_prior_season_points_prop_first7(df):
     return df
 
 # Apply to raw data set
-raw_data_2027 = create_prior_season_points_prop(raw_data_2027)
+raw_data_2027 = create_Prior_Season_Points_Prop_First7_Weekends(raw_data_2027)
 
 # ============================================================================
 # Create Prior Season Points Proportion (Last 7 Race Weekends)
 # ============================================================================
 
-def create_prior_season_points_prop_last7(df):
+def create_Prior_Season_Points_Prop_Last7_Weekends(df):
     df = df.copy()
 
     # Avoid division by zero
-    df["Prior_Season_Points_Prop_Last7"] = (
-        df["Prior_Season_Points_Earned_Last7"] /
-        df["Prior_Season_Points_Total_Last7"]
+    df["Prior_Season_Points_Prop_Last7_Weekends"] = (
+        df["Prior_Season_Points_Earned_Last7_Weekends"] /
+        df["Prior_Season_Points_Total_Last7_Weekends"]
     ).replace([float("inf"), -float("inf")], 0)
 
     # Handle NaN values and clip to [0, 1]
-    df["Prior_Season_Points_Prop_Last7"] = df["Prior_Season_Points_Prop_Last7"].fillna(0)
-    df["Prior_Season_Points_Prop_Last7"] = df["Prior_Season_Points_Prop_Last7"].clip(0, 1)
+    df["Prior_Season_Points_Prop_Last7_Weekends"] = df["Prior_Season_Points_Prop_Last7_Weekends"].fillna(0)
+    df["Prior_Season_Points_Prop_Last7_Weekends"] = df["Prior_Season_Points_Prop_Last7_Weekends"].clip(0, 1)
 
     # Drop original columns
     df = df.drop(
         columns=[
-            "Prior_Season_Points_Earned_Last7",
-            "Prior_Season_Points_Total_Last7"
+            "Prior_Season_Points_Earned_Last7_Weekends",
+            "Prior_Season_Points_Total_Last7_Weekends"
         ]
     )
 
     return df
 
 # Apply to raw data set
-raw_data_2027 = create_prior_season_points_prop(raw_data_2027)
+raw_data_2027 = create_Prior_Season_Points_Prop_Last7_Weekends(raw_data_2027)
 
 # ============================================================================
 # Create Prior Season Win Proportion
@@ -300,19 +300,19 @@ def create_prior_fl_prop(df):
     df = df.copy()
 
     # Avoid division by zero
-    df["Prior_Season_Fastest_Lap_Prop"] = (
-        df["Prior_Season_Fastest_Lap_Count"] /
+    df["Prior_Season_GP_Fastest_Lap_Prop"] = (
+        df["Prior_Season_GP_Fastest_Lap_Count"] /
         df["Prior_Season_GP_Count"]
     ).replace([float("inf"), -float("inf")], 0)
 
     # Handle NaN values and clip to [0, 1]
-    df["Prior_Season_Fastest_Lap_Prop"] = df["Prior_Season_Fastest_Lap_Prop"].fillna(0)
-    df["Prior_Season_Fastest_Lap_Prop"] = df["Prior_Season_Fastest_Lap_Prop"].clip(0, 1)
+    df["Prior_Season_GP_Fastest_Lap_Prop"] = df["Prior_Season_GP_Fastest_Lap_Prop"].fillna(0)
+    df["Prior_Season_GP_Fastest_Lap_Prop"] = df["Prior_Season_GP_Fastest_Lap_Prop"].clip(0, 1)
 
     # Drop original columns
     df = df.drop(
         columns=[
-            "Prior_Season_Fastest_Lap_Count",
+            "Prior_Season_GP_Fastest_Lap_Count",
             "Prior_Season_GP_Count"
         ]
     )
