@@ -25,7 +25,7 @@ def process_id_column(df, id_cols):
     return df
 
 # Apply to raw data set
-id_cols = ["Constructor_Lineage_ID", "Season", "Team_Name"]
+id_cols = ["Constructor_Lineage_ID", "Season", "Prior_Season", "Team_Name"]
 raw_data_2027 = process_id_column(raw_data_2027, id_cols)
 
 # ============================================================================
@@ -402,6 +402,25 @@ def simplify_engine_branding(df, col="Engine_Branding"):
 
 # Apply to raw data set
 raw_data_2027 = simplify_engine_branding(raw_data_2027)
+
+# ============================================================================
+# Combine Regulation Change Variables into total `Regulation_Change_Score`
+# ============================================================================
+
+def create_regulation_change_score(df):
+    df = df.copy()
+
+    df["Regulation_Change_Score"] = (
+        df["Aero_Reg_Change"] +
+        df["PowerUnit_Reg_Change"] +
+        df["Tyre_Reg_Change"] +
+        df["Chassis_Reg_Change"]
+    )
+
+    return df
+
+# Apply to raw data set
+raw_data_2027 = create_regulation_change_score(raw_data_2027)
 
 # ============================================================================
 # Replace null values with the mean
