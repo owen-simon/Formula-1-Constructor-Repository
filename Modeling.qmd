@@ -1,6 +1,6 @@
 ---
 title: "Modeling"
-author: "Team VM"
+author: "Owen Simon"
 format: 
     html:
         toc: true
@@ -32,8 +32,11 @@ RANDOM_SEED <- 42
 
 ```{r}
 # Read file
-df <- read.csv("Data_Files/Train.csv")
-df_holdout <- read.csv("Data_Files/Test.csv")
+df <- read.csv("Data_Files/Train.csv") |>
+  dplyr::select(-Season, -Team_Name)
+
+df_holdout <- read.csv("Data_Files/Test.csv") |>
+  dplyr::select(-Season, -Team_Name)
 ```
 
 ## Data Preparation

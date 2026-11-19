@@ -17,36 +17,17 @@ laps_completed = pd.read_csv("Data_Files/laps_completed.csv")
 
 def process_id_column(df, id_cols):
     df = df.copy()
-    
+
     df["ID"] = df[id_cols].astype(str).agg("_".join, axis=1)
-    df = df.drop(columns=id_cols)
+    df = df.drop(columns=["Constructor_Lineage_ID"])
     df = df[["ID"] + [col for col in df.columns if col != "ID"]]
-    
+
     return df
 
-# Apply to raw data set
-id_cols = ["Constructor_Lineage_ID", "Season", "Prior_Season", "Team_Name"]
+# Apply to raw dataset
+id_cols = ["Constructor_Lineage_ID", "Season", "Team_Name"]
+
 raw_data_2027 = process_id_column(raw_data_2027, id_cols)
-
-# ============================================================================
-# Recreate `Season` column from ID for feature engineering purposes
-# ============================================================================
-raw_data_2027 = raw_data_2027.copy()
-raw_data_2027["Season"] = raw_data_2027["ID"].str.split("_").str[1].astype(int)
-
-# ============================================================================
-# Create `Regulation_Change_Score` column
-# ============================================================================
-raw_data_2027 = raw_data_2027.copy()
-
-raw_data_2027["Regulation_Change_Score"] = raw_data_2027[
-    [
-        "Aerodynamic_Reg_Change", 
-        "Power_Unit_Reg_Change",
-        "Tyre_Reg_Change",
-        "Chassis_Reg_Change"
-    ]
-].sum(axis=1)
 
 # ============================================================================
 # Driver-Level Features from Supplementary Data:
@@ -228,7 +209,7 @@ def create_Prior_Season_Points_Prop_First7_Weekends(df):
     df = df.drop(
         columns=[
             "Prior_Season_Points_Earned_First7_Weekends",
-            "Prior_Season_Points_Total_First7"
+            "Prior_Season_Points_Total_First7_Weekends"
         ]
     )
 
@@ -435,8 +416,8 @@ for col in cols_to_fill:
 # Split data into train and test sets (for 2026 predictions)
 # ============================================================================
 
-train = raw_data_2027[raw_data_2027['Season'] != 2026].copy()
-test  = raw_data_2027[raw_data_2027['Season'] == 2026].copy()
+train = raw_data_2027[raw_data_2027['Season'] != 2027].copy()
+test  = raw_data_2027[raw_data_2027['Season'] == 2027].copy()
 
 # ============================================================================
 # Drop `Season` column (not necessary for modeling)
